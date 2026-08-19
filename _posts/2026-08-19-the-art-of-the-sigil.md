@@ -73,9 +73,9 @@ If the kamea method is the oldest and most formal, this is the newest and most s
 
 The method follows an explicit six-step sequence:
 
-1. **Write the Statement of Intent:** Phrase it in the present tense as an accomplished reality (e.g., `I WILL GAIN CLARITY`).
-2. **Remove Duplicate Letters:** Retain only the first occurrence of each character (`I W L G A N C R T Y`).
-3. **Strip the Vowels:** Remove all vowels to eliminate readability and reduce the phrase to a raw consonantal base (`W L G N C R T Y`).
+1. **Write the Statement of Intent:** Phrase it in the present tense as an accomplished reality (e.g., `I HAVE CLARITY`).
+2. **Remove Duplicate Letters:** Retain only the first occurrence of each character (`I H A V E C L R T Y`).
+3. **Strip the Vowels:** Remove all vowels to eliminate readability and reduce the phrase to a raw consonantal base (`H V C L R T Y`).
 4. **Combine into a Monogram:** Stack, mirror, rotate, and fuse the remaining letters into a single abstract glyph. A private, rough scrawl is just as effective as a polished design.
 5. **Charge via Gnosis:** Enter an altered state of consciousness—either *inhibitory* (deep meditative stillness) or *excitatory* (sensory overload, hyperventilation, physical exhaustion)—and focus total attention on the glyph at the peak.
 6. **Release and Forget:** The physical sigil is burned, buried, or discarded, and the conscious mind intentionally moves on.
