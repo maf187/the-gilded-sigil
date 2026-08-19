@@ -9,22 +9,17 @@ permalink: /spell-jar.html
   <p class="tagline-sub">Formulate sacred botanical layers, crystal matrixes, and seal correspondences.</p>
 
   <div class="architect-controls">
-    <label for="intentSelect" class="control-label">Select Core Intention:</label>
-    <div class="input-group">
-      <select id="intentSelect">
-        <option value="" disabled selected>— Choose an Intention —</option>
-        <option value="protection">Protection & Boundary Warding</option>
-        <option value="prosperity">Prosperity, Wealth & Success</option>
-        <option value="love">Love, Self-Worth & Harmony</option>
-        <option value="purification">Purification & Cleansing</option>
-        <option value="healing">Healing & Emotional Restoration</option>
-        <option value="peace_sleep">Peace, Rest & Calm Sleep</option>
-        <option value="psychic_intuition">Psychic Intuition & Divination</option>
-        <option value="courage">Courage, Strength & Willpower</option>
-        <option value="banishing">Banishing & Uncrossing</option>
-      </select>
-      <button id="formulateBtn" type="button">Formulate Jar</button>
-    </div>
+  <label for="intentInput" class="control-label">State Your Freeform Intention:</label>
+  <div class="input-group">
+    <input 
+      type="text" 
+      id="intentInput" 
+      placeholder="e.g., Attract wealth and financial clarity, or Shield home from negativity..."
+      autocomplete="off"
+    >
+    <button id="formulateBtn" type="button">Formulate Jar</button>
+  </div>
+  <p id="intentFeedback" style="color: #a8a396; font-size: 0.95rem; font-style: italic; margin-top: 0.5rem;"></p>
   </div>
 
   <div id="recipeOutput" class="recipe-output" style="display: none;">
