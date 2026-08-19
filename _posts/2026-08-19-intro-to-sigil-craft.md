@@ -10,7 +10,7 @@ Welcome to the Grimoire of The Gilded Sigil.
 
 Sigil craft is the discipline of distilling conscious thought down to subconscious geometry. Rooted in the letter-reduction techniques pioneered by Austin Osman Spare, the process strips away vowels and duplicate letters to isolate the raw consonantal skeleton of your intention.
 
-*(New to the history of magic squares, letter-wheels, and talismanic seals? Read our foundational essay, [The Art of the Sigil: How a Seal Becomes a Spell]([/grimoire/art-of-the-sigil](https://thegildedsigil.com/2026/08/the-art-of-the-sigil/).)*
+*(New to the history of magic squares, letter-wheels, and talismanic seals? Read our foundational essay, [The Art of the Sigil: How a Seal Becomes a Spell](https://thegildedsigil.com/2026/08/the-art-of-the-sigil/).)*
 
 ---
 
