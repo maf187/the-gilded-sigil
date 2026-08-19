@@ -6,8 +6,6 @@ summary: "A comprehensive exploration of sigil craft—from ancient Mesopotamian
 tags: [sigils, grimoire, occult-history, planetary-magic, chaos-magic, sacred-geometry, theory]
 ---
 
-# The Art of the Sigil: How a Seal Becomes a Spell
-
 There is a moment, right before a sigil is finished, when a sentence stops looking like language. The words that carried your desire have been stripped down, folded into each other, turned into something your conscious mind can no longer read at a glance. That moment is the entire point. A sigil is not decoration for an intention — it is the intention, translated into a shape the deeper mind can act on without the analytical mind interfering.
 
 The word itself comes from the Latin *sigillum*, "seal." For most of Western occult history, that is precisely what a sigil did: it sealed a name, a spirit, a planetary force, or a desire into a single mark that could be drawn, carved, worn, or burned. Long before anyone was reducing affirmations to consonants, sigils were doing serious work in grimoires, on talismans, and in the margins of ceremonial magic. What follows is a walk through where that practice came from, the major methods used to build a sigil, the rules that govern each one, and what practitioners across centuries have believed makes a sigil more than just a doodle.
