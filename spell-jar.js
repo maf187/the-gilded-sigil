@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const intentInput = document.getElementById('intentInput');
   const formulateBtn = document.getElementById('formulateBtn');
+  const reShuffleBtn = document.getElementById('reShuffleBtn');
   const intentFeedback = document.getElementById('intentFeedback');
   const recipeOutput = document.getElementById('recipeOutput');
   const ingredientStack = document.getElementById('ingredientStack');
@@ -175,6 +176,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   formulateBtn.addEventListener('click', formulateRecipe);
+  
+  if (reShuffleBtn) {
+    reShuffleBtn.addEventListener('click', formulateRecipe);
+  }
+
   intentInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') formulateRecipe();
   });
