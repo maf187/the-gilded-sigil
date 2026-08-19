@@ -60,7 +60,7 @@ A kamea is a magic square: a grid of numbers where every row, column, and diagon
 To construct a planetary sigil:
 
 1. **Select the Governing Square:** Choose the planet matching the nature of the intention (e.g., Jupiter for financial growth, Mars for fortitude).
-2. **Convert Text to Numbers:** Traditionally, words or spirit names were converted using Hebrew **Gematria** and reduced to fit the square's dimensions via the cipher of **Aiq Beker** (the Kabbalah of Nine Chambers). In modern practice, practitioners often assign simple alphanumeric positions ($A=1, B=2 \dots$) and reduce larger sums down to the grid limit.
+2. **Convert Text to Numbers:** Traditionally, words or spirit names were converted using Hebrew **Gematria** and reduced to fit the square's dimensions via the cipher of **Aiq Beker** (the Kabbalah of Nine Chambers). In modern practice, practitioners often assign simple alphanumeric positions (A=1, B=2) and reduce larger sums down to the grid limit.
 3. **Trace the Vector:** Connect the corresponding coordinates across the planetary grid in sequence, using the traditional circular start node and terminal crossbar.
 
 Unlike modern chaos sigils designed to be burned and forgotten, a kamea seal is traditionally **consecrated and preserved**. It is timed to the planet's traditional day and planetary hour, consecrated with matching incense or oils, and worn as an active talisman or placed upon an altar.
