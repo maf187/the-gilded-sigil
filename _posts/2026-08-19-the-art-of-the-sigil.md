@@ -49,13 +49,13 @@ A kamea is a magic square: a grid of numbers where every row, column, and diagon
 
 | Planet | Grid Dimensions | Magical Constant (Row Sum) | Domain & Working |
 | :--- | :--- | :--- | :--- |
-| **Saturn** | $3 \times 3$ (9 cells) | 15 | Boundaries, discipline, binding |
-| **Jupiter** | $4 \times 4$ (16 cells) | 34 | Wealth, expansion, sovereignty |
-| **Mars** | $5 \times 5$ (25 cells) | 65 | Severing, courage, conflict |
-| **Sun** | $6 \times 6$ (36 cells) | 111 | Vitality, illumination, success |
-| **Venus** | $7 \times 7$ (49 cells) | 175 | Harmony, attraction, art |
-| **Mercury** | $8 \times 8$ (64 cells) | 260 | Communication, commerce, intellect |
-| **Moon** | $9 \times 9$ (81 cells) | 369 | Intuition, illusion, cycles |
+| **Saturn** | 3 × 3 (9 cells) | 15 | Boundaries, discipline, binding |
+| **Jupiter** | 4 × 4 (16 cells) | 34 | Wealth, expansion, sovereignty |
+| **Mars** | 5 × 5 (25 cells) | 65 | Severing, courage, conflict |
+| **Sun** | 6 × 6 (36 cells) | 111 | Vitality, illumination, success |
+| **Venus** | 7 × 7 (49 cells) | 175 | Harmony, attraction, art |
+| **Mercury** | 8 × 8 (64 cells) | 260 | Communication, commerce, intellect |
+| **Moon** | 9 × 9 (81 cells) | 369 | Intuition, illusion, cycles |
 
 To construct a planetary sigil:
 
