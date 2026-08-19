@@ -1,3 +1,6 @@
+/* 1. Import Fonts at the very top of style.css */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,9 +8,11 @@
 }
 
 body {
-  background-color: #121212;
-  color: #f4ecd8;
-  font-family: 'Georgia', serif;
+  background: radial-gradient(circle at center, #1b1a18 0%, #0a0a09 100%);
+  color: #e8e2cf;
+  /* Primary body font */
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,10 +26,13 @@ header {
 }
 
 h1 {
+  /* Display font for main heading */
+  font-family: 'Cinzel Decorative', Georgia, serif;
   font-size: 2.5rem;
   color: #d4af37;
   letter-spacing: 2px;
   text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
 }
 
 .tagline {
@@ -45,6 +53,8 @@ h1 {
 }
 
 .sigil-container h2 {
+  /* Display font for section subheadings */
+  font-family: 'Cinzel Decorative', Georgia, serif;
   color: #d4af37;
   margin-bottom: 0.5rem;
 }
@@ -61,8 +71,8 @@ input[type="text"] {
   background: #242424;
   border: 1px solid #4a4a4a;
   color: #f4ecd8;
-  font-family: inherit;
-  font-size: 0.9rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
   border-radius: 4px;
 }
 
@@ -76,7 +86,10 @@ button {
   color: #121212;
   border: none;
   padding: 0.8rem 1.2rem;
-  font-weight: bold;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
   cursor: pointer;
   border-radius: 4px;
   transition: background 0.2s ease;
@@ -88,14 +101,14 @@ button:hover {
 
 .reduced-display {
   margin: 1rem 0;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #c2beaf;
 }
 
 #consonantsDisplay {
   color: #d4af37;
-  letter-spacing: 3px;
-  font-weight: bold;
+  letter-spacing: 4px;
+  font-weight: 600;
 }
 
 .canvas-wrapper {
@@ -113,7 +126,7 @@ canvas {
 }
 
 .teaser-badge {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: #8c887b;
   margin-top: 1rem;
   font-style: italic;
@@ -122,6 +135,6 @@ canvas {
 footer {
   margin-top: auto;
   padding-top: 2rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: #666;
 }
