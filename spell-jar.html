@@ -1,0 +1,64 @@
+---
+layout: default
+title: "Spell Jar Architect"
+permalink: /spell-jar.html
+---
+
+<section class="sigil-container architect-container">
+  <h2>Spell Jar Architect</h2>
+  <p class="tagline-sub">Formulate sacred botanical layers, crystal matrixes, and seal correspondences.</p>
+
+  <div class="architect-controls">
+    <label for="intentSelect" class="control-label">Select Core Intention:</label>
+    <div class="input-group">
+      <select id="intentSelect">
+        <option value="" disabled selected>— Choose an Intention —</option>
+        <option value="protection">Protection & Boundary Warding</option>
+        <option value="prosperity">Prosperity, Wealth & Success</option>
+        <option value="love">Love, Self-Worth & Harmony</option>
+        <option value="purification">Purification & Cleansing</option>
+        <option value="healing">Healing & Emotional Restoration</option>
+        <option value="peace_sleep">Peace, Rest & Calm Sleep</option>
+        <option value="psychic_intuition">Psychic Intuition & Divination</option>
+        <option value="courage">Courage, Strength & Willpower</option>
+        <option value="banishing">Banishing & Uncrossing</option>
+      </select>
+      <button id="formulateBtn" type="button">Formulate Jar</button>
+    </div>
+  </div>
+
+  <div id="recipeOutput" class="recipe-output" style="display: none;">
+    
+    <!-- Visual Vessel Representation -->
+    <div class="jar-visual-wrapper">
+      <div class="jar-graphic" id="jarGraphic">
+        <div class="jar-cork" id="corkSeal"></div>
+        <div class="jar-glass">
+          <div class="jar-layer layer-crystal" id="visualCrystal" title="Crystal Point"></div>
+          <div class="jar-layer layer-herb-2" id="visualHerb2" title="Secondary Botanical"></div>
+          <div class="jar-layer layer-herb-1" id="visualHerb1" title="Primary Botanical"></div>
+          <div class="jar-layer layer-base" id="visualBase" title="Mineral Base"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Structured Recipe Formula -->
+    <div class="recipe-blueprint">
+      <h3 class="blueprint-title">Ritual Recipe Blueprint</h3>
+      <p class="blueprint-desc">Layer ingredients from the foundation upward to anchor intention into physical form.</p>
+
+      <div class="ingredient-stack" id="ingredientStack">
+        <!-- Dynamically generated ingredient cards populate here -->
+      </div>
+
+      <div class="sealing-section" id="sealingSection">
+        <!-- Sealing wax details populate here -->
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Include Grimoire Data and the Architect Engine -->
+<script src="{{ '/grimoire-data.js' | relative_url }}"></script>
+<script src="{{ '/spell-jar.js' | relative_url }}"></script>
