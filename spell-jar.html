@@ -9,17 +9,20 @@ permalink: /spell-jar.html
   <p class="tagline-sub">Formulate sacred botanical layers, crystal matrixes, and seal correspondences.</p>
 
   <div class="architect-controls">
-  <label for="intentInput" class="control-label">State Your Intention:</label>
-  <div class="input-group">
-    <input 
-      type="text" 
-      id="intentInput" 
-      placeholder="e.g., Attract wealth and financial clarity, or Shield home from negativity..."
-      autocomplete="off"
-    >
-    <button id="formulateBtn" type="button">Formulate Jar</button>
-  </div>
-  <p id="intentFeedback" style="color: #a8a396; font-size: 0.95rem; font-style: italic; margin-top: 0.5rem;"></p>
+    <label for="intentInput" class="control-label">State Your Intention:</label>
+    <div class="input-group">
+      <input 
+        type="text" 
+        id="intentInput" 
+        placeholder="e.g., Attract wealth and financial clarity, or Shield home from negativity..."
+        autocomplete="off"
+      >
+      <button id="formulateBtn" type="button">Formulate Jar</button>
+    </div>
+    <p class="architect-hint" style="color: #8c887b; font-size: 0.88rem; font-style: italic; margin-top: 0.4rem;">
+      *Tip: You can re-run the same intention to draw different botanical combinations from the archives.
+    </p>
+    <p id="intentFeedback" style="color: #a8a396; font-size: 0.95rem; font-style: italic; margin-top: 0.5rem;"></p>
   </div>
 
   <div id="recipeOutput" class="recipe-output" style="display: none;">
@@ -39,7 +42,12 @@ permalink: /spell-jar.html
 
     <!-- Structured Recipe Formula -->
     <div class="recipe-blueprint">
-      <h3 class="blueprint-title">Ritual Recipe Blueprint</h3>
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+        <h3 class="blueprint-title" style="margin: 0;">Ritual Recipe Blueprint</h3>
+        <button id="reShuffleBtn" type="button" class="sub-toggle-btn" style="border-color: #d4af37; color: #d4af37;">
+          ↻ Reformulate Variant
+        </button>
+      </div>
       <p class="blueprint-desc">Layer ingredients from the foundation upward to anchor intention into physical form.</p>
 
       <div class="ingredient-stack" id="ingredientStack">
