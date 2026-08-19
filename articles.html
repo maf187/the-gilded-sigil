@@ -1,0 +1,22 @@
+---
+layout: default
+title: Grimoire
+---
+<section class="sigil-container" style="max-width: 800px;">
+  <h2>The Grimoire</h2>
+  <p style="margin-bottom: 2rem;">Writings on occult geometry, spell jars, and historical folklore.</p>
+
+  <ul class="article-list" style="list-style: none; padding: 0; text-align: left;">
+    {% for post in site.posts %}
+      <li style="margin-bottom: 1.5rem; border-bottom: 1px solid #333; padding-bottom: 1rem;">
+        <time style="color: #8c887b; font-size: 0.9rem;">{{ post.date | date: "%B %d, %Y" }}</time>
+        <h3 style="margin: 0.5rem 0;">
+          <a href="{{ post.url | relative_url }}" style="color: #d4af37; text-decoration: none;">
+            {{ post.title }}
+          </a>
+        </h3>
+        <p style="color: #c2beaf; font-size: 1rem;">{{ post.summary }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
