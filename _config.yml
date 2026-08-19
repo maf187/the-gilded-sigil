@@ -6,3 +6,4 @@ future: true
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-sitemap
