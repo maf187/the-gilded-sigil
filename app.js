@@ -10,6 +10,8 @@ const RADIUS = 180;
 const CENTER_X = canvas.width / 2;
 const CENTER_Y = canvas.height / 2;
 
+let currentAnimationFrameId = null;
+
 // Map each of the 21 consonants to fixed equidistant coordinates around a circle
 const letterPositions = {};
 for (let i = 0; i < CONSONANTS.length; i++) {
@@ -27,15 +29,33 @@ function reduceIntent(text) {
   return [...new Set(noVowels)];
 }
 
-function drawSigil(letters) {
+function drawBackground() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Draw background circle guide
-  ctx.strokeStyle = '#222222';
-  ctx.lineWidth = 1;
+  ctx.strokeStyle = '#28251e';
+  ctx.lineWidth = 1.5;
   ctx.beginPath();
   ctx.arc(CENTER_X, CENTER_Y, RADIUS, 0, 2 * Math.PI);
   ctx.stroke();
+}
+
+function drawTerminalCrossbar(pPrev, pLast) {
+  const angle = Math.atan2(pLast.y - pPrev.y, pLast.x - pPrev.x) + (Math.PI / 2);
+  const barLength = 12;
+
+  ctx.strokeStyle = '#d4af37';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(pLast.x - barLength * Math.cos(angle), pLast.y - barLength * Math.sin(angle));
+  ctx.lineTo(pLast.x + barLength * Math.cos(angle), pLast.y + barLength * Math.sin(angle));
+  ctx.stroke();
+}
+
+function animateSigil(letters) {
+  if (currentAnimationFrameId) {
+    cancelAnimationFrame(currentAnimationFrameId);
+  }
+
+  drawBackground();
 
   if (letters.length === 0) return;
 
@@ -45,44 +65,71 @@ function drawSigil(letters) {
 
   if (points.length === 0) return;
 
-  // Set line styling
-  ctx.strokeStyle = '#d4af37';
-  ctx.lineWidth = 3;
-  ctx.lineCap = 'round';
-  ctx.lineJoin = 'round';
-
-  // Draw starting node circle at the first point
-  ctx.fillStyle = '#d4af37';
-  ctx.beginPath();
-  ctx.arc(points[0].x, points[0].y, 6, 0, 2 * Math.PI);
-  ctx.fill();
-
-  // Draw path connecting consonants
-  ctx.beginPath();
-  ctx.moveTo(points[0].x, points[0].y);
-  for (let i = 1; i < points.length; i++) {
-    ctx.lineTo(points[i].x, points[i].y);
-  }
-  ctx.stroke();
-
-  // Draw terminal crossbar on final node
-  if (points.length > 1) {
-    const last = points[points.length - 1];
-    const prev = points[points.length - 2];
-    const angle = Math.atan2(last.y - prev.y, last.x - prev.x) + (Math.PI / 2);
-    const barLength = 12;
-
+  // Single letter case (draws node circle only)
+  if (points.length === 1) {
+    ctx.fillStyle = '#d4af37';
     ctx.beginPath();
-    ctx.moveTo(last.x - barLength * Math.cos(angle), last.y - barLength * Math.sin(angle));
-    ctx.lineTo(last.x + barLength * Math.cos(angle), last.y + barLength * Math.sin(angle));
-    ctx.stroke();
+    ctx.arc(points[0].x, points[0].y, 6, 0, 2 * Math.PI);
+    ctx.fill();
+    return;
   }
+
+  let currentSegment = 0;
+  let progress = 0;
+  const speed = 0.05; // Adjust stroke drawing speed (0.01 - 0.1)
+
+  function renderFrame() {
+    drawBackground();
+
+    // 1. Draw starting origin node
+    ctx.fillStyle = '#d4af37';
+    ctx.beginPath();
+    ctx.arc(points[0].x, points[0].y, 6, 0, 2 * Math.PI);
+    ctx.fill();
+
+    // 2. Set line stroke styling
+    ctx.strokeStyle = '#d4af37';
+    ctx.lineWidth = 3;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    // 3. Draw all fully completed segments
+    ctx.beginPath();
+    ctx.moveTo(points[0].x, points[0].y);
+    for (let i = 1; i <= currentSegment; i++) {
+      ctx.lineTo(points[i].x, points[i].y);
+    }
+
+    // 4. Interpolate and draw currently active segment
+    if (currentSegment < points.length - 1) {
+      const p1 = points[currentSegment];
+      const p2 = points[currentSegment + 1];
+      const curX = p1.x + (p2.x - p1.x) * progress;
+      const curY = p1.y + (p2.y - p1.y) * progress;
+
+      ctx.lineTo(curX, curY);
+      ctx.stroke();
+
+      progress += speed;
+      if (progress >= 1) {
+        progress = 0;
+        currentSegment++;
+      }
+      currentAnimationFrameId = requestAnimationFrame(renderFrame);
+    } else {
+      ctx.stroke();
+      // 5. Draw terminal crossbar upon completion
+      drawTerminalCrossbar(points[points.length - 2], points[points.length - 1]);
+    }
+  }
+
+  currentAnimationFrameId = requestAnimationFrame(renderFrame);
 }
 
 function handleGenerate() {
   const letters = reduceIntent(intentInput.value);
   consonantsDisplay.textContent = letters.length > 0 ? letters.join(' ') : 'NONE';
-  drawSigil(letters);
+  animateSigil(letters);
 }
 
 generateBtn.addEventListener('click', handleGenerate);
@@ -97,5 +144,5 @@ downloadBtn.addEventListener('click', () => {
   link.click();
 });
 
-// Initial blank render
-drawSigil([]);
+// Initial blank render on page load
+drawBackground();
