@@ -29,10 +29,13 @@ function reduceIntent(text) {
   return [...new Set(noVowels)];
 }
 
-function drawBackground() {
+function clearCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function drawFaintGuideRing() {
   ctx.strokeStyle = '#28251e';
-  ctx.lineWidth = 1.5;
+  ctx.lineWidth = 1;
   ctx.beginPath();
   ctx.arc(CENTER_X, CENTER_Y, RADIUS, 0, 2 * Math.PI);
   ctx.stroke();
@@ -44,6 +47,7 @@ function drawTerminalCrossbar(pPrev, pLast) {
 
   ctx.strokeStyle = '#d4af37';
   ctx.lineWidth = 3;
+  ctx.lineCap = 'round';
   ctx.beginPath();
   ctx.moveTo(pLast.x - barLength * Math.cos(angle), pLast.y - barLength * Math.sin(angle));
   ctx.lineTo(pLast.x + barLength * Math.cos(angle), pLast.y + barLength * Math.sin(angle));
@@ -55,7 +59,8 @@ function animateSigil(letters) {
     cancelAnimationFrame(currentAnimationFrameId);
   }
 
-  drawBackground();
+  clearCanvas();
+  drawFaintGuideRing();
 
   if (letters.length === 0) return;
 
@@ -65,21 +70,34 @@ function animateSigil(letters) {
 
   if (points.length === 0) return;
 
-  // Single letter case (draws node circle only)
+  // Single consonant edge case
   if (points.length === 1) {
+    clearCanvas();
     ctx.fillStyle = '#d4af37';
     ctx.beginPath();
     ctx.arc(points[0].x, points[0].y, 6, 0, 2 * Math.PI);
     ctx.fill();
+
+    // Draw full gold containment circle
+    ctx.strokeStyle = '#d4af37';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.arc(CENTER_X, CENTER_Y, RADIUS, 0, 2 * Math.PI);
+    ctx.stroke();
     return;
   }
 
+  let phase = 'lines'; // 'lines' -> 'circle' -> 'complete'
   let currentSegment = 0;
-  let progress = 0;
-  const speed = 0.05; // Adjust stroke drawing speed (0.01 - 0.1)
+  let lineProgress = 0;
+  let circleProgress = 0;
+
+  const lineSpeed = 0.05;    // Segment interpolation speed
+  const circleSpeed = 0.035; // Ring sweeping speed
 
   function renderFrame() {
-    drawBackground();
+    clearCanvas();
+    drawFaintGuideRing();
 
     // 1. Draw starting origin node
     ctx.fillStyle = '#d4af37';
@@ -87,39 +105,69 @@ function animateSigil(letters) {
     ctx.arc(points[0].x, points[0].y, 6, 0, 2 * Math.PI);
     ctx.fill();
 
-    // 2. Set line stroke styling
+    // 2. Set gold line styling
     ctx.strokeStyle = '#d4af37';
     ctx.lineWidth = 3;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
 
-    // 3. Draw all fully completed segments
+    // 3. Draw fully completed line segments
     ctx.beginPath();
     ctx.moveTo(points[0].x, points[0].y);
     for (let i = 1; i <= currentSegment; i++) {
       ctx.lineTo(points[i].x, points[i].y);
     }
 
-    // 4. Interpolate and draw currently active segment
-    if (currentSegment < points.length - 1) {
-      const p1 = points[currentSegment];
-      const p2 = points[currentSegment + 1];
-      const curX = p1.x + (p2.x - p1.x) * progress;
-      const curY = p1.y + (p2.y - p1.y) * progress;
+    // 4. Phase A: Interpolate active line segment
+    if (phase === 'lines') {
+      if (currentSegment < points.length - 1) {
+        const p1 = points[currentSegment];
+        const p2 = points[currentSegment + 1];
+        const curX = p1.x + (p2.x - p1.x) * lineProgress;
+        const curY = p1.y + (p2.y - p1.y) * lineProgress;
 
-      ctx.lineTo(curX, curY);
-      ctx.stroke();
+        ctx.lineTo(curX, curY);
+        ctx.stroke();
 
-      progress += speed;
-      if (progress >= 1) {
-        progress = 0;
-        currentSegment++;
+        lineProgress += lineSpeed;
+        if (lineProgress >= 1) {
+          lineProgress = 0;
+          currentSegment++;
+        }
+      } else {
+        ctx.stroke();
+        drawTerminalCrossbar(points[points.length - 2], points[points.length - 1]);
+        phase = 'circle'; // Transition to animated containment ring
       }
       currentAnimationFrameId = requestAnimationFrame(renderFrame);
-    } else {
+    } 
+    // 5. Phase B: Animate sweeping gold containment circle
+    else if (phase === 'circle') {
       ctx.stroke();
-      // 5. Draw terminal crossbar upon completion
       drawTerminalCrossbar(points[points.length - 2], points[points.length - 1]);
+
+      const startAngle = -Math.PI / 2; // Start sweep at 12 o'clock
+      const currentAngle = startAngle + (2 * Math.PI * circleProgress);
+
+      ctx.beginPath();
+      ctx.arc(CENTER_X, CENTER_Y, RADIUS, startAngle, currentAngle);
+      ctx.stroke();
+
+      circleProgress += circleSpeed;
+      if (circleProgress >= 1) {
+        phase = 'complete';
+      }
+      currentAnimationFrameId = requestAnimationFrame(renderFrame);
+    } 
+    // 6. Phase C: Final full render on canvas (Ready for download)
+    else if (phase === 'complete') {
+      ctx.stroke();
+      drawTerminalCrossbar(points[points.length - 2], points[points.length - 1]);
+
+      // Ensure full closed gold ring is drawn
+      ctx.beginPath();
+      ctx.arc(CENTER_X, CENTER_Y, RADIUS, 0, 2 * Math.PI);
+      ctx.stroke();
     }
   }
 
@@ -145,4 +193,5 @@ downloadBtn.addEventListener('click', () => {
 });
 
 // Initial blank render on page load
-drawBackground();
+clearCanvas();
+drawFaintGuideRing();
