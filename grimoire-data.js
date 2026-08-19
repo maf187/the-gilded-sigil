@@ -424,10 +424,11 @@ const GRIMOIRE_DATA = {
     }
   ],
   waxColors: [
+    { color: "Pink", correspondences: ["love", "harmony", "beauty"], hex: "#d4889c", description: "Seals gentle romantic love, self-worth, emotional restoration, and friendship." },
+    { color: "Red", correspondences: ["passion", "love", "courage"], hex: "#8a2424", description: "Infuses fiery drive, sensual attraction, and swift energetic action." },
     { color: "Black", correspondences: ["protection", "banishing", "grounding"], hex: "#1c1b1a", description: "Seals out external interference, binds wards, and dispels toxicity." },
     { color: "Gold", correspondences: ["prosperity", "courage", "wishes"], hex: "#d4af37", description: "Channels solar vitality, regal abundance, and rapid success." },
-    { color: "Green", correspondences: ["prosperity", "healing"], hex: "#2e5a36", description: "Anchors earthly abundance, physical recovery, and steady growth." },
-    { color: "Red", correspondences: ["passion", "courage"], hex: "#8a2424", description: "Infuses fiery drive, romantic attraction, and swift energetic action." },
+    { color: "Green", correspondences: ["prosperity", "healing"], hex: "#2e5a36", description: "Anchors earthly abundance, physical recovery, and steady financial growth." },
     { color: "White", correspondences: ["purification", "peace_sleep", "clarity"], hex: "#e8e2cf", description: "Universal sealing color for peace, spiritual alignment, and purity." },
     { color: "Purple", correspondences: ["psychic_intuition", "wisdom"], hex: "#4a2a68", description: "Deepens divination, astral perception, and spiritual authority." },
     { color: "Blue", correspondences: ["peace_sleep", "healing", "calm"], hex: "#2b4c6f", description: "Soothes internal turbulence, invites restful sleep, and speeds recovery." }
