@@ -71,6 +71,13 @@ document.addEventListener('DOMContentLoaded', () => {
     card.className = 'recipe-card';
     card.id = `layer-card-${layerNumber}`;
 
+    // Clean up raw database tags into polished Title Case
+    const rawForm = item.form || item.type || 'botanical';
+    const cleanForm = rawForm
+      .split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+
     const substitutes = findSubstitutes(item.name, selectedIntent, isMineral);
     const subListHtml = substitutes.length > 0
       ? substitutes.map(sub => `<li><strong>${sub.name}</strong> — ${sub.description}</li>`).join('')
@@ -83,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
       <p class="item-desc">${item.description}</p>
       <div class="item-meta">
-        <span class="meta-tag">Form: ${item.form || item.type}</span>
+        <span class="meta-tag">Form: ${cleanForm}</span>
         ${item.safety_note ? `<p class="safety-warning"><strong>Safety / Usage:</strong> ${item.safety_note}</p>` : ''}
       </div>
       
