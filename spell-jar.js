@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const intentSelect = document.getElementById('intentSelect');
+  const intentInput = document.getElementById('intentInput');
   const formulateBtn = document.getElementById('formulateBtn');
+  const intentFeedback = document.getElementById('intentFeedback');
   const recipeOutput = document.getElementById('recipeOutput');
   const ingredientStack = document.getElementById('ingredientStack');
   const sealingSection = document.getElementById('sealingSection');
@@ -11,6 +12,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const visualHerb1 = document.getElementById('visualHerb1');
   const visualHerb2 = document.getElementById('visualHerb2');
   const visualCrystal = document.getElementById('visualCrystal');
+
+  // Synonym dictionary mapping freeform terms to grimoire correspondence tags
+  const INTENT_SYNONYMS = {
+    protection: ["protect", "protection", "shield", "ward", "defense", "defend", "safe", "boundary", "home", "security", "guard", "barrier"],
+    prosperity: ["money", "wealth", "prosperity", "abundance", "business", "career", "success", "riches", "fortune", "cash", "growth", "finance", "gain"],
+    love: ["love", "romance", "passion", "relationship", "attract", "beauty", "affection", "self-love", "marriage", "soulmate", "heart", "lust"],
+    purification: ["cleanse", "cleansing", "purify", "purification", "clear", "fresh", "stale", "clean", "reset", "smudge", "wash"],
+    healing: ["heal", "healing", "health", "recovery", "soothe", "restoration", "vitality", "body", "illness", "wellness", "cure", "pain"],
+    peace_sleep: ["peace", "calm", "sleep", "rest", "insomnia", "tranquility", "anxiety", "serenity", "dreams", "nightmare", "relax", "stress"],
+    psychic_intuition: ["psychic", "intuition", "divination", "tarot", "third eye", "vision", "astral", "spirits", "clarity", "wisdom", "dream", "oracle"],
+    courage: ["courage", "brave", "strength", "confidence", "willpower", "bold", "fear", "overcome", "power", "fortitude"],
+    banishing: ["banish", "hex", "curse", "uncross", "remove", "negative", "repel", "evil", "gossip", "unbind", "rid", "enemy"]
+  };
+
+  function parseFreeformIntent(inputText) {
+    const cleanText = inputText.toLowerCase().replace(/[^a-z\s]/g, '');
+    const words = cleanText.split(/\s+/);
+    
+    const scores = {};
+    Object.keys(INTENT_SYNONYMS).forEach(intent => scores[intent] = 0);
+
+    words.forEach(word => {
+      for (const [intent, synonyms] of Object.entries(INTENT_SYNONYMS)) {
+        if (synonyms.some(syn => syn === word || word.startsWith(syn))) {
+          scores[intent] += 1;
+        }
+      }
+    });
+
+    let dominantIntent = null;
+    let highestScore = 0;
+
+    for (const [intent, score] of Object.entries(scores)) {
+      if (score > highestScore) {
+        highestScore = score;
+        dominantIntent = intent;
+      }
+    }
+
+    return dominantIntent || "protection";
+  }
 
   function findSubstitutes(missingItemName, selectedIntent, isMineral = false) {
     const pool = isMineral ? GRIMOIRE_DATA.minerals : GRIMOIRE_DATA.herbs;
@@ -25,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const substitutes = findSubstitutes(item.name, selectedIntent, isMineral);
     const subListHtml = substitutes.length > 0
       ? substitutes.map(sub => `<li><strong>${sub.name}</strong> — ${sub.description}</li>`).join('')
-      : '<li>No direct match in the current grimoire archives. Substitute with standard Sea Salt or Clear Quartz for universal amplification.</li>';
+      : '<li>No direct botanical match in the grimoire archives. Substitute with standard Sea Salt or Clear Quartz for universal amplification.</li>';
 
     card.innerHTML = `
       <div class="card-header">
@@ -54,16 +96,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function formulateRecipe() {
-    const selectedIntent = intentSelect.value;
-    if (!selectedIntent) return;
+    const rawInput = intentInput.value.trim();
+    if (!rawInput) return;
+
+    const detectedIntent = parseFreeformIntent(rawInput);
+    
+    // Provide clean feedback to the user
+    const formattedIntentName = detectedIntent.replace('_', ' ').toUpperCase();
+    intentFeedback.innerHTML = `Aligning correspondence matrix to: <span style="color: #d4af37; font-weight: 600;">${formattedIntentName}</span>`;
 
     // Filter matching herbs and minerals
-    const matchingHerbs = GRIMOIRE_DATA.herbs.filter(h => h.correspondences.includes(selectedIntent));
-    const matchingMinerals = GRIMOIRE_DATA.minerals.filter(m => m.correspondences.includes(selectedIntent));
-    const matchingWax = GRIMOIRE_DATA.waxColors.find(w => w.correspondences.includes(selectedIntent)) 
+    const matchingHerbs = GRIMOIRE_DATA.herbs.filter(h => h.correspondences.includes(detectedIntent));
+    const matchingMinerals = GRIMOIRE_DATA.minerals.filter(m => m.correspondences.includes(detectedIntent));
+    const matchingWax = GRIMOIRE_DATA.waxColors.find(w => w.correspondences.includes(detectedIntent)) 
       || GRIMOIRE_DATA.waxColors.find(w => w.color === "White");
 
-    // Fallbacks if intent has limited matches
     const baseMineral = matchingMinerals.find(m => m.form === "granular_base" || m.name === "Sea Salt") 
       || GRIMOIRE_DATA.minerals.find(m => m.name === "Sea Salt");
     
@@ -76,10 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ingredientStack.innerHTML = '';
 
     // Render Recipe Cards
-    ingredientStack.appendChild(renderCard(baseMineral, 1, "Mineral Foundation", selectedIntent, true));
-    ingredientStack.appendChild(renderCard(primaryHerb, 2, "Primary Botanical Anchor", selectedIntent, false));
-    ingredientStack.appendChild(renderCard(secondaryHerb, 3, "Secondary Botanical Catalyst", selectedIntent, false));
-    ingredientStack.appendChild(renderCard(crystal, 4, "Top Focal Crystal", selectedIntent, true));
+    ingredientStack.appendChild(renderCard(baseMineral, 1, "Mineral Foundation", detectedIntent, true));
+    ingredientStack.appendChild(renderCard(primaryHerb, 2, "Primary Botanical Anchor", detectedIntent, false));
+    ingredientStack.appendChild(renderCard(secondaryHerb, 3, "Secondary Botanical Catalyst", detectedIntent, false));
+    ingredientStack.appendChild(renderCard(crystal, 4, "Top Focal Crystal", detectedIntent, true));
 
     // Render Sealing Wax Section
     sealingSection.innerHTML = `
@@ -97,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     corkSeal.style.backgroundColor = matchingWax.hex;
     corkSeal.style.boxShadow = `0 0 10px ${matchingWax.hex}88`;
 
-    // Show output container
+    // Reveal output
     recipeOutput.style.display = 'block';
 
     // Attach Toggle Listeners for Substitutes
@@ -115,5 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   formulateBtn.addEventListener('click', formulateRecipe);
-  intentSelect.addEventListener('change', formulateRecipe);
+  intentInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') formulateRecipe();
+  });
 });
