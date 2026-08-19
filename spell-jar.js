@@ -26,6 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
     banishing: ["banish", "hex", "curse", "uncross", "remove", "negative", "repel", "evil", "gossip", "unbind", "rid", "enemy"]
   };
 
+  // Helper to grab random items without repetition
+  function getRandomItems(array, count) {
+    const shuffled = [...array].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+  }
+
   function parseFreeformIntent(inputText) {
     const cleanText = inputText.toLowerCase().replace(/[^a-z\s]/g, '');
     const words = cleanText.split(/\s+/);
@@ -111,13 +117,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const matchingWax = GRIMOIRE_DATA.waxColors.find(w => w.correspondences.includes(detectedIntent)) 
       || GRIMOIRE_DATA.waxColors.find(w => w.color === "White");
 
+    // Dynamic selection of minerals and herbs
     const baseMineral = matchingMinerals.find(m => m.form === "granular_base" || m.name === "Sea Salt") 
       || GRIMOIRE_DATA.minerals.find(m => m.name === "Sea Salt");
     
-    const primaryHerb = matchingHerbs[0] || GRIMOIRE_DATA.herbs[0];
-    const secondaryHerb = matchingHerbs[1] || (matchingHerbs[0] ? matchingHerbs[0] : GRIMOIRE_DATA.herbs[1]);
-    const crystal = matchingMinerals.find(m => m.type === "crystal" && m.name !== baseMineral.name) 
-      || GRIMOIRE_DATA.minerals.find(m => m.name === "Clear Quartz");
+    // Randomize botanical selections from matches
+    const selectedHerbs = getRandomItems(matchingHerbs, 2);
+    const primaryHerb = selectedHerbs[0] || GRIMOIRE_DATA.herbs[0];
+    const secondaryHerb = selectedHerbs[1] || (matchingHerbs.find(h => h.name !== primaryHerb.name) || GRIMOIRE_DATA.herbs[1]);
+
+    // Randomize crystal selection from matches (excluding the base mineral)
+    const matchingCrystals = matchingMinerals.filter(m => m.type === "crystal" && m.name !== baseMineral.name);
+    const crystal = matchingCrystals.length > 0
+      ? getRandomItems(matchingCrystals, 1)[0]
+      : GRIMOIRE_DATA.minerals.find(m => m.name === "Clear Quartz");
 
     // Clear previous output
     ingredientStack.innerHTML = '';
