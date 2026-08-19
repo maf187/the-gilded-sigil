@@ -38,6 +38,33 @@ h1 {
   margin-top: 0.5rem;
 }
 
+/* Main Navigation Separation & Glow */
+.main-nav {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem; /* Separates the page tabs */
+}
+
+.main-nav a {
+  font-family: 'Cinzel Decorative', Georgia, serif;
+  color: #d4af37;
+  text-decoration: none;
+  font-size: 1.05rem;
+  letter-spacing: 1.5px;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.25s ease;
+}
+
+.main-nav a:hover {
+  border-color: #d4af37;
+  background: rgba(212, 175, 55, 0.08);
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.35);
+}
+
 .sigil-container {
   background: #1a1a1a;
   border: 1px solid #d4af37;
