@@ -162,3 +162,219 @@ footer {
   font-size: 0.9rem;
   color: #666;
 }
+
+/* ==========================================================================
+   Spell Jar Architect Module Styles
+   ========================================================================== */
+
+.architect-container {
+  max-width: 850px;
+}
+
+.architect-controls {
+  margin: 1.5rem 0 2rem;
+  text-align: left;
+}
+
+.control-label {
+  display: block;
+  font-family: 'Cinzel Decorative', Georgia, serif;
+  color: #d4af37;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+select {
+  flex: 1;
+  padding: 0.8rem;
+  background: #242424;
+  border: 1px solid #4a4a4a;
+  color: #f4ecd8;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  border-color: #d4af37;
+}
+
+/* Visual Layered Jar Display */
+.jar-visual-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.jar-graphic {
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.jar-cork {
+  width: 70px;
+  height: 18px;
+  background: #8b5a2b;
+  border-radius: 4px 4px 0 0;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.jar-glass {
+  width: 130px;
+  height: 220px;
+  border: 2px solid #555;
+  border-top: none;
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
+}
+
+.jar-layer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f4ecd8;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+  padding: 0 4px;
+  text-align: center;
+  border-top: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.layer-crystal { background: rgba(147, 112, 219, 0.25); }
+.layer-herb-2  { background: rgba(46, 90, 54, 0.35); }
+.layer-herb-1  { background: rgba(70, 110, 60, 0.45); }
+.layer-base    { background: rgba(200, 190, 170, 0.3); }
+
+/* Blueprint & Ingredient Cards */
+.recipe-blueprint {
+  text-align: left;
+  margin-top: 2rem;
+  border-top: 1px solid #333;
+  padding-top: 1.5rem;
+}
+
+.blueprint-title {
+  font-family: 'Cinzel Decorative', Georgia, serif;
+  color: #d4af37;
+  font-size: 1.5rem;
+  margin-bottom: 0.4rem;
+  text-align: center;
+}
+
+.blueprint-desc {
+  color: #a8a396;
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.recipe-card {
+  background: #141413;
+  border: 1px solid #2d2b27;
+  border-radius: 6px;
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.layer-badge {
+  font-family: 'Cinzel Decorative', Georgia, serif;
+  font-size: 0.85rem;
+  color: #d4af37;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.item-title {
+  font-family: 'Cinzel Decorative', Georgia, serif;
+  color: #f4ecd8;
+  font-size: 1.25rem;
+  margin: 0.3rem 0;
+}
+
+.item-desc {
+  color: #c2beaf;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 0.6rem;
+}
+
+.item-meta {
+  font-size: 0.95rem;
+  color: #8c887b;
+}
+
+.meta-tag {
+  display: inline-block;
+  background: #242424;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  border: 1px solid #3a3a3a;
+  margin-bottom: 0.4rem;
+}
+
+.safety-warning {
+  color: #d99a4e;
+  font-size: 0.95rem;
+  margin-top: 0.4rem;
+}
+
+/* Substitutions Panel */
+.substitute-toggle-wrapper {
+  margin-top: 0.8rem;
+}
+
+.sub-toggle-btn {
+  background: transparent;
+  border: 1px solid #4a4a4a;
+  color: #d4af37;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.sub-toggle-btn:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: #d4af37;
+}
+
+.substitutes-panel {
+  margin-top: 0.8rem;
+  padding: 0.8rem;
+  background: #1e1d1a;
+  border: 1px solid #38352f;
+  border-radius: 4px;
+}
+
+.substitutes-panel h5 {
+  font-family: 'Cinzel Decorative', Georgia, serif;
+  color: #d4af37;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.substitutes-panel ul {
+  list-style: square inside;
+  color: #c2beaf;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Sealing Wax Card */
+.wax-seal-card {
+  background: #141413;
+  padding: 1.2rem;
+  border-radius: 4px;
+  margin-top: 1.5rem;
+  border: 1px solid #2d2b27;
+}
