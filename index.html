@@ -1,54 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Gilded Sigil | Occult Geometry & Sigil Craft</title>
+---
+layout: default
+title: "The Forge"
+---
+
+<section class="sigil-container">
+  <h2>Interactive Sigil Forge</h2>
+  <p>Enter your statement of intent to reduce letters and forge your personal mark.</p>
   
-  <!-- 1. Preconnect & Load Fonts First -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  
-  <!-- 2. Load Your Custom Stylesheet -->
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>The Gilded Sigil</h1>
-    <p class="tagline">Occult Geometry, Custom Sigils & Artisan Altar Craft</p>
-  </header>
+  <div class="input-group">
+    <input type="text" id="intentInput" placeholder="ENTER YOUR INTENTION (E.G. PROTECTION AND CLARITY)" autocomplete="off">
+    <button id="generateBtn" type="button">Forge Sigil</button>
+  </div>
 
-  <main>
-    <section class="sigil-container">
-      <h2>Interactive Sigil Forge</h2>
-      <p>Enter your statement of intent to reduce letters and forge your personal mark.</p>
-      
-      <div class="input-group">
-        <input type="text" id="intentInput" placeholder="ENTER YOUR INTENTION (E.G. PROTECTION AND CLARITY)" autocomplete="off">
-        <button id="generateBtn" type="button">Forge Sigil</button>
-      </div>
+  <div class="reduced-display">
+    <span class="label">Reduced Consonants:</span>
+    <span id="consonantsDisplay">—</span>
+  </div>
 
-      <div class="reduced-display">
-        <span class="label">Reduced Consonants:</span>
-        <span id="consonantsDisplay">—</span>
-      </div>
+  <div class="canvas-wrapper">
+    <canvas id="sigilCanvas" width="500" height="500"></canvas>
+  </div>
 
-      <div class="canvas-wrapper">
-        <canvas id="sigilCanvas" width="500" height="500"></canvas>
-      </div>
+  <div class="action-buttons">
+    <button id="downloadBtn" type="button">Download Sigil (PNG)</button>
+  </div>
+  <p class="teaser-badge">Custom printed ritual mugs & candles coming soon.</p>
+</section>
 
-      <div class="action-buttons">
-        <button id="downloadBtn" type="button">Download Sigil (PNG)</button>
-      </div>
-      <p class="teaser-badge">Custom printed ritual mugs & candles coming soon.</p>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2026 The Gilded Sigil. All rights reserved.</p>
-  </footer>
-
-  <script src="app.js"></script>
-</body>
-</html>
+<script src="{{ '/app.js' | relative_url }}"></script>
