@@ -69,7 +69,7 @@ To construct a planetary sigil:
 
 Unlike modern chaos sigils designed to be burned and forgotten, a kamea seal is traditionally consecrated and preserved. It can be timed to the planet's day and hour, anointed with matching incense or oils, and kept as an active talisman or altar piece. 
 
-Practitioners drawn to that permanence but who'd rather skip the manual math can commission one from me directly on Etsy: <a href="https://www.etsy.com/shop/TheGildedSigil" target="_blank" rel="noopener noreferrer">Custom Sigil</a>.
+Practitioners drawn to that permanence but who'd rather skip the manual math can commission one from me directly on Etsy: <a href="https://www.etsy.com/listing/4559665631/custom-kamea-sigil-seal-personalized" target="_blank" rel="noopener noreferrer">Custom Sigil</a>.
 
 ---
 
