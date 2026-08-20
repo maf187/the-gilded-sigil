@@ -456,6 +456,54 @@ select:focus {
   color: #e8e2cf;
 }
 
+/* ==========================================================================
+   Etsy Kamea Commission Callout Box
+   ========================================================================== */
+
+.kamea-commission-box {
+  background: #141413;
+  border: 1px solid #d4af37;
+  border-left: 4px solid #d4af37;
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin: 2.5rem 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.kamea-title {
+  font-family: 'Cinzel Decorative', Georgia, serif;
+  color: #d4af37;
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
+}
+
+.kamea-commission-box p {
+  color: #c2beaf;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.kamea-btn {
+  display: inline-block;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  padding: 0.6rem 1.2rem;
+  font-family: 'Cinzel Decorative', Georgia, serif;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease-in-out;
+}
+
+.kamea-btn:hover {
+  background: #d4af37;
+  color: #121212;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
 .article-body li {
   margin-bottom: 0.5rem;
 }
