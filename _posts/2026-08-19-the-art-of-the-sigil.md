@@ -65,6 +65,20 @@ To construct a planetary sigil:
 
 Unlike modern chaos sigils designed to be burned and forgotten, a kamea seal is traditionally **consecrated and preserved**. It is timed to the planet's traditional day and planetary hour, consecrated with matching incense or oils, and worn as an active talisman or placed upon an altar.
 
+<div class="kamea-commission-box">
+  <div class="kamea-box-content">
+    <h4 class="kamea-title">Seeking a Permanent Planetary Seal?</h4>
+    <p>
+      While the Witch's Wheel distills phonetic intention instantly, permanent altar talismans and sacred geometry often call for the classical <em>Kamea</em> (planetary magic square) method. 
+    </p>
+    <p>
+      Custom, mathematically plotted Kamea sigils for personal intention, carved wood, or printable high-resolution parchment seals can be commissioned directly through our studio.
+    </p>
+    <a href="https://www.etsy.com/shop/TheGildedSigil" target="_blank" rel="noopener noreferrer" class="kamea-btn">
+      Commission a Custom Kamea Sigil on Etsy &rarr;
+    </a>
+  </div>
+</div>
 ---
 
 ### Method Three: The Austin Osman Spare Letter-Reduction Method
