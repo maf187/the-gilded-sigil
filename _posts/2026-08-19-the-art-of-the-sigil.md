@@ -35,7 +35,9 @@ Where the Golden Dawn arranged the 22 letters of the Hebrew alphabet across the 
 
 * **The Design:** The standard wheel consists of three concentric rings holding the alphabet, spiraling inward from **A** at the outer rim to **Z** near the center.
 * **The Process:** A practitioner reduces their intention to a core keyword or phrase, then traces a continuous line from letter to letter in sequence across the grid.
-* **Nodes & Terminus:** The first letter is traditionally anchored with a small open circle (the entrance node), and the path finishes with a short perpendicular crossbar or dot (the terminal seal). *Prefer to skip the manual tracing? [The Forge](https://thegildedsigil.com/) builds this automatically — type your intention and download the free finished glyph.*
+* **Nodes & Terminus:** The first letter is traditionally anchored with a small open circle (the entrance node), and the path finishes with a short perpendicular crossbar or dot (the terminal seal).
+
+*Prefer to skip the manual tracing? [The Forge](https://thegildedsigil.com/) builds this automatically — type your intention and download the free finished glyph.*
 
 Because the resulting geometry depends entirely on the wheel's layout, two practitioners mapping the same phrase on different wheels will produce completely distinct glyphs. Many practitioners design custom wheels with scrambled letter placements, ensuring the resulting sigil cannot be reverse-engineered by anyone without the private key.
 
@@ -65,7 +67,9 @@ To construct a planetary sigil:
 2. **Convert Text to Numbers:** Traditionally, words or spirit names were converted using Hebrew **Gematria** and reduced to fit the square's dimensions via the cipher of **Aiq Beker** (the Kabbalah of Nine Chambers). In modern practice, practitioners often assign simple alphanumeric positions (A=1, B=2) and reduce larger sums down to the grid limit.
 3. **Trace the Vector:** Connect the corresponding coordinates across the planetary grid in sequence, using the traditional circular start node and terminal crossbar.
 
-Unlike modern chaos sigils designed to be burned and forgotten, a kamea seal is traditionally consecrated and preserved — timed to the planet's day and hour, anointed with matching incense or oils, and kept as an active talisman or altar piece. Practitioners drawn to that permanence but who'd rather skip the manual math can commission one from me directly — <a href="https://www.etsy.com/shop/TheGildedSigil" target="_blank" rel="noopener noreferrer">custom kamea seals, delivered as a downloadable file</a>.
+Unlike modern chaos sigils designed to be burned and forgotten, a kamea seal is traditionally consecrated and preserved. It can be timed to the planet's day and hour, anointed with matching incense or oils, and kept as an active talisman or altar piece. 
+
+Practitioners drawn to that permanence but who'd rather skip the manual math can commission one from me directly on Etsy: <a href="https://www.etsy.com/shop/TheGildedSigil" target="_blank" rel="noopener noreferrer">Custom Sigil</a>.
 
 ---
 
