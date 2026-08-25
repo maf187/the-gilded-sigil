@@ -1,6 +1,7 @@
 title: The Gilded Sigil
 description: Occult geometry, custom sigils, and artisan altar craft.
 url: "https://thegildedsigil.com"
+baseurl: ""
 permalink: /:year/:month/:title/
 future: true
 
