@@ -50,5 +50,3 @@ A lot of contemporary tarot practice (especially decks built for journaling and 
 Step outside tarot literature entirely and The Fool maps neatly onto the first stage of Joseph Campbell's monomyth — the Hero's Journey. Every hero starts as an ordinary, somewhat unprepared figure who receives a "call to adventure" and has to decide whether to answer it. Read this way, The Fool isn't a personality type or a warning, it's a *narrative position*: the doorway every story (and every reader) has to walk through before transformation becomes possible.
 
 ---
-
-*A note on structure: traditions 1–5 are the historically "classic" systems (Marseille, RWS, Thoth, Etteilla, Golden Dawn); 6–7 are internal to how cards are read (reversals, numerology); 8–10 move outward into psychology, modern practice, and mythology. That progression — history, mechanics, then modern reinterpretation — could work as a repeatable template for other cards too (The Tower, The Moon, Death would all support the same ten-angle treatment).*
