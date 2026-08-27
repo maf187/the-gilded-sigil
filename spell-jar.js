@@ -98,15 +98,27 @@ document.addEventListener('DOMContentLoaded', () => {
       .join(' ');
 
     // Check for hardcoded overrides first (fixes the Sea Salt issue)
+    // Check for hardcoded overrides first (fixes the Sea Salt issue)
     let subListHtml = '';
     
     if (item.substitutes && item.substitutes.length > 0) {
       subListHtml = item.substitutes.map(sub => `<li><strong>${sub}</strong></li>`).join('');
     } else {
       const substitutes = findSubstitutes(item, selectedIntent, isMineral);
-      subListHtml = substitutes.length > 0
-        ? substitutes.map(sub => `<li><strong>${sub.name}</strong> — ${sub.description}</li>`).join('')
-        : '<li>No direct match in the grimoire archives. Substitute with standard Sea Salt or Clear Quartz for universal amplification.</li>';
+      
+      if (substitutes.length > 0) {
+        // If it finds a match, list them!
+        subListHtml = substitutes.map(sub => `<li><strong>${sub.name}</strong> — ${sub.description}</li>`).join('');
+      } else {
+        // SMART FALLBACKS: If the database has no other matches for this intent
+        if (item.form === "granular_base") {
+           subListHtml = '<li><strong>Standard Sea Salt</strong> — The universal base. It can be programmed for any intention if your specific salt is unavailable.</li><li><strong>Natural Sand</strong> — A neutral, grounding alternative.</li>';
+        } else if (isMineral) {
+           subListHtml = '<li><strong>Clear Quartz</strong> — The universal amplifier. It can act as a substitute for any crystal when programmed with your specific intent.</li>';
+        } else {
+           subListHtml = '<li><strong>Rosemary</strong> — The universal botanical substitute in folk practice.</li><li><strong>Clear Quartz</strong> — Drop in a clear quartz chip to amplify the remaining herbs in the jar.</li>';
+        }
+      }
     }
 
     card.innerHTML = `
