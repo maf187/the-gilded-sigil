@@ -421,6 +421,46 @@ const GRIMOIRE_DATA = {
       consumable_form: "culinary_salt_water_bath", 
       safety_note: "Pure sea salt is food-safe; craft-dyed or black witch salt is external only.", 
       description: "Essential foundation layer for casting wards and anchoring intention." 
+    },
+    { 
+      name: "Himalayan Pink Salt", 
+      type: "mineral", 
+      correspondences: ["love", "healing", "peace_sleep"], 
+      form: "granular_base", 
+      consumable: true, 
+      consumable_form: "culinary_salt_water_bath", 
+      safety_note: "Food-safe if culinary grade. Excellent for soothing therapeutic bath waters.", 
+      description: "Gentle foundation layer that anchors self-love, emotional recovery, and domestic harmony." 
+    },
+    { 
+      name: "Cascarilla (Eggshell Powder)", 
+      type: "mineral", 
+      correspondences: ["protection", "purification", "banishing"], 
+      form: "granular_base", 
+      consumable: false, 
+      consumable_form: "external_ward_powder", 
+      safety_note: "Ensure eggshells are thoroughly washed, membrane removed, and baked before crushing to prevent bacteria.", 
+      description: "Traditional boundary powder used to create impenetrable energetic barriers and purify space." 
+    },
+    { 
+      name: "Black Witch's Salt", 
+      type: "mineral", 
+      correspondences: ["banishing", "protection", "courage"], 
+      form: "granular_base", 
+      consumable: false, 
+      consumable_form: "external_ward", 
+      safety_note: "Contains ash, charcoal, or cast iron scrapings. Strictly for external spellwork; do not ingest.", 
+      description: "Heavy-duty foundation layer for driving away gossip, hexes, and unwanted attachments." 
+    },
+    { 
+      name: "Natural Sand", 
+      type: "mineral", 
+      correspondences: ["grounding", "protection", "banishing"], 
+      form: "granular_base", 
+      consumable: false, 
+      consumable_form: "none_external", 
+      safety_note: "Do not ingest. Ensure wild-foraged sand is baked to remove moisture and organic matter.", 
+      description: "Earth element anchor that absorbs excess static energy and symbolically traps negative forces." 
     }
   ],
   waxColors: [
