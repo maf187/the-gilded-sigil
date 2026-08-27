@@ -3,6 +3,7 @@ layout: post
 title: "The Art of the Sigil: How a Seal Becomes a Spell"
 date: 2026-08-19
 summary: "A comprehensive exploration of sigil craft—from ancient Mesopotamian seals and Renaissance planetary magic squares to Austin Osman Spare's modern chaos methods."
+category: sigils
 tags: [sigils, grimoire, occult-history, planetary-magic, chaos-magic, sacred-geometry, theory]
 ---
 
