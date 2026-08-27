@@ -54,47 +54,60 @@ permalink: /articles.html
     });
   }
 </script>
-```You do not need to touch `app.js` at all. Since `app.js` handles your Sigil Forge app logic, keeping the Grimoire filtering separate prevents any conflicts.
-
-You can put the CSS into `style.css` and leave the small `<script>` directly inside `articles.html`.
-
+``````html
 ---
+layout: default
+title: Grimoire
+permalink: /articles.html
+---
+<section class="sigil-container" style="max-width: 800px; margin: 0 auto; text-align: left;">
+  <h2>The Grimoire</h2>
+  <p style="margin-bottom: 2rem; color: #c2beaf;">
+    Writings on tarot arcana, occult geometry, sigil craft, spell jars, potions, and historical folklore.
+  </p>
 
-### 1. Add this to the bottom of `style.css`
+  <!-- Filter Buttons -->
+  <div class="grimoire-filters">
+    <button type="button" class="filter-btn active" onclick="filterArticles('all', this)">All Archives</button>
+    <button type="button" class="filter-btn" onclick="filterArticles('tarot', this)">Tarot & Divination</button>
+    <button type="button" class="filter-btn" onclick="filterArticles('sigils', this)">Sigils & Glyphs</button>
+  </div>
 
-```css
-/* Grimoire Category Filters & Badges */
-.grimoire-filters {
-  margin-bottom: 2.5rem;
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
+  <!-- Articles List -->
+  <ul class="article-list" style="list-style: none; padding: 0; margin: 0;">
+    {% for post in site.posts %}
+      <li class="article-entry" data-category="{{ post.category | default: 'general' }}" style="margin-bottom: 2rem; border-bottom: 1px solid #333; padding-bottom: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+          <time style="color: #8c887b; font-size: 0.85rem;">{{ post.date | date: "%B %d, %Y" }}</time>
+          {% if post.category %}
+            <span class="article-category-badge">{{ post.category }}</span>
+          {% endif %}
+        </div>
 
-.grimoire-filters .filter-btn {
-  background: transparent;
-  color: #c2beaf;
-  border: 1px solid #444;
-  padding: 0.5rem 1.2rem;
-  cursor: pointer;
-  border-radius: 4px;
-  font-family: inherit;
-  transition: all 0.2s ease;
-}
+        <h3 style="margin: 0.4rem 0;">
+          <a href="{{ post.url | relative_url }}" style="color: #d4af37; text-decoration: none;">
+            {{ post.title }}
+          </a>
+        </h3>
 
-.grimoire-filters .filter-btn:hover,
-.grimoire-filters .filter-btn.active {
-  background: #222;
-  color: #d4af37;
-  border-color: #d4af37;
-}
+        {% if post.summary %}
+          <p style="color: #c2beaf; font-size: 1rem; margin-top: 0.4rem; line-height: 1.5;">{{ post.summary }}</p>
+        {% elsif post.excerpt %}
+          <p style="color: #c2beaf; font-size: 1rem; margin-top: 0.4rem; line-height: 1.5;">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</section>
 
-.article-category-badge {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #d4af37;
-  border: 1px solid #333;
-  padding: 2px 8px;
-  border-radius: 3px;
-}
+<script>
+  function filterArticles(category, clickedBtn) {
+    document.querySelectorAll('.grimoire-filters .filter-btn').forEach(btn => btn.classList.remove('active'));
+    clickedBtn.classList.add('active');
+
+    document.querySelectorAll('.article-entry').forEach(entry => {
+      const entryCategory = entry.getAttribute('data-category');
+      entry.style.display = (category === 'all' || entryCategory === category) ? 'block' : 'none';
+    });
+  }
+</script>
