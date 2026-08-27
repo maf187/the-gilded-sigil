@@ -78,10 +78,18 @@ document.addEventListener('DOMContentLoaded', () => {
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
 
-    const substitutes = findSubstitutes(item.name, selectedIntent, isMineral);
-    const subListHtml = substitutes.length > 0
-      ? substitutes.map(sub => `<li><strong>${sub.name}</strong> — ${sub.description}</li>`).join('')
-      : '<li>No direct botanical match in the grimoire archives. Substitute with standard Sea Salt or Clear Quartz for universal amplification.</li>';
+    let subListHtml = '';
+    
+    if (item.substitutes && item.substitutes.length > 0) {
+      // Use hardcoded substitutes if you defined them in GRIMOIRE_DATA
+      subListHtml = item.substitutes.map(sub => `<li><strong>${sub}</strong></li>`).join('');
+    } else {
+      // Otherwise, dynamically search the Grimoire
+      const substitutes = findSubstitutes(item.name, selectedIntent, isMineral);
+      subListHtml = substitutes.length > 0
+        ? substitutes.map(sub => `<li><strong>${sub.name}</strong> — ${sub.description}</li>`).join('')
+        : '<li>No direct match in the grimoire archives. Substitute with standard Sea Salt or Clear Quartz for universal amplification.</li>';
+    }
 
     card.innerHTML = `
       <div class="card-header">
@@ -126,8 +134,11 @@ document.addEventListener('DOMContentLoaded', () => {
       || GRIMOIRE_DATA.waxColors.find(w => w.color === "White");
 
     // Dynamic selection of minerals and herbs
-    const baseMineral = matchingMinerals.find(m => m.form === "granular_base" || m.name === "Sea Salt") 
-      || GRIMOIRE_DATA.minerals.find(m => m.name === "Sea Salt");
+    const matchingBases = matchingMinerals.filter(m => m.form === "granular_base");
+    
+    const baseMineral = matchingBases.length > 0 
+      ? getRandomItems(matchingBases, 1)[0] 
+      : GRIMOIRE_DATA.minerals.find(m => m.name === "Sea Salt");
     
     // Randomize botanical selections from matches
     const selectedHerbs = getRandomItems(matchingHerbs, 2);
