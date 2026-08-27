@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (item.substitutes && item.substitutes.length > 0) {
       subListHtml = item.substitutes.map(sub => `<li><strong>${sub}</strong></li>`).join('');
     } else {
-      const substitutes = findSubstitutes(item.name, selectedIntent, isMineral);
+      const substitutes = findSubstitutes(item, selectedIntent, isMineral);
       subListHtml = substitutes.length > 0
         ? substitutes.map(sub => `<li><strong>${sub.name}</strong> — ${sub.description}</li>`).join('')
         : '<li>No direct match in the grimoire archives. Substitute with standard Sea Salt or Clear Quartz for universal amplification.</li>';
