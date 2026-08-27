@@ -3,6 +3,7 @@ layout: post
 title: "An Introduction to Sigil Craft"
 date: 2026-08-19
 summary: "How to use The Gilded Sigil forge to turn your intent into a magical coordinate matrix."
+category: sigils
 tags: [sigils, grimoire, theory, forge]
 ---
 
