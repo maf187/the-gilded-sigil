@@ -61,9 +61,28 @@ document.addEventListener('DOMContentLoaded', () => {
     return dominantIntent || "protection";
   }
 
-  function findSubstitutes(missingItemName, selectedIntent, isMineral = false) {
+  function findSubstitutes(targetItem, selectedIntent, isMineral = false) {
     const pool = isMineral ? GRIMOIRE_DATA.minerals : GRIMOIRE_DATA.herbs;
-    return pool.filter(item => item.name !== missingItemName && item.correspondences.includes(selectedIntent));
+    
+    return pool.filter(item => {
+      // 1. Skip the exact same item
+      if (item.name === targetItem.name) return false;
+      
+      // 2. Must match the spell's intent
+      if (!item.correspondences.includes(selectedIntent)) return false;
+      
+      // 3. If replacing a foundation base, ONLY suggest other bases
+      if (targetItem.form === "granular_base") {
+        return item.form === "granular_base";
+      }
+      
+      // 4. If replacing a crystal, DO NOT suggest foundation bases
+      if (isMineral && targetItem.form !== "granular_base") {
+        return item.form !== "granular_base";
+      }
+      
+      return true; // Herbs pass through normally
+    });
   }
 
   function renderCard(item, layerNumber, layerRole, selectedIntent, isMineral = false) {
