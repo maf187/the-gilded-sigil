@@ -3,7 +3,7 @@ layout: post
 title: "Artisan Autumn: 5 Atmospheric DIY Builds for a Witchy Hearth & Altar"
 description: "From glowing faux stained glass witch hat lamps to hearthside bubbling cauldrons, explore 5 atmospheric DIY decor builds to cultivate a magical seasonal sanctuary."
 date: 2026-08-29
-categories: [seasonal-crafts]
+category: [seasonal-crafts]
 tags: [witchy decor, autumn hearth, altar styling, dark academia, maker spotlight, halloween diy]
 permalink: /2026/08/atmospheric-diy-autumn-hearth-decor/
 ---
