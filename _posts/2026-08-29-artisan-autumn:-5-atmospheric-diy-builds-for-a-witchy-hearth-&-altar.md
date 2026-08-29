@@ -111,15 +111,32 @@ In this maker spotlight, we have curated five standout DIY autumn and witchy dec
 
 ---
 
-## Crafting Summary & Material Overview
+### Crafting Summary & Material Overview
 
-| Project | Atmosphere / Aesthetic | Primary Lighting | Key Focal Supplies |
-| :--- | :--- | :--- | :--- |
-| **Witch Hat Lamp** | Cozy Gothic / Artisan Altar | Warm LED puck / nightlight base | Craft sheets & dimensional faux lead |
-| **Flying Broom Sign** | Rustic Tavern / Threshold Ward | Ambient room light | Upcycled cardboard & natural twigs |
-| **Lantern Ghost** | Ethereal Folklore / Entryway Glow | Mini battery-operated lantern | Structured draping fabric & wire form |
-| **Botanical Wreath** | Witchy Harvest / Threshold Welcoming | Natural light (optional fairy LEDs) | Grapevine base & dark faux florals |
-| **Bubbling Cauldron** | Alchemist Hearth / Brew Simmer | Green/amber LED puck light | Iridescent baubles & black vessel |
+* **Faux Stained Glass Witch Hat Lamp**
+  * **Vibe:** Cozy Gothic / Artisan Altar
+  * **Lighting:** Warm LED puck or nightlight base
+  * **Key Materials:** Transparent craft sheets & dimensional faux lead
+
+* **Flying Lessons Witch Broom Sign**
+  * **Vibe:** Rustic Tavern / Threshold Ward
+  * **Lighting:** Ambient room lighting
+  * **Key Materials:** Upcycled cardboard & natural twigs
+
+* **Light-Up Ghost with Lantern**
+  * **Vibe:** Ethereal Folklore / Entryway Glow
+  * **Lighting:** Mini battery-operated lantern
+  * **Key Materials:** Structured cheesecloth/draping & wire form
+
+* **Spooky Botanical Wreath**
+  * **Vibe:** Witchy Harvest / Threshold Welcoming
+  * **Lighting:** Natural light (optional micro fairy LEDs)
+  * **Key Materials:** Grapevine wreath base & dark faux florals
+
+* **Mess-Free Bubbling Cauldron**
+  * **Vibe:** Alchemist Hearth / Brew Simmer
+  * **Lighting:** Green or amber LED puck light
+  * **Key Materials:** Iridescent baubles & matte black vessel
 
 ---
 
