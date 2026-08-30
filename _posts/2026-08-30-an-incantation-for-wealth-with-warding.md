@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "An Incantation for Wealth with Warding"
-description: "Step into a candlelit hearth sanctuary with this ancient Latin and English incantation for sovereign wealth, household protection, and abundance."
+summary: "Step into a candlelit hearth sanctuary with this ancient Latin and English incantation for sovereign wealth, household protection, and abundance."
 date: 2026-08-30 12:00:00 -0500
 category: [incantations]
 tags: [wealth spell, warding, hearth magic, latin incantation, protection, witch cottage asmr, dark academia]
