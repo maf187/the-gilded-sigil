@@ -55,7 +55,7 @@ In this maker spotlight, we have curated five standout DIY autumn and witchy dec
 ---
 
 ## 3. Light-Up Ghost Holding a Lantern
-**Creator:** [Creatively Expressive](https://www.youtube.com/@CreativelyExpressive)
+**Creator:** [Creatively Expressive](https://www.youtube.com/@CreativelyExpressive103)
 
 <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 1.5rem 0;">
   <iframe 
