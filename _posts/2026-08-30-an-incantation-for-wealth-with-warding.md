@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "An Incantation for Wealth with Warding"
+description: "Step into a candlelit hearth sanctuary with this ancient Latin and English incantation for sovereign wealth, household protection, and abundance."
 date: 2026-08-30 12:00:00 -0500
 category: [incantations]
 tags: [wealth spell, warding, hearth magic, latin incantation, protection, witch cottage asmr, dark academia]
-description: "Step into a candlelit hearth sanctuary with this ancient Latin and English incantation for sovereign wealth, household protection, and abundance."
 featured_image: "/assets/images/posts/sovereign-hearth-cauldron.jpg"
 ---
 
@@ -24,7 +24,7 @@ featured_image: "/assets/images/posts/sovereign-hearth-cauldron.jpg"
 
 <div class="grimoire-inscription" style="text-align: center; max-width: 650px; margin: 2.5rem auto; padding: 2.5rem 1.5rem; background: rgba(20, 20, 20, 0.7); border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 8px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);">
 
-  <h2 style="font-family: 'Cinzel', Georgia, serif; color: #d4af37; letter-spacing: 2px; margin-bottom: 1.75rem; text-transform: uppercase; font-size: 1.4rem;">✦ The Sovereign Hearth ✦</h2>
+  <h2 style="font-family: 'Cinzel', Georgia, serif; color: #d4af37; letter-spacing: 2px; margin-bottom: 1.75rem; text-transform: uppercase; font-size: 1.4rem;">✦ An Incantation For Wealth ✦</h2>
 
   <p style="font-style: italic; color: #d4af37; margin-bottom: 0.4rem; font-size: 1.15rem; font-family: Georgia, serif;">Ex nihilo opulentia surgit.</p>
   <p style="margin-bottom: 1.6rem; line-height: 1.7;">Out from the dark, the embers glow,<br>The path is cleared, the rivers flow.</p>
