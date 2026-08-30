@@ -54,4 +54,4 @@ featured_image: "/assets/images/posts/sovereign-hearth-cauldron.jpg"
 
 ---
 
-*Explore handcrafted altar tiles, parchment seals, and custom sigils at [The Gilded Sigil Shop](https://thegildedsigil.com).*
+*Explore handcrafted altar tiles, parchment seals, and custom sigils at [The Gilded Sigil Etsy Shop](https://thegildedsigil.etsy.com).*
