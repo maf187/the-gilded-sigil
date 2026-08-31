@@ -53,4 +53,6 @@ Contemporary journaling-style tarot treats this card as a direct prompt: *What r
 
 Continuing directly from The Fool's "Call to Adventure," the next stage in Campbell's monomyth is often called "Supernatural Aid" — the point where a mentor or helper figure equips the hero with tools or knowledge for the road ahead (Merlin and Arthur, Obi-Wan and Luke, the fairy godmother and Cinderella). The Magician's table full of tools is almost a literal illustration of this stage: the moment the journey stops being just an impulse and starts having the equipment to actually go somewhere.
 
+---
+
 > *Card order: Fool (0) → Magician (I).*
