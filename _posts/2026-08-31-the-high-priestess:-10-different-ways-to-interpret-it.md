@@ -43,4 +43,6 @@ Contemporary journaling-style tarot treats her as a direct prompt: What do I alr
 **10. Comparative Mythology — Crossing the Threshold**
 Continuing the Campbell throughline — Call to Adventure (Fool), Supernatural Aid (Magician) — the next major stage of the monomyth is "Crossing the Threshold," where the hero leaves the ordinary world behind and typically must get past a Threshold Guardian standing watch at the boundary. The High Priestess, literally seated between two named pillars with a veil behind her, is almost a diagram of this stage: she isn't blocking the way out of malice, but nothing gets past her, or is understood on the other side of her, without her cooperation.
 
-> *Card order: Fool (0) → Magician (I) → High Priestess (II) → Empress (III).*
+---
+
+> *Card order: Fool (0) → Magician (I) → High Priestess (II).*
