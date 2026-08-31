@@ -42,7 +42,3 @@ Contemporary journaling-style tarot treats this card as a prompt about pace and 
 
 **10. Comparative Mythology — Meeting with the Goddess**
 Continuing the Campbell throughline from The Fool's "Call to Adventure" and The Magician's "Supernatural Aid," a later stage of the monomyth is known as "Meeting with the Goddess" — the hero's encounter with a maternal, unconditionally loving figure who represents totality and abundance, often described in terms of a symbolic union or marriage. It's almost a direct narrative gloss on the RWS card's imagery: a figure of complete, generative abundance the hero meets on the road, not a challenge to overcome but a source to be received.
-
----
-
-> *Card order: Fool (0) → Magician (I) → High Priestess (II) → Empress (III).*
