@@ -26,8 +26,6 @@ In the Grand Etteilla deck, card 7 — called *Appui* ("Support" or "Protection"
 **5. Golden Dawn — Heh and the Window of Aries**  
 In the Golden Dawn's own (pre-Crowley) system, The Emperor carries the Hebrew letter Heh, which means "window," paired with the zodiac sign Aries — the sign of first assertion, initiative, and the martial energy that opens a new cycle. Set directly against Thoth's swap above, this is a useful case study in how even a single, tightly defined esoteric lineage can fracture into competing "authoritative" versions once a strong enough individual voice enters it.
 
----
-
 ### Psychological, Structural & Modern Lenses
 
 **6. Reversed — Structure Without Compassion**  
