@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "The High Priestess: 10 Different Ways to Interpret It"
-date: 2026-08-31
+date: 2026-08-30
 summary: "Exploring Card II from historical systems like Marseille and Golden Dawn to Jungian archetypes and the Hero's Journey."
 category: tarot
 tags: [tarot, major-arcana, card-study]
 ---
 
-Card II sits right after The Magician's declaration of will, and every tradition treats her as its counterweight — not another act of doing, but the deep well of knowing that action draws from. Where she gets that knowledge, and how "acceptable" a figure she is to depict at all, changes dramatically from deck to deck. Same ten lenses used across the series so far, applied to card II.
+Card II sits right after The [Magician's](https://thegildedsigil.com/2026/08/the-magician-10-different-ways-to-interpret-it/) declaration of will, and every tradition treats her as its counterweight — not another act of doing, but the deep well of knowing that action draws from. Where she gets that knowledge, and how "acceptable" a figure she is to depict at all, changes dramatically from deck to deck. Same ten lenses used across the series so far, applied to card II.
 
 ### Historical & Esoteric Systems
 
