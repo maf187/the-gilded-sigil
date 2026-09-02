@@ -7,7 +7,7 @@ category: tarot
 tags: [tarot, major-arcana, card-study]
 ---
 
-Card III is where the deck's raw materials start to visibly produce something. The High Priestess held knowledge in reserve, guarded and unspoken; The Empress is what happens when that inner knowing finally pushes out into the visible, material world — except which "something" that is depends entirely on which tradition you're reading. She's a nature goddess in one system, a head of state in another, and in at least one historical deck, she isn't there at all. Same ten lenses used across the series so far, applied to card III.
+Card III is where the deck's raw materials start to visibly produce something. The [High Priestess](https://thegildedsigil.com/2026/08/the-high-priestess-10-different-ways-to-interpret-it/) held knowledge in reserve, guarded and unspoken; The Empress is what happens when that inner knowing finally pushes out into the visible, material world — except which "something" that is depends entirely on which tradition you're reading. She's a nature goddess in one system, a head of state in another, and in at least one historical deck, she isn't there at all. Same ten lenses used across the series so far, applied to card III.
 
 ### Historical & Esoteric Systems
 
