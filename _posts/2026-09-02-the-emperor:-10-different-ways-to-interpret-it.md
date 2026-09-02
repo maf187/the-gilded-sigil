@@ -2,7 +2,7 @@
 layout: post
 title: "The Emperor: 10 Different Ways to Interpret It"
 date: 2026-09-02
-categories: [tarot]
+category: [tarot]
 tags: [tarot, the emperor, major arcana, divination]
 ---
 
