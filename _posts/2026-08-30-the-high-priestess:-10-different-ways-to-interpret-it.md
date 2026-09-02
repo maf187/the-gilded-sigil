@@ -2,7 +2,7 @@
 layout: post
 title: "The High Priestess: 10 Different Ways to Interpret It"
 date: 2026-08-30
-summary: "Exploring Card II from historical systems like Marseille and Golden Dawn to Jungian archetypes and the Hero's Journey."
+summary: "Exploring Card II (The High Priestess) from historical systems like Marseille and Golden Dawn to Jungian archetypes and the Hero's Journey."
 category: tarot
 tags: [tarot, major-arcana, card-study]
 ---
