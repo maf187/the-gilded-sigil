@@ -44,7 +44,8 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2.5rem; /* Separates the page tabs */
+  flex-wrap: wrap; /* Allows tabs to wrap naturally instead of overflowing */
+  gap: 2.5rem;
 }
 
 .main-nav a {
@@ -57,12 +58,27 @@ h1 {
   border: 1px solid transparent;
   border-radius: 4px;
   transition: all 0.25s ease;
+  white-space: nowrap; /* Prevents multi-word links like 'SPELL JARS' from breaking across lines */
 }
 
 .main-nav a:hover {
   border-color: #d4af37;
   background: rgba(212, 175, 55, 0.08);
   text-shadow: 0 0 10px rgba(212, 175, 55, 0.35);
+}
+
+/* Mobile Screen Adjustments */
+@media (max-width: 768px) {
+  .main-nav {
+    gap: 0.75rem 1.25rem; /* Tighter spacing: vertical / horizontal */
+    padding: 0 1rem;
+  }
+
+  .main-nav a {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    padding: 0.3rem 0.5rem;
+  }
 }
 
 .sigil-container {
