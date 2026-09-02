@@ -2,7 +2,7 @@
 layout: post
 title: "The Empress: 10 Different Ways to Interpret It"
 date: 2026-08-31
-summary: "Exploring Card III (High Priestess) from historical systems like Marseille and Golden Dawn to Jungian archetypes and the Hero's Journey."
+summary: "Exploring Card III (The Empress) from historical systems like Marseille and Golden Dawn to Jungian archetypes and the Hero's Journey."
 category: tarot
 tags: [tarot, major-arcana, card-study]
 ---
