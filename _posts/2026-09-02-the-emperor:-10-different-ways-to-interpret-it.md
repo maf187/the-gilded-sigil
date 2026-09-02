@@ -6,7 +6,7 @@ categories: [tarot]
 tags: [tarot, the emperor, major arcana, divination]
 ---
 
-Card IV is where the deck's creative surge finally meets a hard edge. The Empress grew things; The Emperor decides what shape they're allowed to keep. Nearly every tradition agrees he represents structure and authority — the disagreement is about how that authority gets assigned, and in one case, whether it's authority at all. Same ten lenses used across the series so far, applied to card IV.
+Card IV is where the deck's creative surge finally meets a hard edge. The [Empress](https://thegildedsigil.com/2026/08/the-empress-10-different-ways-to-interpret-it/) grew things; The Emperor decides what shape they're allowed to keep. Nearly every tradition agrees he represents structure and authority — the disagreement is about how that authority gets assigned, and in one case, whether it's authority at all. Same ten lenses used across the series so far, applied to card IV.
 
 ### Historical & Esoteric Systems
 
