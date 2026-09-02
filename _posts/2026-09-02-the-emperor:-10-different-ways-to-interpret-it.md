@@ -2,7 +2,8 @@
 layout: post
 title: "The Emperor: 10 Different Ways to Interpret It"
 date: 2026-09-02
-category: [tarot]
+summary: "An exploration of Card IV (The Emperor) through 10 distinct lenses—from Rider-Waite-Smith and Crowley's controversial Thoth swap to Etteilla's support, archetypal psychology, and Campbell's Atonement with the Father."
+category: tarot
 tags: [tarot, the emperor, major arcana, divination]
 ---
 
