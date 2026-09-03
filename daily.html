@@ -9,7 +9,7 @@ permalink: /daily.html
 <script>
   tailwind.config = {
     corePlugins: {
-      preflight: false, // Prevents Tailwind from resetting your site's global style.css
+      preflight: false,
     },
     theme: {
       extend: {
@@ -36,7 +36,7 @@ permalink: /daily.html
 </script>
 
 <style>
-  /* Protective Shield for Main Nav (Overrides any Tailwind CDN leaks) */
+  /* Protective Shield for Main Nav */
   .main-nav a {
     font-family: 'Cinzel Decorative', Georgia, serif !important;
     font-size: 1.05rem !important;
@@ -72,14 +72,13 @@ permalink: /daily.html
   }
 </style>
 
-<!-- Outer wrapper is transparent to allow global style.css radial gradient to show -->
 <div class="w-full text-brand-textMain font-body py-8 px-4 sm:px-6">
   
   <!-- Master Grimoire Container -->
   <div class="max-w-3xl mx-auto bg-brand-container border border-solid border-brand-gold rounded-[8px] p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.7)] space-y-8">
 
     <!-- Header & Date Switcher -->
-    <header class="text-center space-y-2 border-b border-solid border-brand-borderDim pb-6">
+    <header class="text-center space-y-2 border-0 border-b border-solid border-brand-borderDim pb-6">
       <h2 class="text-3xl sm:text-4xl font-display text-brand-gold tracking-[2px] uppercase drop-shadow-[0_0_12px_rgba(212,175,55,0.25)] m-0">
         The Daily Altar
       </h2>
@@ -99,15 +98,15 @@ permalink: /daily.html
       <!-- Lunar Station -->
       <div class="bg-brand-card border border-solid border-brand-borderDim rounded-[6px] p-5 flex flex-col justify-between space-y-4 shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
         <div>
-          <div class="flex items-center justify-between border-b border-solid border-brand-borderDim pb-3">
-            <span class="text-[0.85rem] uppercase tracking-[1px] text-brand-gold font-display m-0">The Lunar Sky</span>
+          <div class="flex items-center justify-between border-0 border-b border-solid border-brand-borderDim pb-3">
+            <span class="text-[0.95rem] uppercase tracking-[1px] text-brand-gold font-body font-bold m-0">The Lunar Sky</span>
             <span id="lunar-illumination" class="text-[0.95rem] text-brand-textMuted font-body"></span>
           </div>
 
           <div class="flex items-center gap-4 my-4">
             <div id="moon-glyph" class="text-5xl filter drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] select-none"></div>
             <div>
-              <h3 id="moon-sign" class="text-[1.25rem] font-display text-brand-textMain leading-tight m-0"></h3>
+              <h3 id="moon-sign" class="text-[1.15rem] font-body font-bold uppercase tracking-wide text-brand-textMain leading-tight m-0"></h3>
               <p id="moon-element-quality" class="text-[1.05rem] text-brand-textMuted italic mt-1 m-0"></p>
             </div>
           </div>
@@ -115,7 +114,7 @@ permalink: /daily.html
           <p id="moon-transit-message" class="text-[1.05rem] text-brand-textMain leading-[1.6] m-0"></p>
         </div>
 
-        <div class="pt-3 border-t border-solid border-brand-borderDim flex items-center justify-between text-[0.95rem]">
+        <div class="pt-3 border-0 border-t border-solid border-brand-borderDim flex items-center justify-between text-[0.95rem]">
           <span class="text-brand-textMuted">Void-of-Course:</span>
           <span id="voc-badge" class="font-body text-[#709b78]">Flowing Ingress</span>
         </div>
@@ -123,8 +122,8 @@ permalink: /daily.html
 
       <!-- Arcana Station -->
       <div class="bg-brand-card border border-solid border-brand-borderDim rounded-[6px] p-5 flex flex-col justify-between items-center text-center space-y-3 shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
-        <div class="w-full flex items-center justify-between border-b border-solid border-brand-borderDim pb-3">
-          <span class="text-[0.85rem] uppercase tracking-[1px] text-brand-gold font-display m-0">Daily Mirror</span>
+        <div class="w-full flex items-center justify-between border-0 border-b border-solid border-brand-borderDim pb-3">
+          <span class="text-[0.95rem] uppercase tracking-[1px] text-brand-gold font-body font-bold m-0">Daily Mirror</span>
           <span id="card-state-label" class="text-[0.95rem] text-brand-textMuted font-body">Tap to Reveal</span>
         </div>
 
@@ -135,16 +134,16 @@ permalink: /daily.html
             <!-- Front / Sigil Backing -->
             <div class="card-front bg-brand-container border border-solid border-brand-gold/40 flex flex-col items-center justify-center p-3 shadow-lg">
               <div class="text-3xl text-brand-gold mb-2 animate-pulse">✧ 🜚 ✧</div>
-              <span class="text-[0.85rem] font-display text-brand-textMain tracking-wider">TAP TO UNVEIL</span>
+              <span class="text-[0.95rem] font-body font-bold text-brand-textMain tracking-wider uppercase">Tap to Unveil</span>
               <span class="text-[0.9rem] text-brand-textMuted mt-2 italic font-body">Card of the Day</span>
             </div>
 
             <!-- Back / Revealed Card -->
             <div class="card-back bg-brand-container border border-solid border-brand-gold/80 flex flex-col justify-between p-4 shadow-xl">
-              <span id="tarot-num" class="text-[0.8rem] font-display tracking-widest text-brand-gold m-0"></span>
+              <span id="tarot-num" class="text-[0.8rem] font-body font-bold uppercase tracking-widest text-brand-gold m-0"></span>
               <div>
                 <div id="tarot-glyph" class="text-5xl my-1 filter drop-shadow-[0_0_10px_rgba(212,175,55,0.35)]"></div>
-                <h4 id="tarot-title" class="text-[1.1rem] font-display text-brand-textMain m-0"></h4>
+                <h4 id="tarot-title" class="text-[1.25rem] font-display text-brand-textMain m-0"></h4>
               </div>
               <p id="tarot-essence" class="text-[1rem] font-body text-brand-textMuted italic m-0"></p>
             </div>
@@ -163,14 +162,14 @@ permalink: /daily.html
     <div class="bg-brand-card border border-solid border-brand-borderDim rounded-[6px] p-5 space-y-4 shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
       
       <!-- Top Numerology Summary Bar -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-solid border-brand-borderDim pb-3">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-0 border-b border-solid border-brand-borderDim pb-3">
         <div class="flex items-center gap-4">
           <div id="u-day-badge" class="w-12 h-12 rounded-[4px] bg-brand-container border border-solid border-brand-gold/50 flex items-center justify-center font-display text-xl text-brand-gold">
             -
           </div>
           <div>
-            <div class="text-[0.85rem] uppercase tracking-[1px] text-brand-gold font-display m-0">Universal Day</div>
-            <div id="u-day-title" class="text-[1.25rem] font-display text-brand-textMain mt-1 m-0"></div>
+            <div class="text-[0.95rem] uppercase tracking-[1px] text-brand-gold font-body font-bold m-0">Universal Day</div>
+            <div id="u-day-title" class="text-[1.2rem] font-body font-bold uppercase tracking-wide text-brand-textMain mt-1 m-0"></div>
           </div>
         </div>
 
@@ -185,10 +184,10 @@ permalink: /daily.html
       <p id="u-day-summary" class="text-[1.1rem] text-brand-textMain leading-[1.6] m-0"></p>
 
       <!-- Personal Numerology Calculator -->
-      <div class="pt-3 border-t border-solid border-brand-borderDim/60">
+      <div class="pt-3 border-0 border-t border-solid border-brand-borderDim/60">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div class="text-[1.05rem] text-brand-textMuted flex items-center gap-2 m-0">
-            <span class="text-brand-gold font-display text-[0.9rem] tracking-wide">Personal Vibration:</span>
+            <span class="text-brand-gold font-body font-bold uppercase text-[0.9rem] tracking-wide">Personal Vibration:</span>
             <span class="italic">Enter birthdate for personal alignment</span>
           </div>
 
@@ -203,11 +202,11 @@ permalink: /daily.html
         <!-- Personal Result Banner -->
         <div id="personal-day-result" class="mt-4 p-3 rounded-[4px] bg-brand-container border border-solid border-brand-borderDim hidden flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <span class="text-brand-gold font-display text-[1.1rem] m-0" id="p-day-title"></span>
+            <span class="text-brand-gold font-body font-bold uppercase tracking-wide text-[1.05rem] m-0" id="p-day-title"></span>
             <span class="text-brand-textMain font-body text-[1.05rem] ml-1.5 m-0" id="p-day-summary"></span>
           </div>
           <div class="flex items-center gap-2 flex-shrink-0 font-body text-[0.95rem]">
-            <span id="p-month-badge" class="px-2 py-1 rounded-[3px] bg-brand-inputBg border border-solid border-brand-borderDim text-brand-textMuted m-0"></span>
+            <span id="p-month-badge" class="px-2 py-1 rounded-[3px] bg-brand-inputBg border border-solid border-brand-borderDim text-brand-gold m-0"></span>
             <span id="p-year-badge" class="px-2 py-1 rounded-[3px] bg-brand-inputBg border border-solid border-brand-borderDim text-brand-gold m-0"></span>
           </div>
         </div>
@@ -222,7 +221,6 @@ permalink: /daily.html
 (function() {
   let activeDate = new Date();
 
-  // --- 1. HIGH-PRECISION LUNAR EPHEMERIS ---
   function getAstrologicalMoon(date) {
     const jd = (date.getTime() / 86400000) + 2440587.5;
     const T = (jd - 2451545.0) / 36525.0;
@@ -279,7 +277,6 @@ permalink: /daily.html
     return { phaseName, glyph, illumination, sign, isVoC };
   }
 
-  // --- 2. TAROT DECK WITH GLYPHS ---
   const tarotCards = [
     { num: "0", name: "The Fool", glyph: "🎒", keywords: "Beginnings & Trust", advice: "Step boldly into the new without overthinking." },
     { num: "I", name: "The Magician", glyph: "🪄", keywords: "Manifestation & Focus", advice: "Direct your intentions; your tools are already at hand." },
@@ -310,7 +307,6 @@ permalink: /daily.html
     return tarotCards[(seed * 9301 + 49297) % tarotCards.length];
   }
 
-  // --- 3. NUMEROLOGY ENGINE ---
   const numDictionary = {
     1: { title: "Initiation & Action", summary: "Plant new seeds and initiate fresh momentum with boldness." },
     2: { title: "Receptivity & Harmony", summary: "Practice patience, sensitive partnership, and quiet listening." },
@@ -351,7 +347,6 @@ permalink: /daily.html
     };
   }
 
-  // --- 4. RENDER ENGINE ---
   function renderAltar() {
     document.getElementById('active-date-display').textContent = activeDate.toLocaleDateString('en-US', {
       weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'
@@ -361,7 +356,6 @@ permalink: /daily.html
     const tarot = getDailyCard(activeDate);
     const num = getUniversalNumerology(activeDate);
 
-    // Lunar Elements
     document.getElementById('moon-glyph').textContent = lunar.glyph;
     document.getElementById('moon-sign').textContent = `Moon in ${lunar.sign.name} ${lunar.sign.glyph}`;
     document.getElementById('moon-element-quality').textContent = `${lunar.sign.elem} • ${lunar.sign.quality} Modality`;
@@ -377,32 +371,25 @@ permalink: /daily.html
       voc.className = "font-body text-[#709b78] m-0";
     }
 
-    // Numerology Elements
     document.getElementById('u-day-badge').textContent = num.uDay;
     document.getElementById('u-day-title').textContent = num.dayData.title;
     document.getElementById('u-day-summary').textContent = num.dayData.summary;
     document.getElementById('u-month-val').textContent = num.uMonth;
     document.getElementById('u-year-val').textContent = num.uYear;
 
-    // Tarot Data Setup
     document.getElementById('tarot-num').textContent = `ARCANA ${tarot.num}`;
     document.getElementById('tarot-glyph').textContent = tarot.glyph;
     document.getElementById('tarot-title').textContent = tarot.name;
     document.getElementById('tarot-essence').textContent = tarot.keywords;
 
-    // Reset Card Flip State on Date Change
     const cardInner = document.getElementById('tarot-card-inner');
     cardInner.classList.remove('flipped');
     document.getElementById('card-state-label').textContent = "Tap to Reveal";
     document.getElementById('tarot-message').textContent = "Tap the sigil to reveal your archetypal guide for the day.";
 
-    // Recalculate Personal Day/Month if Birthday is already input
     calculatePersonalNumerology();
   }
 
-  // --- 5. INTERACTIVITY ---
-
-  // Tarot Flip
   const cardTrigger = document.getElementById('tarot-card-trigger');
   const cardInner = document.getElementById('tarot-card-inner');
   cardTrigger.addEventListener('click', () => {
@@ -419,7 +406,6 @@ permalink: /daily.html
     }
   });
 
-  // Personal Numerology Calculator
   function calculatePersonalNumerology() {
     const bdayStr = document.getElementById('bday-input').value;
     if (!bdayStr) return;
@@ -431,14 +417,9 @@ permalink: /daily.html
     const curYear = activeDate.getFullYear();
     const curYearReduced = reduceNum(curYear.toString().split('').reduce((acc, d) => acc + parseInt(d, 10), 0), false);
     
-    // Personal Year = Birth Month + Birth Day + Current Year (Reduced)
     const pYear = reduceNum(bMonth + bDay + curYearReduced, false);
-    
-    // Personal Month = Personal Year + Current Calendar Month (Reduced)
     const curMonth = activeDate.getMonth() + 1;
     const pMonth = reduceNum(pYear + curMonth, false);
-
-    // Personal Day = Personal Month + Current Calendar Day
     const curDay = activeDate.getDate();
     const pDay = reduceNum(pMonth + curDay, true);
     const pDayData = numDictionary[pDay] || numDictionary[reduceNum(pDay, false)];
@@ -454,7 +435,6 @@ permalink: /daily.html
 
   document.getElementById('calc-pday-btn').addEventListener('click', calculatePersonalNumerology);
 
-  // Date Nav
   document.getElementById('prev-day-btn').addEventListener('click', () => {
     activeDate.setDate(activeDate.getDate() - 1);
     renderAltar();
@@ -464,7 +444,6 @@ permalink: /daily.html
     renderAltar();
   });
 
-  // Initial Run
   renderAltar();
 })();
 </script>
