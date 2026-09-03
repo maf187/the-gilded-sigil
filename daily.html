@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "The Daily Altar"
-permalink: /daily.html
+permalink: /daily.html/
 ---
 
 <!-- Tailwind CSS CDN -->
@@ -63,28 +63,29 @@ permalink: /daily.html
   }
 </style>
 
-<div class="min-h-screen bg-[#07080b] text-[#dcdcdc] font-sans py-8 px-4 sm:px-6">
-  <div class="max-w-3xl mx-auto space-y-6">
+<div class="min-h-screen text-[#dcdcdc] font-sans py-8 px-4 sm:px-6">
+  
+  <!-- Master Grimoire Container (Matching Site Uniformity) -->
+  <div class="max-w-3xl mx-auto bg-[#0d0f15] border border-gilded-500 rounded-xl p-6 sm:p-10 shadow-2xl space-y-8">
 
     <!-- Header & Date Switcher -->
     <header class="text-center space-y-2">
-      <p class="text-[11px] uppercase tracking-[0.3em] text-gilded-500 font-semibold font-serif">The Gilded Sigil</p>
-      <h1 class="text-3xl sm:text-4xl font-serif text-white tracking-wide">The Daily Altar</h1>
+      <h1 class="text-3xl sm:text-4xl font-serif text-gilded-500 tracking-wide uppercase">The Daily Altar</h1>
       
       <div class="inline-flex items-center gap-3 pt-2 text-xs font-mono">
         <button id="prev-day-btn" class="text-neutral-400 hover:text-gilded-300 transition">← Yesterday</button>
         <span class="text-neutral-600">•</span>
-        <span id="active-date-display" class="text-gilded-300 font-medium"></span>
+        <span id="active-date-display" class="text-white font-medium"></span>
         <span class="text-neutral-600">•</span>
         <button id="next-day-btn" class="text-neutral-400 hover:text-gilded-300 transition">Tomorrow →</button>
       </div>
     </header>
 
     <!-- Main Stations: The Sky & The Arcana -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
       
       <!-- Lunar Station -->
-      <div class="bg-obsidian-900 rounded-xl p-5 border border-neutral-800/80 flex flex-col justify-between space-y-4">
+      <div class="bg-obsidian-950/50 rounded-xl p-5 border border-neutral-800 flex flex-col justify-between space-y-4 shadow-inner">
         <div>
           <div class="flex items-center justify-between border-b border-neutral-800 pb-3">
             <span class="text-xs uppercase tracking-wider text-gilded-500 font-serif font-bold">The Lunar Sky</span>
@@ -109,7 +110,7 @@ permalink: /daily.html
       </div>
 
       <!-- Arcana Station (Interactive 3D Card) -->
-      <div class="bg-obsidian-900 rounded-xl p-5 border border-neutral-800/80 flex flex-col justify-between items-center text-center space-y-3">
+      <div class="bg-obsidian-950/50 rounded-xl p-5 border border-neutral-800 flex flex-col justify-between items-center text-center space-y-3 shadow-inner">
         <div class="w-full flex items-center justify-between border-b border-neutral-800 pb-3">
           <span class="text-xs uppercase tracking-wider text-gilded-500 font-serif font-bold">Daily Mirror</span>
           <span id="card-state-label" class="text-[11px] font-mono text-neutral-400">Tap to Reveal</span>
@@ -120,14 +121,14 @@ permalink: /daily.html
           <div class="altar-card-inner" id="tarot-card-inner">
             
             <!-- Front / Sigil Backing (Default) -->
-            <div class="card-front bg-gradient-to-br from-obsidian-800 to-black border border-gilded-500/40 flex flex-col items-center justify-center p-3 shadow-xl">
+            <div class="card-front bg-gradient-to-br from-obsidian-800 to-black border border-gilded-500/40 flex flex-col items-center justify-center p-3 shadow-lg">
               <div class="text-3xl text-gilded-500 mb-2 animate-pulse">✧ 🜚 ✧</div>
               <span class="text-[11px] font-serif text-gilded-300 tracking-wider">TAP TO UNVEIL</span>
               <span class="text-[9px] text-neutral-500 mt-2 font-mono">Card of the Day</span>
             </div>
 
             <!-- Back / Revealed Card -->
-            <div class="card-back bg-[#0c0e14] border border-gilded-500/70 flex flex-col justify-between p-4 shadow-2xl">
+            <div class="card-back bg-[#0c0e14] border border-gilded-500/70 flex flex-col justify-between p-4 shadow-xl">
               <span id="tarot-num" class="text-[10px] font-serif tracking-widest text-gilded-500"></span>
               <div>
                 <div id="tarot-glyph" class="text-5xl my-1 filter drop-shadow-[0_0_10px_rgba(223,183,85,0.35)]"></div>
@@ -147,7 +148,7 @@ permalink: /daily.html
     </div>
 
     <!-- Sacred Numerology Matrix -->
-    <div class="bg-obsidian-900 rounded-xl p-5 border border-neutral-800/80 space-y-4">
+    <div class="bg-obsidian-950/50 rounded-xl p-5 border border-neutral-800 space-y-4 shadow-inner">
       
       <!-- Top Numerology Summary Bar -->
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-neutral-800 pb-3">
@@ -201,12 +202,6 @@ permalink: /daily.html
       </div>
 
     </div>
-
-    <!-- Final Synthesis Anchor -->
-    <section class="bg-gradient-to-br from-obsidian-900 to-obsidian-800 rounded-xl p-5 border border-gilded-500/20 text-center shadow-lg space-y-2">
-      <span class="text-[10px] uppercase tracking-widest text-gilded-500 font-semibold block">Unified Daily Synthesis</span>
-      <p id="daily-synthesis-text" class="text-sm text-neutral-200 leading-relaxed font-serif max-w-2xl mx-auto"></p>
-    </section>
 
   </div>
 </div>
@@ -332,13 +327,8 @@ permalink: /daily.html
     const m = date.getMonth() + 1;
     const d = date.getDate();
 
-    // Universal Year: sum digits of calendar year
     const uYear = reduceNum(y.toString().split('').reduce((acc, digit) => acc + parseInt(digit, 10), 0), false);
-    
-    // Universal Month: Calendar Month + Universal Year
     const uMonth = reduceNum(m + uYear, false);
-    
-    // Universal Day: Universal Month + Calendar Day
     const uDay = reduceNum(d + uMonth, true);
 
     return {
@@ -393,10 +383,6 @@ permalink: /daily.html
     cardInner.classList.remove('flipped');
     document.getElementById('card-state-label').textContent = "Tap to Reveal";
     document.getElementById('tarot-message').textContent = "Tap the sigil to reveal your archetypal guide for the day.";
-
-    // Unified Daily Synthesis (At Bottom)
-    document.getElementById('daily-synthesis-text').textContent = 
-      `With the ${lunar.phaseName} in ${lunar.sign.name} and Universal Day ${num.uDay} active, collective energy favors ${num.dayData.summary.toLowerCase()} Channel this through the mirror of ${tarot.name}: ${tarot.advice}`;
 
     // Recalculate Personal Day/Month if Birthday is already input
     calculatePersonalNumerology();
