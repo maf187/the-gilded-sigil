@@ -36,7 +36,13 @@ permalink: /daily.html
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+  /* Protective Shield for Main Nav (Overrides any Tailwind CDN leaks) */
+  .main-nav a {
+    font-family: 'Cinzel Decorative', Georgia, serif !important;
+    font-size: 1.05rem !important;
+    color: #d4af37 !important;
+    letter-spacing: 1.5px !important;
+  }
 
   /* 3D Flip Card Styles */
   .card-perspective {
