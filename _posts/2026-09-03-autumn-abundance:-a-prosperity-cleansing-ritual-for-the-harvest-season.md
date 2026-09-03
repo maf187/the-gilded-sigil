@@ -4,6 +4,7 @@ title: "Autumn Abundance: A Prosperity Cleansing Ritual for the Harvest Season"
 date: 2026-09-03
 summary: "A three-part seasonal ritual blending folk cleaning mechanics, prosperity botanicals, and intentional autumn decor."
 category: hearthcraft
+tags: [Autumn, Home Cleansing, Prosperity, Seasonal Magic]
 ---
 
 There's a reason the air feels different once September settles in. The light shifts, the mornings turn crisp, and something in us starts craving order — a clean slate before the world outside begins to gather itself in for winter. This restlessness isn't just seasonal affective whimsy. It's ancient. Harvest season has always been tied to abundance: reaping what you've sown, taking stock of what you have, and making sure your stores are full before the dark months arrive.
