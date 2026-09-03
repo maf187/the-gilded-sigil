@@ -3,7 +3,7 @@ layout: post
 title: "Autumn Abundance: A Prosperity Cleansing Ritual for the Harvest Season"
 date: 2026-09-03
 summary: "A three-part seasonal ritual blending folk cleaning mechanics, prosperity botanicals, and intentional autumn decor."
-category: hearthcraft
+category: hearth-craft
 tags: [Autumn, Home Cleansing, Prosperity, Seasonal Magic]
 ---
 
