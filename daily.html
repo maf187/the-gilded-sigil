@@ -1,0 +1,552 @@
+---
+layout: default
+title: "Daily Cosmic Oracle: Moon, Transits, Numerology & Tarot"
+permalink: /oracle/
+---
+
+<!-- Tailwind CSS CDN for styling -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          gilded: {
+            50: '#fcf8ec',
+            100: '#f7edd2',
+            300: '#edd593',
+            500: '#dfb755',
+            600: '#c69a3b',
+            700: '#9d7627',
+            900: '#46320d',
+          },
+          obsidian: {
+            950: '#07080b',
+            900: '#0d0f15',
+            800: '#141822',
+            700: '#1c2230',
+          }
+        },
+        fontFamily: {
+          serif: ['Cinzel', 'Playfair Display', 'Georgia', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+  .oracle-card-inner {
+    transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+  .oracle-card.is-flipped .oracle-card-inner {
+    transform: rotateY(180deg);
+  }
+  .oracle-face {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .oracle-back {
+    transform: rotateY(180deg);
+  }
+  .gold-shimmer {
+    background: linear-gradient(135deg, #dfb755 0%, #fff2b2 50%, #9d7627 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .gold-border {
+    border: 1px solid rgba(223, 183, 85, 0.25);
+  }
+</style>
+
+<div class="min-h-screen bg-[#090a0f] text-[#dedede] font-sans py-10 px-4 sm:px-6">
+  <div class="max-w-4xl mx-auto space-y-8">
+
+    <!-- Header & Date Controls -->
+    <header class="text-center space-y-3">
+      <p class="text-xs uppercase tracking-[0.3em] text-gilded-500 font-semibold">The Gilded Sigil • Daily Matrix</p>
+      <h1 class="text-3xl sm:text-5xl font-serif text-white tracking-wide">Daily Cosmic Oracle</h1>
+      <p class="text-sm text-neutral-400 max-w-xl mx-auto">
+        Your unified daily portal: Moon phase, lunar zodiac ingress, sacred numerology, and the archetypal Tarot card of the day.
+      </p>
+
+      <!-- Date Navigator -->
+      <div class="flex items-center justify-center gap-3 pt-3">
+        <button id="prev-day-btn" class="px-3 py-1 text-xs rounded-full border border-neutral-700 hover:border-gilded-500 hover:text-gilded-300 transition">
+          ← Yesterday
+        </button>
+        <div id="active-date-display" class="text-sm font-serif font-semibold text-gilded-300 px-4 py-1 bg-obsidian-800 rounded-full border border-neutral-800 shadow-inner">
+          Today
+        </div>
+        <button id="next-day-btn" class="px-3 py-1 text-xs rounded-full border border-neutral-700 hover:border-gilded-500 hover:text-gilded-300 transition">
+          Tomorrow →
+        </button>
+      </div>
+    </header>
+
+    <!-- Daily Synthesis Pillar -->
+    <section class="bg-gradient-to-br from-obsidian-900 to-obsidian-800 rounded-2xl p-6 border border-gilded-600/30 shadow-2xl relative overflow-hidden">
+      <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-gilded-500/5 rounded-full blur-2xl pointer-events-none"></div>
+      <span class="text-[10px] tracking-[0.25em] uppercase font-bold text-gilded-500 block mb-1">Theme of the Day</span>
+      <h2 id="daily-synthesis-title" class="text-xl sm:text-2xl font-serif text-white mb-2">Calculating Astral Currents...</h2>
+      <p id="daily-synthesis-text" class="text-sm text-neutral-300 leading-relaxed"></p>
+      
+      <!-- Elemental Balance Barometer -->
+      <div class="mt-5 pt-4 border-t border-neutral-800/80">
+        <div class="flex justify-between items-center text-xs text-neutral-400 mb-2">
+          <span class="font-serif">Elemental Harmonic:</span>
+          <span id="dominant-element" class="text-gilded-300 font-semibold capitalize"></span>
+        </div>
+        <div class="h-2 w-full rounded-full bg-neutral-900 overflow-hidden flex" id="element-bar">
+          <div id="elem-fire" style="width: 25%" class="bg-red-500/80 transition-all duration-500" title="Fire"></div>
+          <div id="elem-earth" style="width: 25%" class="bg-emerald-600/80 transition-all duration-500" title="Earth"></div>
+          <div id="elem-air" style="width: 25%" class="bg-amber-300/80 transition-all duration-500" title="Air"></div>
+          <div id="elem-water" style="width: 25%" class="bg-cyan-500/80 transition-all duration-500" title="Water"></div>
+        </div>
+        <div class="flex justify-between text-[10px] text-neutral-500 mt-1.5 font-mono">
+          <span>🔥 Fire <span id="val-fire"></span></span>
+          <span>🌿 Earth <span id="val-earth"></span></span>
+          <span>🌬️ Air <span id="val-air"></span></span>
+          <span>🌊 Water <span id="val-water"></span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid: Moon Phase / Transit & Numerology -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Moon Phase & Transit Card -->
+      <section class="bg-obsidian-900 rounded-xl p-5 border border-neutral-800 hover:border-neutral-700 transition flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs uppercase tracking-widest text-gilded-500 font-semibold font-serif">Lunar Transit</span>
+            <span id="lunar-illumination" class="text-xs font-mono text-neutral-400">98% Lit</span>
+          </div>
+
+          <div class="flex items-center gap-4 mb-4">
+            <!-- Moon Visual Rendering -->
+            <div class="w-16 h-16 rounded-full bg-neutral-950 border border-neutral-700 flex-shrink-0 flex items-center justify-center text-3xl shadow-inner relative overflow-hidden" id="moon-render">
+              🌕
+            </div>
+            <div>
+              <h3 id="moon-phase-name" class="text-lg font-serif text-white font-medium">Full Moon</h3>
+              <p id="moon-sign" class="text-sm text-gilded-300 font-semibold">Moon in Virgo ♍</p>
+              <p id="moon-element-mode" class="text-xs text-neutral-400">Earth • Mutable</p>
+            </div>
+          </div>
+
+          <p id="moon-transit-message" class="text-xs text-neutral-300 leading-relaxed border-t border-neutral-800 pt-3"></p>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-neutral-800/60 flex items-center justify-between text-[11px] text-neutral-400 font-mono">
+          <span>Void-of-Course Status:</span>
+          <span id="voc-status" class="px-2 py-0.5 rounded bg-neutral-800 text-emerald-400">Harmonious / Active</span>
+        </div>
+      </section>
+
+      <!-- Sacred Numerology Card -->
+      <section class="bg-obsidian-900 rounded-xl p-5 border border-neutral-800 hover:border-neutral-700 transition flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs uppercase tracking-widest text-gilded-500 font-semibold font-serif">Sacred Numerology</span>
+            <span id="universal-month" class="text-xs font-mono text-neutral-400">Universal Month 9</span>
+          </div>
+
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-16 h-16 rounded-xl bg-obsidian-800 border border-gilded-600/30 flex items-center justify-center text-3xl font-serif font-bold text-gilded-300 shadow-lg" id="universal-day-badge">
+              7
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-wider text-neutral-400">Universal Day Number</div>
+              <h3 id="numerology-title" class="text-lg font-serif text-white font-medium">The Seeker & Insight</h3>
+              <p class="text-xs text-neutral-400" id="numerology-keywords">Introspection • Wisdom • Truth</p>
+            </div>
+          </div>
+
+          <p id="numerology-meaning" class="text-xs text-neutral-300 leading-relaxed border-t border-neutral-800 pt-3"></p>
+        </div>
+
+        <!-- Personal Day Calculator Tool -->
+        <div class="mt-4 pt-3 border-t border-neutral-800/60">
+          <button id="toggle-personal-num-btn" class="text-xs text-gilded-500 hover:text-gilded-300 flex items-center justify-between w-full font-medium">
+            <span>✨ Calculate Your Personal Day Number</span>
+            <span id="calc-toggle-icon">+</span>
+          </button>
+
+          <div id="personal-calc-box" class="hidden mt-3 p-3 bg-neutral-950/70 rounded-lg border border-neutral-800 space-y-2">
+            <label class="block text-[11px] text-neutral-400">Enter Your Birth Month & Day:</label>
+            <div class="flex gap-2">
+              <input type="date" id="user-bday-input" class="bg-obsidian-800 border border-neutral-700 rounded px-2 py-1 text-xs text-white focus:outline-none focus:border-gilded-500 w-full" />
+              <button id="calc-personal-btn" class="px-3 py-1 bg-gilded-600 text-black text-xs font-semibold rounded hover:bg-gilded-500 transition">
+                Solve
+              </button>
+            </div>
+            <div id="personal-result" class="text-xs text-gilded-300 pt-1 font-serif hidden"></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Tarot Card of the Day Section -->
+    <section class="bg-obsidian-900 rounded-2xl p-6 sm:p-8 border border-neutral-800">
+      <div class="text-center max-w-lg mx-auto mb-6">
+        <span class="text-xs uppercase tracking-widest text-gilded-500 font-semibold font-serif">Arcana Transits</span>
+        <h3 class="text-2xl font-serif text-white mt-1">Tarot Card of the Day</h3>
+        <p class="text-xs text-neutral-400 mt-1">Click the sigil back to reveal today's archetype and its daily counsel.</p>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+        
+        <!-- Interactive 3D Card -->
+        <div class="perspective-[1000px]">
+          <div id="tarot-card" class="oracle-card w-56 h-88 sm:w-64 sm:h-96 rounded-2xl cursor-pointer relative select-none">
+            <div class="oracle-card-inner w-full h-full relative rounded-2xl shadow-2xl">
+              
+              <!-- Card Face (Revealed) -->
+              <div class="oracle-face oracle-back absolute inset-0 bg-obsidian-950 rounded-2xl border-2 border-gilded-500/80 p-5 flex flex-col justify-between overflow-hidden shadow-[0_0_25px_rgba(223,183,85,0.15)]">
+                <div class="text-center">
+                  <span id="tarot-numeral" class="text-xs font-serif tracking-widest text-gilded-500 font-bold block">CARD</span>
+                  <h4 id="tarot-name" class="text-lg font-serif text-white font-bold leading-tight mt-1">The Magician</h4>
+                </div>
+
+                <!-- Symbolic Glyphic Center -->
+                <div class="my-auto text-center py-6">
+                  <div id="tarot-glyph" class="text-6xl sm:text-7xl mb-2 filter drop-shadow-[0_0_10px_rgba(223,183,85,0.3)]">🪄</div>
+                  <span id="tarot-suit" class="text-[11px] uppercase tracking-widest text-neutral-400 font-mono">Major Arcana</span>
+                </div>
+
+                <div class="text-center border-t border-neutral-800 pt-3">
+                  <p id="tarot-keyword" class="text-xs font-serif text-gilded-300 italic">Manifestation • Willpower</p>
+                </div>
+              </div>
+
+              <!-- Card Back (Default) -->
+              <div class="oracle-face absolute inset-0 bg-gradient-to-br from-obsidian-900 to-black rounded-2xl border-2 border-gilded-600/40 p-4 flex flex-col items-center justify-center text-center shadow-xl">
+                <div class="w-full h-full border border-gilded-600/20 rounded-xl flex flex-col items-center justify-center p-3 relative">
+                  <div class="text-4xl text-gilded-500 mb-2 animate-pulse">✧ 🜚 ✧</div>
+                  <span class="text-xs font-serif text-gilded-300 tracking-widest uppercase">The Gilded Sigil</span>
+                  <span class="text-[10px] text-neutral-500 mt-3 font-mono">Tap to Reveal Archetype</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarot Message Description -->
+        <div class="max-w-md space-y-4">
+          <div>
+            <span id="tarot-status-badge" class="px-2.5 py-1 text-[10px] uppercase font-mono tracking-wider bg-gilded-900/40 text-gilded-300 border border-gilded-700/50 rounded-full inline-block mb-2">
+              Hidden • Tap to Unveil
+            </span>
+            <h4 id="tarot-desc-title" class="text-xl font-serif text-white">Daily Archetypal Guidance</h4>
+          </div>
+
+          <p id="tarot-description" class="text-sm text-neutral-300 leading-relaxed">
+            The cards hold the energetic pulse of the day. Click the ornate sigil back to uncover which Major Arcana archetype governs today's collective path.
+          </p>
+
+          <div id="tarot-advice-box" class="hidden p-4 rounded-xl bg-obsidian-800/80 border border-neutral-700/60 space-y-2">
+            <span class="text-xs uppercase font-serif text-gilded-500 font-semibold block">Practical Counsel for Today:</span>
+            <p id="tarot-action-advice" class="text-xs text-neutral-300 leading-relaxed"></p>
+          </div>
+
+          <div class="pt-2">
+            <button id="card-reveal-btn" class="px-4 py-2 bg-gilded-600 hover:bg-gilded-500 text-black text-xs font-semibold rounded-lg shadow transition">
+              Flip Tarot Card
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- Astronomical, Numerological & Tarot Engine Script -->
+<script>
+(function() {
+  let currentDate = new Date();
+
+  // --- 1. TAROT DATA MATRIX ---
+  const tarotDeck = [
+    { num: "0", name: "The Fool", glyph: "🎒", keywords: "Beginnings, Innocence, Spontaneity, Free Spirit", elem: "air", advice: "Step boldly into the unknown without overthinking. A fresh canvas awaits you today." },
+    { num: "I", name: "The Magician", glyph: "🪄", keywords: "Manifestation, Resourcefulness, Power, Inspired Action", elem: "air", advice: "You have every tool necessary in front of you. Focus your intention and initiate." },
+    { num: "II", name: "The High Priestess", glyph: "🌙", keywords: "Intuition, Sacred Knowledge, Divine Feminine, Subconscious", elem: "water", advice: "Look past surface noise. Trust your quiet inner nudges over cold logic today." },
+    { num: "III", name: "The Empress", glyph: "🌾", keywords: "Abundance, Fertility, Nurturing, Sensory Creativity", elem: "earth", advice: "Channel creative passion and surround yourself with comfort, beauty, and growth." },
+    { num: "IV", name: "The Emperor", glyph: "👑", keywords: "Structure, Authority, Foundations, Clear Discipline", elem: "fire", advice: "Bring order to any lingering chaos. Enforce boundaries and establish clean systems." },
+    { num: "V", name: "The Hierophant", glyph: "📜", keywords: "Spiritual Wisdom, Tradition, Mentorship, Core Values", elem: "earth", advice: "Honor time-tested practices and seek wisdom from traditions or trusted teachers." },
+    { num: "VI", name: "The Lovers", glyph: "❤️", keywords: "Harmony, Chosen Alignment, Values, Deep Connection", elem: "air", advice: "Make choices that directly align with your deeper personal values and mutual respect." },
+    { num: "VII", name: "The Chariot", glyph: "🛡️", keywords: "Determination, Willpower, Momentum, Victory", elem: "fire", advice: "Harness conflicting impulses. Direct focus forward with unwavering resolve." },
+    { num: "VIII", name: "Strength", glyph: "🦁", keywords: "Compassion, Gentle Courage, Patience, Self-Mastery", elem: "fire", advice: "Lead through calm, quiet grace rather than brute force. Tame inner doubts gently." },
+    { num: "IX", name: "The Hermit", glyph: "🏮", keywords: "Soul-Searching, Introspection, Inner Lantern, Solitude", elem: "earth", advice: "Take quiet time to retreat from external chatter. The light you seek is already inside." },
+    { num: "X", name: "Wheel of Fortune", glyph: "☸️", keywords: "Cycles, Inevitable Change, Destiny, Turning Points", elem: "fire", advice: "Adapt flexibly to life's rhythm. What rotates down will inevitably rise again." },
+    { num: "XI", name: "Justice", glyph: "⚖️", keywords: "Truth, Fairness, Cause & Effect, Conscious Balance", elem: "air", advice: "Weigh decisions objectively. Act with total integrity and fairness toward all." },
+    { num: "XII", name: "The Hanged Man", glyph: "🪞", keywords: "Surrender, New Perspectives, Letting Go, Pause", elem: "water", advice: "Release the urge to force immediate outcomes. Surrendering control unlocks clarity." },
+    { num: "XIII", name: "Death", glyph: "🥀", keywords: "Metamorphosis, Necessary Endings, Clearing the Old", elem: "water", advice: "Let the withered chapter fall away effortlessly. Transformation requires closure." },
+    { num: "XIV", name: "Temperance", glyph: "🏺", keywords: "Alchemy, Balance, Moderation, Harmonious Synthesis", elem: "fire", advice: "Blend opposites. Practice patience and find the middle ground in emotionally charged areas." },
+    { num: "XV", name: "The Devil", glyph: "⛓️", keywords: "Shadow Work, Attachments, Illusions, Reclaiming Freedom", elem: "earth", advice: "Notice self-imposed limitations or unhealthy habits. Acknowledge them to dissolve their power." },
+    { num: "XVI", name: "The Tower", glyph: "⚡", keywords: "Sudden Epiphany, Awakening, Breaking False Realities", elem: "fire", advice: "Embrace sudden shifts as necessary liberation. The truth always clears obsolete illusions." },
+    { num: "XVII", name: "The Star", glyph: "⭐", keywords: "Renewed Hope, Faith, Serenity, Divine Inspiration", elem: "air", advice: "Breathe with trust. Healing energy is actively pouring into your trajectory." },
+    { num: "XVIII", name: "The Moon", glyph: "🌘", keywords: "Illusion, Subconscious Dreams, Depth, Intuitive Navigating", elem: "water", advice: "Do not rush decisions in the mist. Pay close attention to subtle dreams and impressions." },
+    { num: "XIX", name: "The Sun", glyph: "☀️", keywords: "Vitality, Joy, Radiance, Unfiltered Celebration", elem: "fire", advice: "Share your gifts openly without false modesty. Today brings warmth, vitality, and light." },
+    { num: "XX", name: "Judgement", glyph: "📯", keywords: "Calling, Rebirth, Honest Assessment, Higher Purpose", elem: "fire", advice: "Answer your higher calling. Forgive past versions of yourself and rise forward." },
+    { num: "XXI", name: "The World", glyph: "🌐", keywords: "Fulfillment, Wholeness, Completion of Cycles, Harmony", elem: "earth", advice: "Celebrate completion. You are standing at the threshold of wholeness and mastery." }
+  ];
+
+  // --- 2. ZODIAC TRANSIT DATA ---
+  const zodiacSigns = [
+    { name: "Aries", glyph: "♈", elem: "fire", quality: "Cardinal", msg: "A surge of pioneering fire encourages decisive action and fresh beginnings." },
+    { name: "Taurus", glyph: "♉", elem: "earth", quality: "Fixed", msg: "Earthy, grounding vibrations emphasize sensory appreciation, steady pace, and practical security." },
+    { name: "Gemini", glyph: "♊", elem: "air", quality: "Mutable", msg: "Curiosity and mental agility peak. Ideal for communication, brainstorming, and multi-tasking." },
+    { name: "Cancer", glyph: "♋", elem: "water", quality: "Cardinal", msg: "Emotional awareness deepens. Focus on home sanctuaries, nurturing, and authentic feelings." },
+    { name: "Leo", glyph: "♌", elem: "fire", quality: "Fixed", msg: "Creative warmth and bold expression take center stage. Radiate heart-centered self-confidence." },
+    { name: "Virgo", glyph: "♍", elem: "earth", quality: "Mutable", msg: "Practical discernment and attention to fine craftsmanship shine. Perfect for organizing and cleansing." },
+    { name: "Libra", glyph: "♎", elem: "air", quality: "Cardinal", msg: "Striving for aesthetic balance, diplomatic relationships, and inner equilibrium." },
+    { name: "Scorpio", glyph: "♏", elem: "water", quality: "Fixed", msg: "Psychic intuition and emotional depths heighten. Look underneath surface motives." },
+    { name: "Sagittarius", glyph: "♐", elem: "fire", quality: "Mutable", msg: "Optimism and thirst for expansive knowledge guide the day. Aim your sights at higher horizons." },
+    { name: "Capricorn", glyph: "♑", elem: "earth", quality: "Cardinal", msg: "Ambition, mature structure, and disciplined execution receive cosmic backing." },
+    { name: "Aquarius", glyph: "♒", elem: "air", quality: "Fixed", msg: "Innovative perspectives and communal vision dominate. Break free of outmoded convention." },
+    { name: "Pisces", glyph: "♓", elem: "water", quality: "Mutable", msg: "Dreamy imagination, artistic sensitivity, and mystical interconnectedness soften the edges of reality." }
+  ];
+
+  // --- 3. NUMEROLOGY DATA ---
+  const numerologyMatrix = {
+    1: { title: "The Pioneer & Originator", keywords: "Initiation, Independence, Leadership", msg: "A day of seeds and initiation. Take decisive steps without waiting for external permission." },
+    2: { title: "The Peacemaker & Mirror", keywords: "Cooperation, Receptivity, Sensitivity", msg: "Harmonize opposing sides. Focus on patient partnership and listening to the subtle spaces." },
+    3: { title: "The Alchemist & Muse", keywords: "Expression, Creativity, Social Joy", msg: "Communicate your inner world through art, writing, or vibrant conversation. Keep lightness at heart." },
+    4: { title: "The Architect & Pillar", keywords: "Structure, Discipline, Tangible Craft", msg: "Build durable foundations. Dedicate focus to routine, organization, and practical duties." },
+    5: { title: "The Seeker & Catalyst", keywords: "Freedom, Adventure, Unpredictability", msg: "Expect the unexpected. Embrace adaptability and allow curiosity to lead you into the unfamiliar." },
+    6: { title: "The Guardian & Healer", keywords: "Harmony, Service, Nurturance, Home", msg: "Tend to relationships and home energy. Healing occurs through loving responsibility." },
+    7: { title: "The Mystic & Sage", keywords: "Introspection, Solitude, Truth-Seeking", msg: "Turn down external chatter. Dive into deeper philosophical inquiry, study, and quiet meditation." },
+    8: { title: "The Sovereign & Manifestor", keywords: "Authority, Material Abundance, Karma", msg: "Harness worldly power and financial strategy. Direct energy with confidence and integrity." },
+    9: { title: "The Transcendent & Finisher", keywords: "Completion, Humanitarianism, Release", msg: "Bring lingering projects to peaceful completion. Release whatever has exhausted its purpose." },
+    11: { title: "Master 11: The Illuminated Conduit", keywords: "High Intuition, Revelation, Spiritual Catalyst", msg: "A high-frequency portal of spiritual insight. Pay close heed to sudden flashes of epiphany." },
+    22: { title: "Master 22: The Master Builder", keywords: "Visionary Architecture, Large-Scale Manifestation", msg: "Bridge grand spiritual visions into physical reality. Great tasks can be executed with precision." }
+  };
+
+  // --- MATHEMATICAL / ASTRONOMICAL CALCULATORS ---
+  function reduceToSingle(num, allowMaster = true) {
+    if (allowMaster && (num === 11 || num === 22 || num === 33)) return num;
+    let sum = num;
+    while (sum > 9 && !(allowMaster && (sum === 11 || sum === 22 || sum === 33))) {
+      sum = sum.toString().split('').reduce((acc, digit) => acc + parseInt(digit), 0);
+    }
+    return sum;
+  }
+
+  function getMoonPhaseAndTransit(d) {
+    // Known reference New Moon: Jan 11, 2024 11:57 UTC
+    const refNewMoon = new Date(Date.UTC(2024, 0, 11, 11, 57, 0));
+    const synodicMonth = 29.53058867;
+    const diffDays = (d - refNewMoon) / (1000 * 60 * 60 * 24);
+    const phaseAge = ((diffDays % synodicMonth) + synodicMonth) % synodicMonth;
+    const illumination = Math.round(((1 - Math.cos((phaseAge / synodicMonth) * 2 * Math.PI)) / 2) * 100);
+
+    let phaseName = "";
+    let glyph = "🌕";
+    if (phaseAge < 1.84) { phaseName = "New Moon"; glyph = "🌑"; }
+    else if (phaseAge < 5.53) { phaseName = "Waxing Crescent"; glyph = "🌒"; }
+    else if (phaseAge < 9.22) { phaseName = "First Quarter"; glyph = "🌓"; }
+    else if (phaseAge < 12.91) { phaseName = "Waxing Gibbous"; glyph = "🌔"; }
+    else if (phaseAge < 16.61) { phaseName = "Full Moon"; glyph = "🌕"; }
+    else if (phaseAge < 20.30) { phaseName = "Waning Gibbous"; glyph = "🌖"; }
+    else if (phaseAge < 23.99) { phaseName = "Last Quarter"; glyph = "🌗"; }
+    else if (phaseAge < 27.68) { phaseName = "Waning Crescent"; glyph = "🌘"; }
+    else { phaseName = "New Moon"; glyph = "🌑"; }
+
+    // Approximate tropical zodiac calculation for moon (sidereal cycle ~27.32166 days)
+    // Ref: Moon entered Aries on Jan 14, 2024 ~ 00:00 UTC
+    const refAriesMoon = new Date(Date.UTC(2024, 0, 14, 0, 0, 0));
+    const siderealCycle = 27.321661;
+    const sideralDays = (d - refAriesMoon) / (1000 * 60 * 60 * 24);
+    const normalizedDays = ((sideralDays % siderealCycle) + siderealCycle) % siderealCycle;
+    const signIndex = Math.floor((normalizedDays / siderealCycle) * 12) % 12;
+    const sign = zodiacSigns[signIndex];
+
+    // Void of course simulation based on transit degree
+    const progressInSign = ((normalizedDays / siderealCycle) * 12) % 1;
+    const isVoC = progressInSign > 0.88;
+
+    return { phaseName, illumination, glyph, sign, isVoC };
+  }
+
+  function getDailyTarot(d) {
+    // Deterministic daily hash based on UTC calendar day
+    const seed = d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+    const index = (seed * 9301 + 49297) % 233280 % tarotDeck.length;
+    return tarotDeck[index];
+  }
+
+  function getUniversalNumbers(d) {
+    const day = d.getDate();
+    const month = d.getMonth() + 1;
+    const year = d.getFullYear();
+
+    const uMonthSum = month + year.toString().split('').reduce((a, b) => a + parseInt(b), 0);
+    const uMonth = reduceToSingle(uMonthSum, false);
+
+    const uDaySum = day + month + year.toString().split('').reduce((a, b) => a + parseInt(b), 0);
+    const uDay = reduceToSingle(uDaySum, true);
+
+    return { uDay, uMonth };
+  }
+
+  // --- RENDER ENGINE ---
+  function updateApp() {
+    const formattedDate = currentDate.toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    document.getElementById('active-date-display').textContent = formattedDate;
+
+    // 1. Lunar Update
+    const lunar = getMoonPhaseAndTransit(currentDate);
+    document.getElementById('moon-render').textContent = lunar.glyph;
+    document.getElementById('moon-phase-name').textContent = lunar.phaseName;
+    document.getElementById('lunar-illumination').textContent = `${lunar.illumination}% Illumination`;
+    document.getElementById('moon-sign').textContent = `Moon in ${lunar.sign.name} ${lunar.sign.glyph}`;
+    document.getElementById('moon-element-mode').textContent = `${lunar.sign.elem.toUpperCase()} • ${lunar.sign.quality}`;
+    document.getElementById('moon-transit-message').textContent = lunar.sign.msg;
+    
+    const vocBadge = document.getElementById('voc-status');
+    if (lunar.isVoC) {
+      vocBadge.textContent = "Void-of-Course (Rest & Reflect)";
+      vocBadge.className = "px-2 py-0.5 rounded bg-amber-950/70 text-amber-400 border border-amber-800/60";
+    } else {
+      vocBadge.textContent = "Harmonious / Flowing Ingress";
+      vocBadge.className = "px-2 py-0.5 rounded bg-emerald-950/70 text-emerald-400 border border-emerald-800/60";
+    }
+
+    // 2. Numerology Update
+    const nums = getUniversalNumbers(currentDate);
+    const numData = numerologyMatrix[nums.uDay] || numerologyMatrix[reduceToSingle(nums.uDay, false)];
+    document.getElementById('universal-day-badge').textContent = nums.uDay;
+    document.getElementById('universal-month').textContent = `Universal Month ${nums.uMonth}`;
+    document.getElementById('numerology-title').textContent = numData.title;
+    document.getElementById('numerology-keywords').textContent = numData.keywords;
+    document.getElementById('numerology-meaning').textContent = numData.msg;
+
+    // 3. Tarot Update
+    const tarot = getDailyTarot(currentDate);
+    document.getElementById('tarot-numeral').textContent = `ARCANA ${tarot.num}`;
+    document.getElementById('tarot-name').textContent = tarot.name;
+    document.getElementById('tarot-glyph').textContent = tarot.glyph;
+    document.getElementById('tarot-keyword').textContent = tarot.keywords;
+    document.getElementById('tarot-action-advice').textContent = tarot.advice;
+
+    // Reset tarot card flip state on date change
+    const cardEl = document.getElementById('tarot-card');
+    cardEl.classList.remove('is-flipped');
+    document.getElementById('tarot-status-badge').textContent = "Hidden • Tap to Unveil";
+    document.getElementById('tarot-status-badge').className = "px-2.5 py-1 text-[10px] uppercase font-mono tracking-wider bg-gilded-900/40 text-gilded-300 border border-gilded-700/50 rounded-full inline-block mb-2";
+    document.getElementById('tarot-advice-box').classList.add('hidden');
+    document.getElementById('tarot-description').textContent = "The cards hold the energetic pulse of the day. Click the ornate sigil back to uncover which Major Arcana archetype governs today's collective path.";
+
+    // 4. Elemental Barometer Calculation
+    const elemWeights = { fire: 15, earth: 15, air: 15, water: 15 };
+    elemWeights[lunar.sign.elem] += 30;
+    elemWeights[tarot.elem] += 25;
+    const totalWeight = Object.values(elemWeights).reduce((a, b) => a + b, 0);
+    const pctFire = Math.round((elemWeights.fire / totalWeight) * 100);
+    const pctEarth = Math.round((elemWeights.earth / totalWeight) * 100);
+    const pctAir = Math.round((elemWeights.air / totalWeight) * 100);
+    const pctWater = 100 - (pctFire + pctEarth + pctAir);
+
+    document.getElementById('elem-fire').style.width = `${pctFire}%`;
+    document.getElementById('elem-earth').style.width = `${pctEarth}%`;
+    document.getElementById('elem-air').style.width = `${pctAir}%`;
+    document.getElementById('elem-water').style.width = `${pctWater}%`;
+
+    document.getElementById('val-fire').textContent = `${pctFire}%`;
+    document.getElementById('val-earth').textContent = `${pctEarth}%`;
+    document.getElementById('val-air').textContent = `${pctAir}%`;
+    document.getElementById('val-water').textContent = `${pctWater}%`;
+
+    const dominantElem = Object.keys(elemWeights).reduce((a, b) => elemWeights[a] > elemWeights[b] ? a : b);
+    document.getElementById('dominant-element').textContent = `${dominantElem} Dominant`;
+
+    // 5. Daily Unified Synthesis
+    document.getElementById('daily-synthesis-title').textContent = `${lunar.sign.name} Ingress with Arcana ${tarot.name}`;
+    document.getElementById('daily-synthesis-text').textContent = 
+      `Under the ${lunar.phaseName} traversing ${lunar.sign.name}, collective focus turns toward ${lunar.sign.quality.toLowerCase()} ${lunar.sign.elem} energy. Combined with Universal Vibration ${nums.uDay}, the archetype of ${tarot.name} invites you to anchor intention through conscious alignment: ${tarot.advice}`;
+  }
+
+  // --- INTERACTIVITY HANDLERS ---
+  const cardElement = document.getElementById('tarot-card');
+  const flipBtn = document.getElementById('card-reveal-btn');
+
+  function toggleCardFlip() {
+    cardElement.classList.toggle('is-flipped');
+    const isFlipped = cardElement.classList.contains('is-flipped');
+    const tarot = getDailyTarot(currentDate);
+
+    if (isFlipped) {
+      document.getElementById('tarot-status-badge').textContent = "Revealed • Active Vibration";
+      document.getElementById('tarot-status-badge').className = "px-2.5 py-1 text-[10px] uppercase font-mono tracking-wider bg-emerald-950 text-emerald-300 border border-emerald-700/60 rounded-full inline-block mb-2";
+      document.getElementById('tarot-advice-box').classList.remove('hidden');
+      document.getElementById('tarot-description').textContent = `${tarot.name} serves as today's focal mirror. Embodying themes of ${tarot.keywords.toLowerCase()}, this card directs how you can best navigate the surrounding lunar currents.`;
+      flipBtn.textContent = "Conceal Card";
+    } else {
+      document.getElementById('tarot-status-badge').textContent = "Hidden • Tap to Unveil";
+      document.getElementById('tarot-status-badge').className = "px-2.5 py-1 text-[10px] uppercase font-mono tracking-wider bg-gilded-900/40 text-gilded-300 border border-gilded-700/50 rounded-full inline-block mb-2";
+      document.getElementById('tarot-advice-box').classList.add('hidden');
+      flipBtn.textContent = "Flip Tarot Card";
+    }
+  }
+
+  cardElement.addEventListener('click', toggleCardFlip);
+  flipBtn.addEventListener('click', toggleCardFlip);
+
+  // Date Navigation
+  document.getElementById('prev-day-btn').addEventListener('click', () => {
+    currentDate.setDate(currentDate.getDate() - 1);
+    updateApp();
+  });
+  document.getElementById('next-day-btn').addEventListener('click', () => {
+    currentDate.setDate(currentDate.getDate() + 1);
+    updateApp();
+  });
+
+  // Personal Numerology Drawer Toggle & Calculation
+  const togglePersonalBtn = document.getElementById('toggle-personal-num-btn');
+  const calcBox = document.getElementById('personal-calc-box');
+  togglePersonalBtn.addEventListener('click', () => {
+    calcBox.classList.toggle('hidden');
+    document.getElementById('calc-toggle-icon').textContent = calcBox.classList.contains('hidden') ? '+' : '−';
+  });
+
+  document.getElementById('calc-personal-btn').addEventListener('click', () => {
+    const inputVal = document.getElementById('user-bday-input').value;
+    if (!inputVal) return;
+    const parts = inputVal.split('-');
+    const bMonth = parseInt(parts[1], 10);
+    const bDay = parseInt(parts[2], 10);
+
+    const nums = getUniversalNumbers(currentDate);
+    // Personal Year = Birth Month + Birth Day + Current Year
+    const curYear = currentDate.getFullYear();
+    const pYearSum = bMonth + bDay + curYear.toString().split('').reduce((a, b) => a + parseInt(b), 0);
+    const pYear = reduceToSingle(pYearSum, false);
+
+    // Personal Day = Personal Year + Current Month + Current Day
+    const pDaySum = pYear + (currentDate.getMonth() + 1) + currentDate.getDate();
+    const pDay = reduceToSingle(pDaySum, true);
+
+    const resultEl = document.getElementById('personal-result');
+    resultEl.classList.remove('hidden');
+    resultEl.innerHTML = `Your Personal Day Number for today is <strong class="text-white text-sm">${pDay}</strong> (in Personal Year ${pYear}).`;
+  });
+
+  // Initialize
+  updateApp();
+})();
+</script>
