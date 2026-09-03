@@ -9,7 +9,7 @@ tags: [tarot, the emperor, major arcana, divination]
 
 Card IV is where the deck's creative surge finally meets a hard edge. The [Empress](https://thegildedsigil.com/2026/08/the-empress-10-different-ways-to-interpret-it/) grew things; The Emperor decides what shape they're allowed to keep. Nearly every tradition agrees he represents structure and authority — the disagreement is about how that authority gets assigned, and in one case, whether it's authority at all. Same ten lenses used across the series so far, applied to card IV.
 
-### Historical & Esoteric Systems
+## Historical & Esoteric Systems
 
 **1. Rider-Waite-Smith — Order Carved in Stone**  
 He sits on a bare stone throne decorated with ram's heads (an Aries reference), fully armored beneath his robe, holding an ankh-topped scepter in one hand and an orb in the other, with jagged mountains behind him instead of the Empress's forest and stream. The contrast with card III is deliberate: her throne was cushioned and set in a living field, his is stone set against barren rock. The standard divinatory meaning is structure, authority, and stability — the discipline and boundaries needed to make anything the Empress generated actually last.
@@ -26,7 +26,7 @@ In the Grand Etteilla deck, card 7 — called *Appui* ("Support" or "Protection"
 **5. Golden Dawn — Heh and the Window of Aries**  
 In the Golden Dawn's own (pre-Crowley) system, The Emperor carries the Hebrew letter Heh, which means "window," paired with the zodiac sign Aries — the sign of first assertion, initiative, and the martial energy that opens a new cycle. Set directly against Thoth's swap above, this is a useful case study in how even a single, tightly defined esoteric lineage can fracture into competing "authoritative" versions once a strong enough individual voice enters it.
 
-### Psychological, Structural & Modern Lenses
+## Psychological, Structural & Modern Lenses
 
 **6. Reversed — Structure Without Compassion**  
 Traditional reversed meanings turn stability into rigidity: tyranny, coldness, an unwillingness to bend, or authority wielded to control rather than to protect. The throne is still stone in a reversed reading — it's just stopped being a foundation and become a wall.
