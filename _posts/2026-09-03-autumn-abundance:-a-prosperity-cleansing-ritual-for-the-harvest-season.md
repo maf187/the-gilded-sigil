@@ -60,7 +60,7 @@ A nice ritual note: consider decorating your entryway last, once everything else
 
 ## A Simple Autumn Prosperity Checklist
 
-If you want the condensed version to save or screenshot:
+If you want the condensed version, this allows you to check the steps off as you go:
 
 - [ ] Clear clutter, starting at the entryway
 - [ ] Wipe down doorways and thresholds
