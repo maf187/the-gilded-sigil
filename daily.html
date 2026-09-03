@@ -171,12 +171,12 @@ permalink: /daily.html
       <!-- One-Line Universal Day Summary -->
       <p id="u-day-summary" class="text-xs text-neutral-300 leading-relaxed italic"></p>
 
-      <!-- Personal Day Mini-Calculator -->
+      <!-- Personal Numerology Calculator -->
       <div class="pt-2 border-t border-neutral-800/60">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div class="text-xs text-neutral-400 flex items-center gap-2">
             <span class="text-gilded-500 font-serif">Personal Vibration:</span>
-            <span>Enter birthdate for your personal day</span>
+            <span>Enter birthdate for your personal alignment</span>
           </div>
 
           <div class="flex items-center gap-2">
@@ -187,19 +187,22 @@ permalink: /daily.html
           </div>
         </div>
 
-        <!-- One-Line Personal Day Summary -->
-        <div id="personal-day-result" class="mt-3 p-2.5 rounded-lg bg-obsidian-800/70 border border-neutral-700 text-xs hidden flex items-center justify-between">
+        <!-- Personal Result Banner (Day, Month, Year) -->
+        <div id="personal-day-result" class="mt-3 p-3 rounded-lg bg-obsidian-800/70 border border-neutral-700 text-xs hidden flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
             <span class="text-gilded-300 font-semibold font-serif" id="p-day-title"></span>
             <span class="text-neutral-300 ml-1.5" id="p-day-summary"></span>
           </div>
-          <span id="p-year-badge" class="text-[10px] font-mono text-neutral-400 px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800"></span>
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <span id="p-month-badge" class="text-[10px] font-mono text-neutral-300 px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800"></span>
+            <span id="p-year-badge" class="text-[10px] font-mono text-gilded-400 px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800"></span>
+          </div>
         </div>
       </div>
 
     </div>
 
-    <!-- Final Synthesis Anchor (Now at the Bottom) -->
+    <!-- Final Synthesis Anchor -->
     <section class="bg-gradient-to-br from-obsidian-900 to-obsidian-800 rounded-xl p-5 border border-gilded-500/20 text-center shadow-lg space-y-2">
       <span class="text-[10px] uppercase tracking-widest text-gilded-500 font-semibold block">Unified Daily Synthesis</span>
       <p id="daily-synthesis-text" class="text-sm text-neutral-200 leading-relaxed font-serif max-w-2xl mx-auto"></p>
@@ -300,7 +303,7 @@ permalink: /daily.html
     return tarotCards[(seed * 9301 + 49297) % tarotCards.length];
   }
 
-  // --- 3. NUMEROLOGY DICTIONARY & REDUCER ---
+  // --- 3. NUMEROLOGY ENGINE ---
   const numDictionary = {
     1: { title: "Initiation & Action", summary: "Plant new seeds and initiate fresh momentum with boldness." },
     2: { title: "Receptivity & Harmony", summary: "Practice patience, sensitive partnership, and quiet listening." },
@@ -317,8 +320,9 @@ permalink: /daily.html
 
   function reduceNum(n, allowMaster = true) {
     if (allowMaster && (n === 11 || n === 22 || n === 33)) return n;
-    while (n > 9 && !(allowMaster && (n === 11 || n === 22 || n === 33))) {
-      n = n.toString().split('').reduce((a, b) => a + parseInt(b), 0);
+    while (n > 9) {
+      if (allowMaster && (n === 11 || n === 22 || n === 33)) return n;
+      n = n.toString().split('').reduce((acc, digit) => acc + parseInt(digit, 10), 0);
     }
     return n;
   }
@@ -328,9 +332,14 @@ permalink: /daily.html
     const m = date.getMonth() + 1;
     const d = date.getDate();
 
-    const uYear = reduceNum(y.toString().split('').reduce((a, b) => a + parseInt(b), 0), false);
+    // Universal Year: sum digits of calendar year
+    const uYear = reduceNum(y.toString().split('').reduce((acc, digit) => acc + parseInt(digit, 10), 0), false);
+    
+    // Universal Month: Calendar Month + Universal Year
     const uMonth = reduceNum(m + uYear, false);
-    const uDay = reduceNum(d + m + y.toString().split('').reduce((a, b) => a + parseInt(b), 0), true);
+    
+    // Universal Day: Universal Month + Calendar Day
+    const uDay = reduceNum(d + uMonth, true);
 
     return {
       uDay,
@@ -389,8 +398,8 @@ permalink: /daily.html
     document.getElementById('daily-synthesis-text').textContent = 
       `With the ${lunar.phaseName} in ${lunar.sign.name} and Universal Day ${num.uDay} active, collective energy favors ${num.dayData.summary.toLowerCase()} Channel this through the mirror of ${tarot.name}: ${tarot.advice}`;
 
-    // Recalculate Personal Day if Birthday is already input
-    calculatePersonalDay();
+    // Recalculate Personal Day/Month if Birthday is already input
+    calculatePersonalNumerology();
   }
 
   // --- 5. INTERACTIVITY ---
@@ -412,8 +421,8 @@ permalink: /daily.html
     }
   });
 
-  // Personal Day Calculator
-  function calculatePersonalDay() {
+  // Personal Numerology Calculator
+  function calculatePersonalNumerology() {
     const bdayStr = document.getElementById('bday-input').value;
     if (!bdayStr) return;
 
@@ -422,23 +431,29 @@ permalink: /daily.html
     const bDay = parseInt(parts[2], 10);
 
     const curYear = activeDate.getFullYear();
-    const curYearReduced = reduceNum(curYear.toString().split('').reduce((a, b) => a + parseInt(b), 0), false);
+    const curYearReduced = reduceNum(curYear.toString().split('').reduce((acc, d) => acc + parseInt(d, 10), 0), false);
     
-    // Personal Year = Birth Month + Birth Day + Current Calendar Year
+    // Personal Year = Birth Month + Birth Day + Current Year (Reduced)
     const pYear = reduceNum(bMonth + bDay + curYearReduced, false);
     
-    // Personal Day = Personal Year + Current Month + Current Day
-    const pDay = reduceNum(pYear + (activeDate.getMonth() + 1) + activeDate.getDate(), true);
+    // Personal Month = Personal Year + Current Calendar Month (Reduced)
+    const curMonth = activeDate.getMonth() + 1;
+    const pMonth = reduceNum(pYear + curMonth, false);
+
+    // Personal Day = Personal Month + Current Calendar Day
+    const curDay = activeDate.getDate();
+    const pDay = reduceNum(pMonth + curDay, true);
     const pDayData = numDictionary[pDay] || numDictionary[reduceNum(pDay, false)];
 
     const resultBox = document.getElementById('personal-day-result');
     resultBox.classList.remove('hidden');
     document.getElementById('p-day-title').textContent = `Personal Day ${pDay} (${pDayData.title}):`;
     document.getElementById('p-day-summary').textContent = pDayData.summary;
+    document.getElementById('p-month-badge').textContent = `Personal Month ${pMonth}`;
     document.getElementById('p-year-badge').textContent = `Personal Year ${pYear}`;
   }
 
-  document.getElementById('calc-pday-btn').addEventListener('click', calculatePersonalDay);
+  document.getElementById('calc-pday-btn').addEventListener('click', calculatePersonalNumerology);
 
   // Date Nav
   document.getElementById('prev-day-btn').addEventListener('click', () => {
