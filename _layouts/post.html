@@ -11,4 +11,11 @@ layout: default
   <div class="article-body">
     {{ content }}
   </div>
+
+  <script>
+    document.querySelectorAll('.article-body input[type="checkbox"]').forEach(box => {
+      box.removeAttribute('disabled');
+      box.style.cursor = 'pointer';
+    });
+  </script>
 </article>
