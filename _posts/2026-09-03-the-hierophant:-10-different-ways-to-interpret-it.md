@@ -7,8 +7,6 @@ category: tarot
 tags: [tarot, the hierophant, major arcana, divination]
 ---
 
-# The Hierophant: 10 Different Ways to Interpret It
-
 Card V takes the authority [The Emperor](https://thegildedsigil.com/2026/09/the-emperor-10-different-ways-to-interpret-it/) just established and asks where its rules actually come from — tradition, doctrine, a chain of teaching passed down rather than invented fresh. Every system agrees this card is about inherited wisdom; they disagree hard on whether that's a comfort or a warning. Same ten lenses used across the series so far, applied to card V.
 
 ## Historical & Esoteric Systems
