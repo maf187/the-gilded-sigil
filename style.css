@@ -520,6 +520,271 @@ select:focus {
   letter-spacing: 0.05em;
   color: #d4af37;
   border: 1px solid #333;
+
+  /* ==========================================================================
+   Scrying Glass Quiz Module Styles
+   ========================================================================== */
+
+.scrying-container {
+  max-width: 700px;
+  text-align: left;
+}
+
+.scrying-intro {
+  text-align: center;
+  color: #a8a396;
+  font-style: italic;
+  margin-bottom: 1.75rem;
+}
+
+/* Progress */
+.scrying-progress-wrap {
+  width: 100%;
+  height: 6px;
+  background: #242424;
+  border: 1px solid #333333;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.scrying-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #d4af37;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+  transition: width 0.3s ease;
+}
+
+.scrying-progress-label {
+  font-size: 0.85rem;
+  color: #8c887b;
+  text-align: right;
+  margin-bottom: 1.75rem;
+  font-style: italic;
+}
+
+/* Question */
+.scrying-question {
+  font-family: 'Cinzel Decorative', Georgia, serif;
+  color: #f4ecd8;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.scrying-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.scrying-option-btn {
+  background: #141413;
+  border: 1px solid #2d2b27;
+  color: #e8e2cf;
+  padding: 1rem 1.2rem;
+  border-radius: 6px;
+  text-align: left;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.scrying-option-btn:hover,
+.scrying-option-btn:focus-visible {
+  border-color: #d4af37;
+  background: #1c1b18;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+}
+
+.scrying-option-btn:focus-visible {
+  outline: none;
+}
+
+.scrying-option-marker {
+  font-family: 'Cinzel Decorative', Georgia, serif;
+  color: #d4af37;
+  font-weight: 600;
+  min-width: 20px;
+}
+
+.scrying-back-link {
+  background: none;
+  border: none;
+  color: #8c887b;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  cursor: pointer;
+  margin-top: 1.25rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.scrying-back-link:hover {
+  color: #d4af37;
+}
+
+/* Results */
+.scrying-result {
+  display: none;
+}
+
+.scrying-result-badge {
+  display: inline-block;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-family: 'Cinzel Decorative', Georgia, serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
+.scrying-result-title {
+  font-family: 'Cinzel Decorative', Georgia, serif;
+  font-size: 1.9rem;
+  color: #d4af37;
+  margin-bottom: 0.6rem;
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+}
+
+.scrying-result-tagline {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.1rem;
+  color: #c2beaf;
+  font-style: italic;
+  margin-bottom: 1.25rem;
+}
+
+.scrying-result-body {
+  color: #c2beaf;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.scrying-next-step {
+  background: #141413;
+  border: 1px solid #2d2b27;
+  border-left: 3px solid #d4af37;
+  padding: 1rem 1.3rem;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 1rem;
+}
+
+.scrying-next-step h5 {
+  font-family: 'Cinzel Decorative', Georgia, serif;
+  color: #f4ecd8;
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+}
+
+.scrying-next-step p {
+  font-size: 0.98rem;
+  color: #c2beaf;
+  line-height: 1.5;
+  margin-bottom: 0.7rem;
+}
+
+.scrying-next-step a {
+  display: inline-block;
+  color: #121212;
+  background: #d4af37;
+  padding: 0.5rem 1.1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.scrying-next-step a:hover {
+  background: #b89628;
+}
+
+.scrying-etsy-nudge {
+  font-size: 0.92rem;
+  color: #8c887b;
+  margin-bottom: 1.75rem;
+  line-height: 1.5;
+}
+
+.scrying-etsy-nudge a {
+  color: #d4af37;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.scrying-etsy-nudge a:hover {
+  color: #f4ecd8;
+}
+
+.scrying-result-actions {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.scrying-action-btn {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 0.8rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  flex: 1;
+  min-width: 160px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.scrying-restart-btn {
+  background: #d4af37;
+  color: #121212;
+  border: none;
+}
+
+.scrying-restart-btn:hover {
+  background: #b89628;
+}
+
+.scrying-share-btn {
+  background: transparent;
+  color: #d4af37;
+  border: 1px solid #4a4a4a;
+}
+
+.scrying-share-btn:hover {
+  border-color: #d4af37;
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.scrying-share-confirm {
+  font-size: 0.85rem;
+  color: #a8a396;
+  font-style: italic;
+  margin-top: 0.7rem;
+  min-height: 1.2em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrying-option-btn, .scrying-progress-bar, .scrying-action-btn {
+    transition: none;
+  }
+}
   padding: 2px 8px;
   border-radius: 3px;
 }
