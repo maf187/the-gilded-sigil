@@ -1,470 +1,325 @@
 ---
 layout: default
-title: "The Scrying Glass"
+title: The Scrying Glass
 description: "Take the witch archetype quiz — The Crucible of Practice reveals your magical path and points you to the ritual tools that fit it."
-permalink: /scrying-glass/
+permalink: /scrying-glass.html
 ---
+<section class="sigil-container scrying-container">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Inner Chamber — Esoteric Diagnostics & Quizzes</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+  <div class="article-header">
+    <h2>The Scrying Glass</h2>
+    <p style="margin-bottom: 0; color: #c2beaf;">
+      The Crucible of Practice — answer honestly, there are no wrong workings.
+    </p>
+  </div>
 
-  <style>
-    :root {
-      --bg-dark: #09080d;
-      --card-bg: #14131b;
-      --card-hover: #1b1924;
-      --border: #272433;
-      --border-accent: #3d384f;
-      --accent-gold: #c9a55c;
-      --accent-gold-hover: #e2c07c;
-      --text-main: #ede9e3;
-      --text-muted: #9590a3;
-      --font-serif: "Cinzel", "Georgia", serif;
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: var(--font-sans);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(201, 165, 92, 0.08) 0%, transparent 60%),
-        radial-gradient(circle at 80% 80%, rgba(39, 36, 51, 0.4) 0%, transparent 50%);
-    }
-
-    /* Navigation Bar */
-    .top-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      border-bottom: 1px solid var(--border);
-      background: rgba(9, 8, 13, 0.8);
-      backdrop-filter: blur(10px);
-    }
-
-    .brand-title {
-      font-family: var(--font-serif);
-      font-size: 1.1rem;
-      letter-spacing: 2px;
-      color: var(--accent-gold);
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--accent-gold);
-    }
-
-    /* Container */
-    .main-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 50px 24px 80px 24px;
-      width: 100%;
-      flex: 1;
-    }
-
-    /* Header */
-    .portal-header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .eyebrow {
-      font-family: var(--font-serif);
-      font-size: 0.85rem;
-      letter-spacing: 3px;
-      color: var(--accent-gold);
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .portal-title {
-      font-family: var(--font-serif);
-      font-size: 2.6rem;
-      color: #fff;
-      margin-bottom: 14px;
-      font-weight: 600;
-    }
-
-    .portal-description {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      max-width: 580px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* Featured Crucible Hero Card */
-    .featured-card {
-      background: linear-gradient(135deg, #181622 0%, #111018 100%);
-      border: 1px solid var(--border-accent);
-      border-radius: 16px;
-      padding: 40px;
-      margin-bottom: 50px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
-    }
-
-    .featured-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(201, 165, 92, 0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .badge {
-      display: inline-block;
-      align-self: flex-start;
-      border: 1px solid var(--accent-gold);
-      color: var(--accent-gold);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-family: var(--font-serif);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
-    .featured-title {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      color: #fff;
-    }
-
-    .featured-desc {
-      color: var(--text-muted);
-      line-height: 1.6;
-      max-width: 680px;
-      font-size: 1rem;
-    }
-
-    .featured-meta {
-      display: flex;
-      gap: 24px;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-
-    .featured-meta span {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .primary-btn {
-      display: inline-block;
-      background: var(--accent-gold);
-      color: #09080d;
-      font-family: var(--font-serif);
-      font-weight: 700;
-      padding: 14px 28px;
-      border-radius: 8px;
-      text-decoration: none;
-      width: fit-content;
-      transition: all 0.2s ease;
-      letter-spacing: 1px;
-    }
-
-    .primary-btn:hover {
-      background: var(--accent-gold-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(201, 165, 92, 0.3);
-    }
-
-    /* Filters & Grid */
-    .filter-bar {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .filter-btn:hover, .filter-btn.active {
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
-      background: rgba(201, 165, 92, 0.05);
-    }
-
-    .quiz-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 24px;
-    }
-
-    .quiz-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.2s ease;
-      position: relative;
-    }
-
-    .quiz-card:hover {
-      background: var(--card-hover);
-      border-color: var(--border-accent);
-      transform: translateY(-3px);
-    }
-
-    .card-top {
-      margin-bottom: 20px;
-    }
-
-    .card-category {
-      font-family: var(--font-serif);
-      font-size: 0.75rem;
-      color: var(--accent-gold);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    .card-title {
-      font-family: var(--font-serif);
-      font-size: 1.3rem;
-      color: #fff;
-      margin-bottom: 10px;
-    }
-
-    .card-desc {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    .card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .card-meta {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .card-link {
-      color: var(--accent-gold);
-      text-decoration: none;
-      font-family: var(--font-serif);
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    .card-link:hover {
-      text-decoration: underline;
-    }
-
-    .card-disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .status-badge {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      background: #1e1b29;
-      padding: 3px 8px;
-      border-radius: 4px;
-    }
-
-    @media (max-width: 768px) {
-      .top-nav {
-        padding: 16px 20px;
-      }
-      .featured-card {
-        padding: 24px;
-      }
-      .portal-title {
-        font-size: 2rem;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Top Navigation -->
-  <nav class="top-nav">
-    <a href="/" class="brand-title">The Gilded Sigil</a>
-    <div class="nav-links">
-      <a href="/sigil-creator">Sigil Wheel</a>
-      <a href="/spell-jars">Spell Jars</a>
-      <a href="/daily">Daily Altar</a>
-      <a href="/grimoire">Grimoire</a>
-      <a href="/quizzes" class="active">Diagnostics</a>
+  <!-- Active Question View -->
+  <div id="quiz-screen">
+    <div class="scrying-progress-wrap">
+      <div class="scrying-progress-bar" id="progress-bar"></div>
     </div>
-  </nav>
+    <p class="scrying-progress-label" id="progress-label"></p>
 
-  <!-- Main Content -->
-  <main class="main-container">
-    
-    <header class="portal-header">
-      <div class="eyebrow">The Mirror of Practice</div>
-      <h1 class="portal-title">Esoteric Diagnostics</h1>
-      <p class="portal-description">
-        Assess your working currents, uncover subconscious affinities, and align your craft with tools designed for your natural strengths.
-      </p>
-    </header>
+    <h3 class="scrying-question" id="question-text"></h3>
+    <div class="scrying-options" id="options-container"></div>
 
-    <!-- Featured Hero Assessment -->
-    <section class="featured-card">
-      <span class="badge">Core Diagnostic</span>
-      <h2 class="featured-title">The Crucible of Practice: What Kind of Witch Are You?</h2>
-      <p class="featured-desc">
-        A 7-question diagnostic stripping away pop-culture labels to identify how you actually command energy, source materia, and relate to the unseen. Includes personalized tool pairings and hybrid archetype identification.
-      </p>
-      
-      <div class="featured-meta">
-        <span>⏱ 3 Minutes</span>
-        <span>✦ 7 Scored Inquiries</span>
-        <span>🔮 6 Authentic Archetypes</span>
-      </div>
+    <button type="button" class="scrying-back-link" id="back-btn" onclick="scryingGoBack()">&larr; Back</button>
+  </div>
 
-      <!-- Links to your standalone quiz file or modal -->
-      <a href="/quiz-crucible" class="primary-btn">Begin the Diagnostic &rarr;</a>
-    </section>
+  <!-- Results View -->
+  <div id="result-screen" class="scrying-result">
+    <span class="scrying-result-badge">Diagnosis Complete</span>
+    <h3 class="scrying-result-title" id="result-archetype"></h3>
+    <p class="scrying-result-tagline" id="result-tagline"></p>
+    <p class="scrying-result-body" id="result-description"></p>
 
-    <!-- Filter Buttons -->
-    <div class="filter-bar">
-      <button class="filter-btn active" onclick="filterCards('all')">All Chambers</button>
-      <button class="filter-btn" onclick="filterCards('archetype')">Archetypes & Currents</button>
-      <button class="filter-btn" onclick="filterCards('tools')">Materia & Tools</button>
-      <button class="filter-btn" onclick="filterCards('astral')">Timing & Astral</button>
+    <div class="scrying-next-step">
+      <h5 id="next-step-heading">Where to go from here</h5>
+      <p id="next-step-body"></p>
+      <a id="next-step-link" href="#">Try it</a>
     </div>
 
-    <!-- Quiz Grid -->
-    <div class="quiz-grid">
+    <p class="scrying-etsy-nudge" id="etsy-nudge"></p>
 
-      <!-- Card 1: Active Crucible -->
-      <div class="quiz-card" data-category="archetype">
-        <div class="card-top">
-          <span class="card-category">Archetype</span>
-          <h3 class="card-title">The Crucible of Practice</h3>
-          <p class="card-desc">Determine whether your current aligns with Chaos Magick, Folk Tradition, Green Hedge craft, or left-hand currents.</p>
-        </div>
-        <div class="card-footer">
-          <span class="card-meta">7 Questions</span>
-          <a href="/quiz-crucible" class="card-link">Enter &rarr;</a>
-        </div>
-      </div>
-
-      <!-- Card 2: Future / Upcoming Idea -->
-      <div class="quiz-card" data-category="tools">
-        <div class="card-top">
-          <span class="card-category">Materia</span>
-          <h3 class="card-title">Botanical & Vessel Resonance</h3>
-          <p class="card-desc">Find which resin, roots, and binding seals have the highest natural vibration for your current spellcraft goals.</p>
-        </div>
-        <div class="card-footer">
-          <span class="status-badge">Curriculum Vault</span>
-          <a href="/spell-jars" class="card-link">Open Architect &rarr;</a>
-        </div>
-      </div>
-
-      <!-- Card 3: Future / Upcoming Idea -->
-      <div class="quiz-card" data-category="astral">
-        <div class="card-top">
-          <span class="card-category">Timing & Astral</span>
-          <h3 class="card-title">Planetary Hour Alignment</h3>
-          <p class="card-desc">Calibrate which celestial sphere (Mars for defense, Venus for cohesion, Mercury for swiftness) rules your present work.</p>
-        </div>
-        <div class="card-footer">
-          <span class="status-badge">Live Tool</span>
-          <a href="/daily" class="card-link">View Sky &rarr;</a>
-        </div>
-      </div>
-
-      <!-- Card 4: Future Assessment -->
-      <div class="quiz-card" data-category="archetype">
-        <div class="card-top">
-          <span class="card-category">Subconscious</span>
-          <h3 class="card-title">The Shadow & Cord Diagnostic</h3>
-          <p class="card-desc">Uncover stagnant energetic ties, psychic leeches, or unresolved vows ready for banishing and severing.</p>
-        </div>
-        <div class="card-footer">
-          <span class="status-badge">Coming Soon</span>
-          <span class="card-meta">In Development</span>
-        </div>
-      </div>
-
+    <div class="scrying-result-actions">
+      <button type="button" class="scrying-action-btn scrying-restart-btn" onclick="restartScrying()">Retake the Diagnostic</button>
+      <button type="button" class="scrying-action-btn scrying-share-btn" onclick="shareScryingResult()">Share My Result</button>
     </div>
+    <p class="scrying-share-confirm" id="share-confirm"></p>
+  </div>
 
-  </main>
+</section>
 
-  <script>
-    function filterCards(category) {
-      const buttons = document.querySelectorAll('.filter-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+<script>
+  const scryingQuestions = [
+    {
+      question: "You are setting up your core working space. What takes center stage on your table or surface?",
+      options: [
+        { text: "An impromptu sketch on scrap paper, earbuds, and a charged personal symbol.", type: "chaos" },
+        { text: "A cast-iron pot, crossroads dirt, a bone needle, and family heirloom wax.", type: "traditional" },
+        { text: "Bunches of wildcrafted mugwort, mortar and pestle, raw beeswax, and garden loam.", type: "green" },
+        { text: "Clear quartz cluster, white copal resin, coarse salt, and protective selenite.", type: "white" },
+        { text: "An astrolabe, planetary sigil parchment, and a meticulous ephemeris calendar.", type: "cosmic" },
+        { text: "An obsidian scrying mirror, iron keys, dragon's blood ink, and graveyard dirt.", type: "shadow" }
+      ]
+    },
+    {
+      question: "An unexpected energetic blockage or hostile pattern crosses your path. How do you respond?",
+      options: [
+        { text: "Hack subconscious neural pathways using rapid breathwork or gnostic trance to break the loop.", type: "chaos" },
+        { text: "Divine with bones or cards to discover which ancestor, spirit, or neighbor sent it.", type: "traditional" },
+        { text: "Brew a wash of stinging nettle, rue, and vinegar to scrub down physical thresholds.", type: "green" },
+        { text: "Sever cords via visualized white fire and seal the aura in mirrored crystal light.", type: "white" },
+        { text: "Analyze current planetary transits for Saturnian stress and strike back at an auspicious hour.", type: "cosmic" },
+        { text: "Confront the shadow head-on: capture, bind, or reflect the current directly back to source.", type: "shadow" }
+      ]
+    },
+    {
+      question: "How do you prefer to source your physical materia and working tools?",
+      options: [
+        { text: "Whatever is within arm's reach: receipts, blue markers, spare hardware, or phone apps.", type: "chaos" },
+        { text: "Passed-down recipes, local forest crossings, antique curio counters, and wild riverbeds.", type: "traditional" },
+        { text: "Foraged native botanicals, homegrown herbs, garden soil, rain water, and bird feathers.", type: "green" },
+        { text: "Ethically harvested crystals, certified essential oils, pure beeswax, and sea salt.", type: "white" },
+        { text: "Metals and parchment prepared strictly during the planetary day and hour of their ruler.", type: "cosmic" },
+        { text: "Nightshade family botanicals, rusted railway spikes, bone, and dark river stones.", type: "shadow" }
+      ]
+    },
+    {
+      question: "Which definition of magical success matters most to you?",
+      options: [
+        { text: "Tangible, observable real-world results — no matter how strange or unconventional the technique.", type: "chaos" },
+        { text: "Honoring ancestral currents, preserving folk heritage, and maintaining pacts with local spirits.", type: "traditional" },
+        { text: "Restoring living equilibrium, physical healing, kitchen vitality, and seasonal harmony.", type: "green" },
+        { text: "Spiritual purification, uplifting others, and clearing stagnant or dark vibrations.", type: "white" },
+        { text: "Aligning the mortal will with cosmic architecture and astronomical mathematical harmony.", type: "cosmic" },
+        { text: "Self-deification, sovereign power reclamation, and mastering the unvarnished subconscious.", type: "shadow" }
+      ]
+    },
+    {
+      question: "When do you feel your magic runs strongest?",
+      options: [
+        { text: "Whenever inspiration strikes, schedule be damned — 3am epiphanies count.", type: "chaos" },
+        { text: "At the same threshold hours worked by generations before me — dusk, dawn, the turn of seasons.", type: "traditional" },
+        { text: "In sync with the garden's own calendar — planting moons, harvest moons, first frost.", type: "green" },
+        { text: "Under a full moon, when the veil is calm and the light runs clean.", type: "white" },
+        { text: "During calculated planetary hours and precise lunar mansions — timing is everything.", type: "cosmic" },
+        { text: "In the dark moon's hush, when the world stops watching.", type: "shadow" }
+      ]
+    },
+    {
+      question: "How do you keep track of what you learn and practice?",
+      options: [
+        { text: "Whatever sticks in the moment — voice memos, phone notes, half a napkin.", type: "chaos" },
+        { text: "A family grimoire, passed down and added to in the margins.", type: "traditional" },
+        { text: "A garden journal noting what grew, what worked, what the soil told me.", type: "green" },
+        { text: "A clean, organized book of light — dates, intentions, small gratitudes.", type: "white" },
+        { text: "A meticulous log cross-referenced against transits and lunar phases.", type: "cosmic" },
+        { text: "A private black book, written for no eyes but my own.", type: "shadow" }
+      ]
+    },
+    {
+      question: "Pick the spell jar you'd brew tonight, if you had to choose one:",
+      options: [
+        { text: "Whatever intention matches my mood the second I start pouring.", type: "chaos" },
+        { text: "A protection jar using a recipe passed through the family.", type: "traditional" },
+        { text: "A healing jar layered with garden herbs and honey.", type: "green" },
+        { text: "A clarity and cleansing jar with salt and white flowers.", type: "white" },
+        { text: "A manifestation jar timed to tonight's exact moon phase.", type: "cosmic" },
+        { text: "A binding jar, sealed in black wax, no apologies.", type: "shadow" }
+      ]
+    }
+  ];
 
-      const cards = document.querySelectorAll('.quiz-card');
-      cards.forEach(card => {
-        if (category === 'all' || card.dataset.category === category) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
+  const scryingArchetypes = {
+    chaos: {
+      title: "The Chaos Magickian",
+      tagline: "\"Nothing is true; everything is permitted.\"",
+      description: "You are a pragmatist, an experimenter, and a paradigm hacker. You understand that ritual tools, words, and dogmas are simply sensory triggers to hack your subconscious. If an ancient sigil method works, you use it; if drawing a glyph on a sticky note with a sharpie during an adrenaline rush works faster, you do that. You prioritize results over pedigree.",
+      nextStepHeading: "Charge a sigil, right now",
+      nextStepBody: "Your style rewards instinct over ceremony. Run your next intention through the Sigil Forge and charge it your way.",
+      nextStepLink: "/sigil-forge.html",
+      etsy: "If you'd rather have someone else read the chaos for you, browse <a href=\"/atelier.html\">The Atelier</a> for a piece to work with instead."
+    },
+    traditional: {
+      title: "The Traditional / Folk Witch",
+      tagline: "\"The old ways walk when the bone calls the spirit.\"",
+      description: "Your practice is anchored in lineage, regional folklore, spirit pacts, and the raw power of the land. You look to historical grimoires, ancestral veneration, and time-tested folk remedies rather than modern eclectic trends. You understand that magic is a reciprocal relationship with the unseen inhabitants around you.",
+      nextStepHeading: "Read the old recipes",
+      nextStepBody: "Folk practice lives in the details. Browse the Grimoire for ancestral-style rituals and seasonal folk workings.",
+      nextStepLink: "/articles.html",
+      etsy: "A piece from <a href=\"/atelier.html\">The Atelier</a> themed around lineage and ancestry suits your path well."
+    },
+    green: {
+      title: "The Green / Hedge Witch",
+      tagline: "\"As deep the roots, so wide the branches.\"",
+      description: "Your craft is organic, sensory, and rooted in the soil. You communicate naturally with botanical spirits, the cycles of weather, and the liminal hedges separating cultivated civilization from the untamed wild. You excel at salves, herbal macerations, home protection, and working with living materia.",
+      nextStepHeading: "Brew something living",
+      nextStepBody: "Put your green thumb to work — build an herbal spell jar suited to what's in season right now.",
+      nextStepLink: "/spell-jars.html",
+      etsy: "For deeper root-work, browse <a href=\"/atelier.html\">The Atelier</a> for something to anchor your practice."
+    },
+    white: {
+      title: "The White / Lightworker Practitioner",
+      tagline: "\"Let every rite be an illumination and a shelter.\"",
+      description: "You walk a path dedicated to healing, purification, benevolent service, and energetic hygiene. You work fluidly with celestial currents, crystalline structures, and the auric body. Your focus is safeguarding the sanctuary of the mind and restoring harmony to chaotic environments.",
+      nextStepHeading: "Check today's energy first",
+      nextStepBody: "Before you cleanse or protect, see where the sky and cards stand — check today's Daily Altar.",
+      nextStepLink: "/daily-altar.html",
+      etsy: "Browse <a href=\"/atelier.html\">The Atelier</a> for a piece that supports clarity and cleansing work."
+    },
+    cosmic: {
+      title: "The Cosmic / Astrological Witch",
+      tagline: "\"As above, so below; as within, so without.\"",
+      description: "You believe the universe operates on sacred geometry, astronomical rhythms, and planetary currents. You rarely cast a spell on a whim — you calculate planetary hours, moon mansions, and transit aspects to ride the tide of cosmic momentum. Your craft is deliberate, mathematical, and deeply intentional.",
+      nextStepHeading: "Time it right",
+      nextStepBody: "Timing is your whole craft. Check today's moon phase and numerology at the Daily Altar before you commit to a working.",
+      nextStepLink: "/daily-altar.html",
+      etsy: "Browse <a href=\"/atelier.html\">The Atelier</a> for a piece to work with during your next favorable transit."
+    },
+    shadow: {
+      title: "The Shadow / Left-Hand Practitioner",
+      tagline: "\"In the blackest earth, the diamond takes its shape.\"",
+      description: "You do not shy away from the taboo, the chthonic, or the uncomfortable corners of the human psyche. You practice boundary work, baneful protection, necromantic communion, and deep shadow integration. For you, authentic magic requires meeting reality without blinders or sentimental illusions.",
+      nextStepHeading: "Do the binding work",
+      nextStepBody: "Build a binding or boundary jar suited to what needs sealing away right now.",
+      nextStepLink: "/spell-jars.html",
+      etsy: "Browse <a href=\"/atelier.html\">The Atelier</a> for something suited to deeper shadow work."
+    },
+    hybrid: {
+      title: "The Threshold Walker",
+      tagline: "\"Two roads, one crossing.\"",
+      description: "Your answers were evenly split — which usually means you genuinely work between two currents rather than settling into one. That's not indecision, it's range. Read the descriptions for your top-scoring archetypes below and see which one you lean on for which kind of work.",
+      nextStepHeading: "Explore both sides",
+      nextStepBody: "Browse the Grimoire — hybrid practitioners often find their style articulated across a few different articles rather than one.",
+      nextStepLink: "/articles.html",
+      etsy: "Not sure which side to lead with? Browse <a href=\"/atelier.html\">The Atelier</a> — a piece may help clarify which current is asking for attention right now."
+    }
+  };
+
+  let scryingCurrentQuestion = 0;
+  let scryingAnswers = [];
+  let scryingScores = { chaos: 0, traditional: 0, green: 0, white: 0, cosmic: 0, shadow: 0 };
+
+  const scryingQuestionTextEl = document.getElementById("question-text");
+  const scryingOptionsContainerEl = document.getElementById("options-container");
+  const scryingProgressBarEl = document.getElementById("progress-bar");
+  const scryingProgressLabelEl = document.getElementById("progress-label");
+  const scryingQuizScreenEl = document.getElementById("quiz-screen");
+  const scryingResultScreenEl = document.getElementById("result-screen");
+  const scryingBackBtnEl = document.getElementById("back-btn");
+
+  function loadScryingQuestion() {
+    const q = scryingQuestions[scryingCurrentQuestion];
+    scryingQuestionTextEl.textContent = q.question;
+    scryingOptionsContainerEl.innerHTML = "";
+
+    const progressPercent = (scryingCurrentQuestion / scryingQuestions.length) * 100;
+    scryingProgressBarEl.style.width = `${progressPercent}%`;
+    scryingProgressLabelEl.textContent = `Question ${scryingCurrentQuestion + 1} of ${scryingQuestions.length}`;
+
+    scryingBackBtnEl.style.visibility = scryingCurrentQuestion === 0 ? "hidden" : "visible";
+
+    const markers = ["A", "B", "C", "D", "E", "F"];
+
+    q.options.forEach((opt, idx) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "scrying-option-btn";
+      btn.innerHTML = `<span class="scrying-option-marker">${markers[idx]}</span><span>${opt.text}</span>`;
+      btn.onclick = () => handleScryingChoice(opt.type);
+      scryingOptionsContainerEl.appendChild(btn);
+    });
+  }
+
+  function handleScryingChoice(type) {
+    scryingAnswers[scryingCurrentQuestion] = type;
+    scryingScores[type]++;
+    scryingCurrentQuestion++;
+
+    if (scryingCurrentQuestion < scryingQuestions.length) {
+      loadScryingQuestion();
+    } else {
+      showScryingResults();
+    }
+  }
+
+  function scryingGoBack() {
+    if (scryingCurrentQuestion === 0) return;
+    scryingCurrentQuestion--;
+    const previousType = scryingAnswers[scryingCurrentQuestion];
+    if (previousType) {
+      scryingScores[previousType]--;
+      scryingAnswers[scryingCurrentQuestion] = undefined;
+    }
+    loadScryingQuestion();
+  }
+
+  function getScryingWinningTypes() {
+    let highestScore = -1;
+    for (const score of Object.values(scryingScores)) {
+      if (score > highestScore) highestScore = score;
+    }
+    return Object.entries(scryingScores)
+      .filter(([, score]) => score === highestScore)
+      .map(([type]) => type);
+  }
+
+  function showScryingResults() {
+    scryingQuizScreenEl.style.display = "none";
+    scryingResultScreenEl.style.display = "block";
+
+    const winners = getScryingWinningTypes();
+    let match;
+
+    if (winners.length === 1) {
+      match = scryingArchetypes[winners[0]];
+    } else {
+      match = { ...scryingArchetypes.hybrid };
+      const topTwo = winners.slice(0, 2).map(w => scryingArchetypes[w].title).join(" / ");
+      match.title = `${scryingArchetypes.hybrid.title}: ${topTwo}`;
+    }
+
+    document.getElementById("result-archetype").textContent = match.title;
+    document.getElementById("result-tagline").textContent = match.tagline;
+    document.getElementById("result-description").textContent = match.description;
+    document.getElementById("next-step-heading").textContent = match.nextStepHeading;
+    document.getElementById("next-step-body").textContent = match.nextStepBody;
+    document.getElementById("next-step-link").href = match.nextStepLink;
+    document.getElementById("etsy-nudge").innerHTML = match.etsy;
+
+    scryingResultScreenEl.dataset.resultTitle = match.title;
+  }
+
+  function shareScryingResult() {
+    const title = scryingResultScreenEl.dataset.resultTitle || "a witch archetype";
+    const shareText = `I got "${title}" on The Scrying Glass at The Gilded Sigil. What's yours?`;
+    const shareUrl = window.location.href;
+    const confirmEl = document.getElementById("share-confirm");
+
+    if (navigator.share) {
+      navigator.share({ title: "The Scrying Glass", text: shareText, url: shareUrl }).catch(() => {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(`${shareText} ${shareUrl}`).then(() => {
+        confirmEl.textContent = "Copied to clipboard — go paste it somewhere magical.";
+        setTimeout(() => { confirmEl.textContent = ""; }, 4000);
+      }).catch(() => {
+        confirmEl.textContent = shareText;
       });
+    } else {
+      confirmEl.textContent = shareText;
     }
-  </script>
-</body>
-</html>
+  }
+
+  function restartScrying() {
+    scryingCurrentQuestion = 0;
+    scryingAnswers = [];
+    scryingScores = { chaos: 0, traditional: 0, green: 0, white: 0, cosmic: 0, shadow: 0 };
+    document.getElementById("share-confirm").textContent = "";
+    scryingResultScreenEl.style.display = "none";
+    scryingQuizScreenEl.style.display = "block";
+    loadScryingQuestion();
+  }
+
+  loadScryingQuestion();
+</script>
