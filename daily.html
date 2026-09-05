@@ -5,218 +5,127 @@ description: "Daily tarot card, moon phase, and numerology — check today's cos
 permalink: /daily.html
 ---
 
-<!-- Tailwind CSS CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    corePlugins: {
-      preflight: false,
-    },
-    theme: {
-      extend: {
-        colors: {
-          brand: {
-            gold: '#d4af37',
-            goldHover: '#b89628',
-            container: '#1a1a1a',
-            card: '#141413',
-            borderDim: '#2d2b27',
-            textMain: '#e8e2cf',
-            textMuted: '#a8a396',
-            inputBg: '#242424',
-            inputBorder: '#4a4a4a'
-          }
-        },
-        fontFamily: {
-          display: ['"Cinzel Decorative"', 'Georgia', 'serif'],
-          body: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        }
-      }
-    }
-  }
-</script>
+<section class="sigil-container altar-container">
 
-<style>
-  /* Protective Shield for Main Nav */
-  .main-nav a {
-    font-family: 'Cinzel Decorative', Georgia, serif !important;
-    font-size: 1.05rem !important;
-    color: #d4af37 !important;
-    letter-spacing: 1.5px !important;
-  }
+  <div class="article-header">
+    <h2>The Daily Altar</h2>
+    <div class="altar-date-nav">
+      <button type="button" class="altar-date-btn" id="prev-day-btn">&larr; Yesterday</button>
+      <span class="divider">•</span>
+      <span id="active-date-display" class="altar-active-date"></span>
+      <span class="divider">•</span>
+      <button type="button" class="altar-date-btn" id="next-day-btn">Tomorrow &rarr;</button>
+    </div>
+  </div>
 
-  /* 3D Flip Card Styles */
-  .card-perspective {
-    perspective: 1000px;
-  }
-  .altar-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
-  }
-  .altar-card-inner.flipped {
-    transform: rotateY(180deg);
-  }
-  .card-front, .card-back {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    border-radius: 6px;
-  }
-  .card-back {
-    transform: rotateY(180deg);
-  }
-</style>
+  <div class="altar-stations">
 
-<div class="w-full text-brand-textMain font-body py-8 px-4 sm:px-6">
-  
-  <!-- Master Grimoire Container -->
-  <div class="max-w-3xl mx-auto bg-brand-container border border-solid border-brand-gold rounded-[8px] p-6 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.7)] space-y-8">
-
-    <!-- Header & Date Switcher -->
-    <header class="text-center space-y-2 border-0 border-b border-solid border-brand-borderDim pb-6">
-      <h2 class="text-3xl sm:text-4xl font-display text-brand-gold tracking-[2px] uppercase drop-shadow-[0_0_12px_rgba(212,175,55,0.25)] m-0">
-        The Daily Altar
-      </h2>
-      
-      <div class="inline-flex items-center gap-3 pt-2 text-[1rem] font-body text-brand-textMuted italic">
-        <button id="prev-day-btn" class="hover:text-brand-gold transition bg-transparent border-none text-inherit p-0 font-inherit cursor-pointer">← Yesterday</button>
-        <span class="text-brand-borderDim mx-1">•</span>
-        <span id="active-date-display" class="text-brand-textMain font-semibold not-italic"></span>
-        <span class="text-brand-borderDim mx-1">•</span>
-        <button id="next-day-btn" class="hover:text-brand-gold transition bg-transparent border-none text-inherit p-0 font-inherit cursor-pointer">Tomorrow →</button>
-      </div>
-    </header>
-
-    <!-- Main Stations: The Sky & The Arcana -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      
-      <!-- Lunar Station -->
-      <div class="bg-brand-card border border-solid border-brand-borderDim rounded-[6px] p-5 flex flex-col justify-between space-y-4 shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
-        <div>
-          <div class="flex items-center justify-between border-0 border-b border-solid border-brand-borderDim pb-3">
-            <span class="text-[0.95rem] uppercase tracking-[1px] text-brand-gold font-body font-bold m-0">The Lunar Sky</span>
-            <span id="lunar-illumination" class="text-[0.95rem] text-brand-textMuted font-body"></span>
-          </div>
-
-          <div class="flex items-center gap-4 my-4">
-            <div id="moon-glyph" class="text-5xl filter drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] select-none"></div>
-            <div>
-              <h3 id="moon-sign" class="text-[1.15rem] font-body font-bold uppercase tracking-wide text-brand-textMain leading-tight m-0"></h3>
-              <p id="moon-element-quality" class="text-[1.05rem] text-brand-textMuted italic mt-1 m-0"></p>
-            </div>
-          </div>
-
-          <p id="moon-transit-message" class="text-[1.05rem] text-brand-textMain leading-[1.6] m-0"></p>
+    <!-- Lunar Station -->
+    <div class="altar-station-card">
+      <div>
+        <div class="altar-station-header">
+          <span class="altar-station-label">The Lunar Sky</span>
+          <span id="lunar-illumination" class="altar-station-meta"></span>
         </div>
 
-        <div class="pt-3 border-0 border-t border-solid border-brand-borderDim flex items-center justify-between text-[0.95rem]">
-          <span class="text-brand-textMuted">Void-of-Course:</span>
-          <span id="voc-badge" class="font-body text-[#709b78]">Flowing Ingress</span>
-        </div>
-      </div>
-
-      <!-- Arcana Station -->
-      <div class="bg-brand-card border border-solid border-brand-borderDim rounded-[6px] p-5 flex flex-col justify-between items-center text-center space-y-3 shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
-        <div class="w-full flex items-center justify-between border-0 border-b border-solid border-brand-borderDim pb-3">
-          <span class="text-[0.95rem] uppercase tracking-[1px] text-brand-gold font-body font-bold m-0">Daily Mirror</span>
-          <span id="card-state-label" class="text-[0.95rem] text-brand-textMuted font-body">Tap to Reveal</span>
-        </div>
-
-        <!-- Flip Container -->
-        <div class="w-44 h-64 card-perspective cursor-pointer select-none my-1" id="tarot-card-trigger">
-          <div class="altar-card-inner" id="tarot-card-inner">
-            
-            <!-- Front / Sigil Backing -->
-            <div class="card-front bg-brand-container border border-solid border-brand-gold/40 flex flex-col items-center justify-center p-3 shadow-lg">
-              <div class="text-3xl text-brand-gold mb-2 animate-pulse">✧ 🜚 ✧</div>
-              <span class="text-[0.95rem] font-body font-bold text-brand-textMain tracking-wider uppercase">Tap to Unveil</span>
-              <span class="text-[0.9rem] text-brand-textMuted mt-2 italic font-body">Card of the Day</span>
-            </div>
-
-            <!-- Back / Revealed Card -->
-            <div class="card-back bg-brand-container border border-solid border-brand-gold/80 flex flex-col justify-between p-4 shadow-xl">
-              <span id="tarot-num" class="text-[0.8rem] font-body font-bold uppercase tracking-widest text-brand-gold m-0"></span>
-              <div>
-                <div id="tarot-glyph" class="text-5xl my-1 filter drop-shadow-[0_0_10px_rgba(212,175,55,0.35)]"></div>
-                <h4 id="tarot-title" class="text-[1.25rem] font-display text-brand-textMain m-0"></h4>
-              </div>
-              <p id="tarot-essence" class="text-[1rem] font-body text-brand-textMuted italic m-0"></p>
-            </div>
-
+        <div class="moon-glyph-row">
+          <div id="moon-glyph" class="moon-glyph"></div>
+          <div>
+            <h3 id="moon-sign" class="moon-sign-title"></h3>
+            <p id="moon-element-quality" class="moon-element-quality"></p>
           </div>
         </div>
 
-        <p id="tarot-message" class="text-[1.05rem] text-brand-textMuted leading-tight italic min-h-[32px] flex items-center justify-center m-0">
-          Tap the sigil to reveal your archetypal guide for the day.
-        </p>
+        <p id="moon-transit-message" class="moon-transit-message"></p>
       </div>
 
+      <div class="altar-station-footer">
+        <span>Void-of-Course:</span>
+        <span id="voc-badge" class="voc-flowing">Flowing Ingress</span>
+      </div>
     </div>
 
-    <!-- Sacred Numerology Matrix -->
-    <div class="bg-brand-card border border-solid border-brand-borderDim rounded-[6px] p-5 space-y-4 shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
-      
-      <!-- Top Numerology Summary Bar -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-0 border-b border-solid border-brand-borderDim pb-3">
-        <div class="flex items-center gap-4">
-          <div id="u-day-badge" class="w-12 h-12 rounded-[4px] bg-brand-container border border-solid border-brand-gold/50 flex items-center justify-center font-display text-xl text-brand-gold">
-            -
-          </div>
-          <div>
-            <div class="text-[0.95rem] uppercase tracking-[1px] text-brand-gold font-body font-bold m-0">Universal Day</div>
-            <div id="u-day-title" class="text-[1.2rem] font-body font-bold uppercase tracking-wide text-brand-textMain mt-1 m-0"></div>
-          </div>
-        </div>
+    <!-- Arcana Station -->
+    <div class="altar-station-card arcana-station-card">
+      <div class="altar-station-header" style="width: 100%;">
+        <span class="altar-station-label">Daily Mirror</span>
+        <span id="card-state-label" class="altar-station-meta">Tap to Reveal</span>
+      </div>
 
-        <!-- Universal Month & Year Context -->
-        <div class="text-left sm:text-right font-body text-[1.05rem] text-brand-textMuted space-y-0.5 italic">
-          <div class="m-0">Universal Month: <span id="u-month-val" class="text-brand-textMain not-italic font-semibold"></span></div>
-          <div class="m-0">Universal Year: <span id="u-year-val" class="text-brand-textMain not-italic font-semibold"></span></div>
+      <div class="card-perspective" id="tarot-card-trigger">
+        <div class="altar-card-inner" id="tarot-card-inner">
+
+          <div class="card-front">
+            <div class="card-front-glyphs">&#10023; &#128346; &#10023;</div>
+            <span class="card-front-label">Tap to Unveil</span>
+            <span class="card-front-sublabel">Card of the Day</span>
+          </div>
+
+          <div class="card-back">
+            <span id="tarot-num" class="tarot-num"></span>
+            <div>
+              <div id="tarot-glyph" class="tarot-glyph"></div>
+              <h4 id="tarot-title" class="tarot-title"></h4>
+            </div>
+            <p id="tarot-essence" class="tarot-essence"></p>
+          </div>
+
         </div>
       </div>
 
-      <!-- One-Line Universal Day Summary -->
-      <p id="u-day-summary" class="text-[1.1rem] text-brand-textMain leading-[1.6] m-0"></p>
-
-      <!-- Personal Numerology Calculator -->
-      <div class="pt-3 border-0 border-t border-solid border-brand-borderDim/60">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div class="text-[1.05rem] text-brand-textMuted flex items-center gap-2 m-0">
-            <span class="text-brand-gold font-body font-bold uppercase text-[0.9rem] tracking-wide">Personal Vibration:</span>
-            <span class="italic">Enter birthdate for personal alignment</span>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <input type="date" id="bday-input" class="bg-brand-inputBg border border-solid border-brand-inputBorder text-brand-textMain font-body text-[1.05rem] rounded-[4px] px-3 py-2 focus:outline-none focus:border-brand-gold w-40" />
-            <button id="calc-pday-btn" class="bg-brand-gold hover:bg-brand-goldHover text-[#121212] font-body text-[1rem] font-semibold tracking-[1px] px-4 py-2 rounded-[4px] transition border-none cursor-pointer">
-              Calculate
-            </button>
-          </div>
-        </div>
-
-        <!-- Personal Result Banner -->
-        <div id="personal-day-result" class="mt-4 p-3 rounded-[4px] bg-brand-container border border-solid border-brand-borderDim hidden flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div>
-            <span class="text-brand-gold font-body font-bold uppercase tracking-wide text-[1.05rem] m-0" id="p-day-title"></span>
-            <span class="text-brand-textMain font-body text-[1.05rem] ml-1.5 m-0" id="p-day-summary"></span>
-          </div>
-          <div class="flex items-center gap-2 flex-shrink-0 font-body text-[0.95rem]">
-            <span id="p-month-badge" class="px-2 py-1 rounded-[3px] bg-brand-inputBg border border-solid border-brand-borderDim text-brand-gold m-0"></span>
-            <span id="p-year-badge" class="px-2 py-1 rounded-[3px] bg-brand-inputBg border border-solid border-brand-borderDim text-brand-gold m-0"></span>
-          </div>
-        </div>
-      </div>
-
+      <p id="tarot-message" class="tarot-message">
+        Tap the sigil to reveal your archetypal guide for the day.
+      </p>
     </div>
 
   </div>
-</div>
+
+  <!-- Sacred Numerology Matrix -->
+  <div class="altar-numerology">
+
+    <div class="numerology-summary-bar">
+      <div class="numerology-day-badge-row">
+        <div id="u-day-badge" class="u-day-badge">-</div>
+        <div>
+          <div class="altar-station-label">Universal Day</div>
+          <div id="u-day-title" class="u-day-title"></div>
+        </div>
+      </div>
+
+      <div class="numerology-context">
+        <div>Universal Month: <span id="u-month-val" class="val"></span></div>
+        <div>Universal Year: <span id="u-year-val" class="val"></span></div>
+      </div>
+    </div>
+
+    <p id="u-day-summary" class="u-day-summary"></p>
+
+    <div class="personal-vibration-row">
+      <div class="personal-vibration-label">
+        <span class="tag">Personal Vibration:</span>
+        <span>Enter birthdate for personal alignment</span>
+      </div>
+
+      <div class="altar-input-group">
+        <input type="date" id="bday-input" />
+        <button type="button" id="calc-pday-btn">Calculate</button>
+      </div>
+    </div>
+
+    <div id="personal-day-result" class="personal-day-result">
+      <div>
+        <span id="p-day-title" class="p-day-title"></span>
+        <span id="p-day-summary" class="p-day-summary"></span>
+      </div>
+      <div class="p-badges">
+        <span id="p-month-badge"></span>
+        <span id="p-year-badge"></span>
+      </div>
+    </div>
+
+  </div>
+
+</section>
 
 <script>
 (function() {
@@ -232,7 +141,7 @@ permalink: /daily.html
     let D = 297.8501921 + 445267.1114034 * T - 0.0018819 * T * T;
 
     const toRad = Math.PI / 180;
-    let lambda = L0 
+    let lambda = L0
       + 6.288774 * Math.sin(M * toRad)
       + 1.274027 * Math.sin((2 * D - M) * toRad)
       + 0.658314 * Math.sin(2 * D * toRad)
@@ -366,10 +275,10 @@ permalink: /daily.html
     const voc = document.getElementById('voc-badge');
     if (lunar.isVoC) {
       voc.textContent = "Void-of-Course (Rest)";
-      voc.className = "font-body text-[#d99a4e] m-0";
+      voc.className = "voc-void";
     } else {
       voc.textContent = "Flowing Ingress";
-      voc.className = "font-body text-[#709b78] m-0";
+      voc.className = "voc-flowing";
     }
 
     document.getElementById('u-day-badge').textContent = num.uDay;
@@ -417,7 +326,7 @@ permalink: /daily.html
 
     const curYear = activeDate.getFullYear();
     const curYearReduced = reduceNum(curYear.toString().split('').reduce((acc, d) => acc + parseInt(d, 10), 0), false);
-    
+
     const pYear = reduceNum(bMonth + bDay + curYearReduced, false);
     const curMonth = activeDate.getMonth() + 1;
     const pMonth = reduceNum(pYear + curMonth, false);
@@ -426,8 +335,7 @@ permalink: /daily.html
     const pDayData = numDictionary[pDay] || numDictionary[reduceNum(pDay, false)];
 
     const resultBox = document.getElementById('personal-day-result');
-    resultBox.classList.remove('hidden');
-    resultBox.classList.add('flex');
+    resultBox.classList.add('show');
     document.getElementById('p-day-title').textContent = `Personal Day ${pDay} (${pDayData.title}):`;
     document.getElementById('p-day-summary').textContent = pDayData.summary;
     document.getElementById('p-month-badge').textContent = `Personal Month ${pMonth}`;
