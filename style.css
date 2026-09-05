@@ -788,3 +788,452 @@ select:focus {
   padding: 2px 8px;
   border-radius: 3px;
 }
+
+/* ==========================================================================
+   Daily Altar Module Styles
+   ========================================================================== */
+
+.altar-container {
+  max-width: 780px;
+}
+
+.altar-date-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+  font-style: italic;
+  color: #a8a396;
+}
+
+.altar-date-nav .divider {
+  color: #333333;
+  margin: 0 0.2rem;
+}
+
+.altar-date-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  font-style: italic;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.altar-date-btn:hover {
+  color: #d4af37;
+}
+
+.altar-active-date {
+  color: #f4ecd8;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.altar-stations {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+@media (min-width: 640px) {
+  .altar-stations {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.altar-station-card {
+  background: #141413;
+  border: 1px solid #2d2b27;
+  border-radius: 6px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.altar-station-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #2d2b27;
+  padding-bottom: 0.75rem;
+}
+
+.altar-station-label {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #d4af37;
+  font-weight: 700;
+}
+
+.altar-station-meta {
+  font-size: 0.95rem;
+  color: #a8a396;
+}
+
+.altar-station-footer {
+  padding-top: 0.75rem;
+  margin-top: 0.75rem;
+  border-top: 1px solid #2d2b27;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: #a8a396;
+}
+
+.voc-flowing {
+  color: #709b78;
+}
+
+.voc-void {
+  color: #d99a4e;
+}
+
+/* Lunar Station specifics */
+.moon-glyph-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.moon-glyph {
+  font-size: 2.75rem;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+}
+
+.moon-sign-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #e8e2cf;
+  margin: 0;
+}
+
+.moon-element-quality {
+  font-size: 1.05rem;
+  color: #a8a396;
+  font-style: italic;
+  margin: 0.2rem 0 0;
+}
+
+.moon-transit-message {
+  font-size: 1.05rem;
+  color: #e8e2cf;
+  line-height: 1.6;
+}
+
+/* Arcana Station specifics */
+.arcana-station-card {
+  align-items: center;
+  text-align: center;
+}
+
+.card-perspective {
+  perspective: 1000px;
+  width: 176px;
+  height: 256px;
+  cursor: pointer;
+  margin: 0.9rem 0;
+}
+
+.altar-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.altar-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.card-front {
+  background: #1a1a1a;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.card-front-glyphs {
+  font-size: 1.75rem;
+  color: #d4af37;
+  margin-bottom: 0.5rem;
+}
+
+.card-front-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #e8e2cf;
+}
+
+.card-front-sublabel {
+  font-size: 0.9rem;
+  color: #a8a396;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.card-back {
+  background: #1a1a1a;
+  border: 1px solid rgba(212, 175, 55, 0.8);
+  transform: rotateY(180deg);
+  justify-content: space-between;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+}
+
+.tarot-num {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #d4af37;
+}
+
+.tarot-glyph {
+  font-size: 2.75rem;
+  margin: 0.25rem 0;
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.35));
+}
+
+.tarot-title {
+  font-family: 'Cinzel Decorative', Georgia, serif;
+  font-size: 1.2rem;
+  color: #e8e2cf;
+  margin: 0;
+}
+
+.tarot-essence {
+  font-size: 0.95rem;
+  color: #a8a396;
+  font-style: italic;
+}
+
+.tarot-message {
+  font-size: 1.05rem;
+  color: #a8a396;
+  font-style: italic;
+  line-height: 1.4;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+/* Numerology Matrix */
+.altar-numerology {
+  background: #141413;
+  border: 1px solid #2d2b27;
+  border-radius: 6px;
+  padding: 1.25rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.numerology-summary-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: space-between;
+  border-bottom: 1px solid #2d2b27;
+  padding-bottom: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .numerology-summary-bar {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.numerology-day-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.u-day-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  background: #1a1a1a;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel Decorative', Georgia, serif;
+  font-size: 1.3rem;
+  color: #d4af37;
+  flex-shrink: 0;
+}
+
+.u-day-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #e8e2cf;
+  margin-top: 0.2rem;
+}
+
+.numerology-context {
+  font-size: 1.05rem;
+  color: #a8a396;
+  font-style: italic;
+  text-align: left;
+}
+
+@media (min-width: 640px) {
+  .numerology-context {
+    text-align: right;
+  }
+}
+
+.numerology-context .val {
+  color: #e8e2cf;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.u-day-summary {
+  font-size: 1.1rem;
+  color: #e8e2cf;
+  line-height: 1.6;
+  margin-top: 0.75rem;
+}
+
+.personal-vibration-row {
+  padding-top: 0.9rem;
+  margin-top: 0.9rem;
+  border-top: 1px solid rgba(45, 43, 39, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .personal-vibration-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.personal-vibration-label {
+  font-size: 1.05rem;
+  color: #a8a396;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.personal-vibration-label .tag {
+  color: #d4af37;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.altar-input-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+input[type="date"] {
+  background: #242424;
+  border: 1px solid #4a4a4a;
+  color: #f4ecd8;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  border-radius: 4px;
+  padding: 0.5rem 0.7rem;
+  width: 160px;
+  color-scheme: dark;
+}
+
+input[type="date"]:focus {
+  outline: none;
+  border-color: #d4af37;
+}
+
+.personal-day-result {
+  display: none;
+  margin-top: 1rem;
+  padding: 0.9rem;
+  border-radius: 4px;
+  background: #1a1a1a;
+  border: 1px solid #2d2b27;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.personal-day-result.show {
+  display: flex;
+}
+
+@media (min-width: 640px) {
+  .personal-day-result.show {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.p-day-title {
+  color: #d4af37;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 1.05rem;
+}
+
+.p-day-summary {
+  color: #e8e2cf;
+  font-size: 1.05rem;
+  margin-left: 0.4rem;
+}
+
+.p-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.p-badges span {
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+  background: #242424;
+  border: 1px solid #2d2b27;
+  color: #d4af37;
+}
