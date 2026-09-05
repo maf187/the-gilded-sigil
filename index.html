@@ -6,57 +6,17 @@ permalink: /
 ---
 
 <style>
-  .portal-wrapper {
-    max-width: 900px;
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  /* Ambient Media / Hero Section */
-  .portal-hero {
-    margin-bottom: 2.5rem;
-  }
-
-  .portal-eyebrow {
-    font-family: 'Cinzel Decorative', Georgia, serif;
-    font-size: 0.85rem;
-    letter-spacing: 3px;
-    color: #d4af37;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-    display: block;
-  }
-
-  .portal-headline {
-    font-family: 'Cinzel Decorative', Georgia, serif;
-    font-size: 2.2rem;
-    color: #f4ecd8;
-    margin-bottom: 0.8rem;
-    text-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
-  }
-
-  .portal-lead {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.2rem;
-    color: #a8a396;
-    max-width: 640px;
-    margin: 0 auto 1.75rem;
-    line-height: 1.6;
-    font-style: italic;
-  }
-
   /* Embedded Ambient Video Showcase */
   .ambient-frame-wrap {
     position: relative;
     width: 100%;
     padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
     height: 0;
-    border-radius: 8px;
+    border-radius: 6px;
     overflow: hidden;
     border: 1px solid #2d2b27;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
-    margin-bottom: 3rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+    margin: 1.75rem 0 2.25rem;
     background: #0d0d0d;
   }
 
@@ -73,9 +33,8 @@ permalink: /
   .chambers-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    text-align: left;
-    margin-bottom: 2.5rem;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
   }
 
   @media (min-width: 640px) {
@@ -88,35 +47,34 @@ permalink: /
     background: #141413;
     border: 1px solid #2d2b27;
     border-radius: 6px;
-    padding: 1.5rem;
+    padding: 1.3rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: all 0.25s ease;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     text-decoration: none;
     color: inherit;
   }
 
   .chamber-card:hover {
     border-color: #d4af37;
-    background: #1a1916;
-    transform: translateY(-2px);
-    box-shadow: 0 0 16px rgba(212, 175, 55, 0.2);
+    background: #1c1b18;
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
   }
 
   .chamber-glyph {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: #d4af37;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
     display: block;
   }
 
   .chamber-title {
     font-family: 'Cinzel Decorative', Georgia, serif;
     color: #d4af37;
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    margin: 0.2rem 0 0.4rem;
   }
 
   .chamber-desc {
@@ -124,7 +82,7 @@ permalink: /
     color: #c2beaf;
     font-size: 1.05rem;
     line-height: 1.5;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
   }
 
   .chamber-action {
@@ -134,27 +92,30 @@ permalink: /
     letter-spacing: 1px;
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.35rem;
   }
 
   .chamber-card:hover .chamber-action {
     color: #f4ecd8;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 </style>
 
-<div class="portal-wrapper">
+<section class="sigil-container" style="max-width: 850px; margin: 0 auto; text-align: left;">
 
-  <header class="portal-hero">
-    <span class="portal-eyebrow">The Threshold</span>
-    <h1 class="portal-headline">Enter the Sanctuary</h1>
-    <p class="portal-lead">
-      Where ancient current meets modern praxis. Select a chamber below to forge seals, brew materia, divine the celestial tides, or diagnose your craft.
+  <!-- Canonical Centered Header Matching The Grimoire & Scrying Glass -->
+  <div class="article-header">
+    <span class="scrying-eyebrow">The Sanctuary Portal</span>
+    <h2>The Gilded Sigil</h2>
+    <p style="margin-bottom: 0; color: #c2beaf;">
+      Where ancient current meets modern praxis. Select a chamber to forge seals, architect materia, track the celestial tides, or divine your path.
     </p>
-  </header>
+  </div>
 
   <!-- Ambient Video / Soundscape Player -->
   <div class="ambient-frame-wrap">
-    <!-- Replace VIDEO_ID with your channel's ambient video or trailer -->
+    <!-- Replace VIDEO_ID with your YouTube video ID (e.g., dQw4w9WgXcQ) -->
     <iframe 
       src="https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0&modestbranding=1" 
       title="The Gilded Sigil Ambient Soundscape" 
@@ -170,7 +131,7 @@ permalink: /
     <a href="/forge.html" class="chamber-card">
       <div>
         <span class="chamber-glyph">⛤</span>
-        <h2 class="chamber-title">The Sigil Forge</h2>
+        <h3 class="chamber-title">The Sigil Forge</h3>
         <p class="chamber-desc">
           Reduce intention statements and cast custom occult seals using an interactive witch's wheel and coordinate matrix.
         </p>
@@ -182,7 +143,7 @@ permalink: /
     <a href="/spell-jar.html" class="chamber-card">
       <div>
         <span class="chamber-glyph">🜂</span>
-        <h2 class="chamber-title">The Jar Alchemist</h2>
+        <h3 class="chamber-title">The Jar Alchemist</h3>
         <p class="chamber-desc">
           Architect visual witchcraft bottles, balancing herbs, crystals, bases, and color-coded sealing wax for your working.
         </p>
@@ -194,9 +155,9 @@ permalink: /
     <a href="/quizzes.html" class="chamber-card">
       <div>
         <span class="chamber-glyph">🪞</span>
-        <h2 class="chamber-title">The Scrying Glass</h2>
+        <h3 class="chamber-title">The Scrying Glass</h3>
         <p class="chamber-desc">
-          Take *The Crucible of Practice* diagnostic to discover how you naturally command energy, source materia, and relate to spirit.
+          Take <em>The Crucible of Practice</em> diagnostic to discover how you naturally command energy, source materia, and relate to spirit.
         </p>
       </div>
       <span class="chamber-action">Begin Diagnostic &rarr;</span>
@@ -206,7 +167,7 @@ permalink: /
     <a href="/daily.html" class="chamber-card">
       <div>
         <span class="chamber-glyph">☽</span>
-        <h2 class="chamber-title">The Daily Altar</h2>
+        <h3 class="chamber-title">The Daily Altar</h3>
         <p class="chamber-desc">
           Daily tarot reveals, real-time lunar sign transits, void-of-course warnings, and personal numerology vibrations.
         </p>
@@ -218,7 +179,7 @@ permalink: /
     <a href="/articles.html" class="chamber-card">
       <div>
         <span class="chamber-glyph">📜</span>
-        <h2 class="chamber-title">The Grimoire</h2>
+        <h3 class="chamber-title">The Grimoire</h3>
         <p class="chamber-desc">
           Historical folklore, grimoire manuscripts, incantations, ritual blueprints, and seasonal harvest workings.
         </p>
@@ -230,7 +191,7 @@ permalink: /
     <a href="/atelier.html" class="chamber-card">
       <div>
         <span class="chamber-glyph">🕯</span>
-        <h2 class="chamber-title">The Atelier</h2>
+        <h3 class="chamber-title">The Atelier</h3>
         <p class="chamber-desc">
           Handcrafted ritual goods, consecrated altar wares, bespoke talismans, and personalized intuitive readings.
         </p>
@@ -240,4 +201,4 @@ permalink: /
 
   </div>
 
-</div>
+</section>
