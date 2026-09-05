@@ -521,7 +521,7 @@ select:focus {
   color: #d4af37;
   border: 1px solid #333;
 
-  /* ==========================================================================
+ /* ==========================================================================
    Scrying Glass Quiz Module Styles
    ========================================================================== */
 
@@ -530,7 +530,7 @@ select:focus {
   text-align: left;
 }
 
-.scrying-intro {
+.scrying-container .scrying-intro {
   text-align: center;
   color: #a8a396;
   font-style: italic;
@@ -538,7 +538,7 @@ select:focus {
 }
 
 /* Progress */
-.scrying-progress-wrap {
+.scrying-container .scrying-progress-wrap {
   width: 100%;
   height: 6px;
   background: #242424;
@@ -548,7 +548,7 @@ select:focus {
   margin-bottom: 0.5rem;
 }
 
-.scrying-progress-bar {
+.scrying-container .scrying-progress-bar {
   height: 100%;
   width: 0%;
   background: #d4af37;
@@ -556,7 +556,7 @@ select:focus {
   transition: width 0.3s ease;
 }
 
-.scrying-progress-label {
+.scrying-container .scrying-progress-label {
   font-size: 0.85rem;
   color: #8c887b;
   text-align: right;
@@ -565,7 +565,7 @@ select:focus {
 }
 
 /* Question */
-.scrying-question {
+.scrying-container .scrying-question {
   font-family: 'Cinzel Decorative', Georgia, serif;
   color: #f4ecd8;
   font-size: 1.3rem;
@@ -574,13 +574,13 @@ select:focus {
   text-align: center;
 }
 
-.scrying-options {
+.scrying-container .scrying-options {
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
 }
 
-.scrying-option-btn {
+.scrying-container button.scrying-option-btn {
   background: #141413;
   border: 1px solid #2d2b27;
   color: #e8e2cf;
@@ -589,7 +589,9 @@ select:focus {
   text-align: left;
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 1.05rem;
+  font-weight: 400;
   line-height: 1.5;
+  letter-spacing: normal;
   cursor: pointer;
   display: flex;
   align-items: flex-start;
@@ -599,47 +601,49 @@ select:focus {
   transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
-.scrying-option-btn:hover,
-.scrying-option-btn:focus-visible {
-  border-color: #d4af37;
+.scrying-container button.scrying-option-btn:hover,
+.scrying-container button.scrying-option-btn:focus-visible {
   background: #1c1b18;
+  border-color: #d4af37;
   box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
 }
 
-.scrying-option-btn:focus-visible {
+.scrying-container button.scrying-option-btn:focus-visible {
   outline: none;
 }
 
-.scrying-option-marker {
+.scrying-container .scrying-option-marker {
   font-family: 'Cinzel Decorative', Georgia, serif;
   color: #d4af37;
   font-weight: 600;
   min-width: 20px;
+  flex-shrink: 0;
 }
 
-.scrying-back-link {
+.scrying-container button.scrying-back-link {
   background: none;
   border: none;
   color: #8c887b;
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 0.95rem;
   font-style: italic;
+  padding: 0;
   cursor: pointer;
   margin-top: 1.25rem;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.scrying-back-link:hover {
+.scrying-container button.scrying-back-link:hover {
   color: #d4af37;
 }
 
 /* Results */
-.scrying-result {
+.scrying-container .scrying-result {
   display: none;
 }
 
-.scrying-result-badge {
+.scrying-container .scrying-result-badge {
   display: inline-block;
   border: 1px solid #d4af37;
   color: #d4af37;
@@ -652,7 +656,7 @@ select:focus {
   margin-bottom: 0.9rem;
 }
 
-.scrying-result-title {
+.scrying-container .scrying-result-title {
   font-family: 'Cinzel Decorative', Georgia, serif;
   font-size: 1.9rem;
   color: #d4af37;
@@ -660,7 +664,7 @@ select:focus {
   text-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
 }
 
-.scrying-result-tagline {
+.scrying-container .scrying-result-tagline {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 1.1rem;
   color: #c2beaf;
@@ -668,37 +672,38 @@ select:focus {
   margin-bottom: 1.25rem;
 }
 
-.scrying-result-body {
+.scrying-container .scrying-result-body {
   color: #c2beaf;
   line-height: 1.7;
   margin-bottom: 1.5rem;
   font-size: 1.05rem;
 }
 
-.scrying-next-step {
+.scrying-container .scrying-next-step {
   background: #141413;
   border: 1px solid #2d2b27;
   border-left: 3px solid #d4af37;
   padding: 1rem 1.3rem;
   border-radius: 0 6px 6px 0;
   margin-bottom: 1rem;
+  text-align: left;
 }
 
-.scrying-next-step h5 {
+.scrying-container .scrying-next-step h5 {
   font-family: 'Cinzel Decorative', Georgia, serif;
   color: #f4ecd8;
   margin-bottom: 0.4rem;
   font-size: 1rem;
 }
 
-.scrying-next-step p {
+.scrying-container .scrying-next-step p {
   font-size: 0.98rem;
   color: #c2beaf;
   line-height: 1.5;
   margin-bottom: 0.7rem;
 }
 
-.scrying-next-step a {
+.scrying-container .scrying-next-step a {
   display: inline-block;
   color: #121212;
   background: #d4af37;
@@ -710,34 +715,37 @@ select:focus {
   transition: background 0.2s ease;
 }
 
-.scrying-next-step a:hover {
+.scrying-container .scrying-next-step a:hover {
   background: #b89628;
+  color: #121212;
+  text-shadow: none;
 }
 
-.scrying-etsy-nudge {
+.scrying-container .scrying-etsy-nudge {
   font-size: 0.92rem;
   color: #8c887b;
   margin-bottom: 1.75rem;
   line-height: 1.5;
+  text-align: left;
 }
 
-.scrying-etsy-nudge a {
+.scrying-container .scrying-etsy-nudge a {
   color: #d4af37;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.scrying-etsy-nudge a:hover {
+.scrying-container .scrying-etsy-nudge a:hover {
   color: #f4ecd8;
 }
 
-.scrying-result-actions {
+.scrying-container .scrying-result-actions {
   display: flex;
   gap: 0.9rem;
   flex-wrap: wrap;
 }
 
-.scrying-action-btn {
+.scrying-container button.scrying-action-btn {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 1rem;
   font-weight: 600;
@@ -751,28 +759,28 @@ select:focus {
   transition: background 0.2s ease, border-color 0.2s ease;
 }
 
-.scrying-restart-btn {
+.scrying-container button.scrying-restart-btn {
   background: #d4af37;
   color: #121212;
   border: none;
 }
 
-.scrying-restart-btn:hover {
+.scrying-container button.scrying-restart-btn:hover {
   background: #b89628;
 }
 
-.scrying-share-btn {
+.scrying-container button.scrying-share-btn {
   background: transparent;
   color: #d4af37;
   border: 1px solid #4a4a4a;
 }
 
-.scrying-share-btn:hover {
+.scrying-container button.scrying-share-btn:hover {
   border-color: #d4af37;
   background: rgba(212, 175, 55, 0.08);
 }
 
-.scrying-share-confirm {
+.scrying-container .scrying-share-confirm {
   font-size: 0.85rem;
   color: #a8a396;
   font-style: italic;
@@ -781,12 +789,11 @@ select:focus {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .scrying-option-btn, .scrying-progress-bar, .scrying-action-btn {
+  .scrying-container button.scrying-option-btn,
+  .scrying-container .scrying-progress-bar,
+  .scrying-container button.scrying-action-btn {
     transition: none;
   }
-}
-  padding: 2px 8px;
-  border-radius: 3px;
 }
 
 /* ==========================================================================
