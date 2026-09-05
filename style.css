@@ -184,11 +184,14 @@ footer {
 
 .architect-container {
   max-width: 850px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .architect-controls {
   margin: 1.5rem 0 2rem;
   text-align: left;
+  width: 100%;
 }
 
 .control-label {
@@ -200,7 +203,9 @@ footer {
 }
 
 select {
-  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   padding: 0.8rem;
   background: #242424;
   border: 1px solid #4a4a4a;
@@ -392,6 +397,17 @@ select:focus {
   border-radius: 4px;
   margin-top: 1.5rem;
   border: 1px solid #2d2b27;
+}
+
+/* Mobile Screen Adjustments for Containers */
+@media (max-width: 640px) {
+  .sigil-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .recipe-card {
+    padding: 1rem 0.8rem;
+  }
 }
 
 /* ==========================================================================
