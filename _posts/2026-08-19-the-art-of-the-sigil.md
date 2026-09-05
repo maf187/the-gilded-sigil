@@ -38,7 +38,7 @@ Where the Golden Dawn arranged the 22 letters of the Hebrew alphabet across the 
 * **The Process:** A practitioner reduces their intention to a core keyword or phrase, then traces a continuous line from letter to letter in sequence across the grid.
 * **Nodes & Terminus:** The first letter is traditionally anchored with a small open circle (the entrance node), and the path finishes with a short perpendicular crossbar or dot (the terminal seal).
 
-*Prefer to skip the manual tracing? [The Forge](https://thegildedsigil.com/) builds this automatically — type your intention and download the free finished glyph.*
+*Prefer to skip the manual tracing? [The Sigil Forge](https://thegildedsigil.com/forge.html) builds this automatically — type your intention and download the free finished glyph.*
 
 Because the resulting geometry depends entirely on the wheel's layout, two practitioners mapping the same phrase on different wheels will produce completely distinct glyphs. Many practitioners design custom wheels with scrambled letter placements, ensuring the resulting sigil cannot be reverse-engineered by anyone without the private key.
 
