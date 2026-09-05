@@ -46,4 +46,4 @@ Once your glyph is forged, decide whether your working requires immediate releas
 
 ## Ready to Forge?
 
-Head over to **[The Gilded Sigil Forge](/#forge)** to construct your first radial seal, download the vector glyph, or transfer your finished coordinates directly into your physical craft.
+Head over to **[The Sigil Forge](/forge.html)** to construct your first radial seal, download the vector glyph, or transfer your finished coordinates directly into your physical craft.
