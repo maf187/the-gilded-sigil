@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Inner Chamber — Esoteric Diagnostics & Quizzes</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #09080d;
+      --card-bg: #14131b;
+      --card-hover: #1b1924;
+      --border: #272433;
+      --border-accent: #3d384f;
+      --accent-gold: #c9a55c;
+      --accent-gold-hover: #e2c07c;
+      --text-main: #ede9e3;
+      --text-muted: #9590a3;
+      --font-serif: "Cinzel", "Georgia", serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(201, 165, 92, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(39, 36, 51, 0.4) 0%, transparent 50%);
+    }
+
+    /* Navigation Bar */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(9, 8, 13, 0.8);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      color: var(--accent-gold);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--accent-gold);
+    }
+
+    /* Container */
+    .main-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 50px 24px 80px 24px;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* Header */
+    .portal-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .eyebrow {
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .portal-title {
+      font-family: var(--font-serif);
+      font-size: 2.6rem;
+      color: #fff;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .portal-description {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Featured Crucible Hero Card */
+    .featured-card {
+      background: linear-gradient(135deg, #181622 0%, #111018 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 50px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .featured-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(201, 165, 92, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-block;
+      align-self: flex-start;
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-family: var(--font-serif);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .featured-title {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: #fff;
+    }
+
+    .featured-desc {
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 680px;
+      font-size: 1rem;
+    }
+
+    .featured-meta {
+      display: flex;
+      gap: 24px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .featured-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .primary-btn {
+      display: inline-block;
+      background: var(--accent-gold);
+      color: #09080d;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      width: fit-content;
+      transition: all 0.2s ease;
+      letter-spacing: 1px;
+    }
+
+    .primary-btn:hover {
+      background: var(--accent-gold-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201, 165, 92, 0.3);
+    }
+
+    /* Filters & Grid */
+    .filter-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      background: rgba(201, 165, 92, 0.05);
+    }
+
+    .quiz-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .quiz-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .quiz-card:hover {
+      background: var(--card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+    }
+
+    .card-top {
+      margin-bottom: 20px;
+    }
+
+    .card-category {
+      font-family: var(--font-serif);
+      font-size: 0.75rem;
+      color: var(--accent-gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .card-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .card-link {
+      color: var(--accent-gold);
+      text-decoration: none;
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .card-link:hover {
+      text-decoration: underline;
+    }
+
+    .card-disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .status-badge {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: #1e1b29;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .top-nav {
+        padding: 16px 20px;
+      }
+      .featured-card {
+        padding: 24px;
+      }
+      .portal-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <a href="/" class="brand-title">The Gilded Sigil</a>
+    <div class="nav-links">
+      <a href="/sigil-creator">Sigil Wheel</a>
+      <a href="/spell-jars">Spell Jars</a>
+      <a href="/daily">Daily Altar</a>
+      <a href="/grimoire">Grimoire</a>
+      <a href="/quizzes" class="active">Diagnostics</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    
+    <header class="portal-header">
+      <div class="eyebrow">The Mirror of Practice</div>
+      <h1 class="portal-title">Esoteric Diagnostics</h1>
+      <p class="portal-description">
+        Assess your working currents, uncover subconscious affinities, and align your craft with tools designed for your natural strengths.
+      </p>
+    </header>
+
+    <!-- Featured Hero Assessment -->
+    <section class="featured-card">
+      <span class="badge">Core Diagnostic</span>
+      <h2 class="featured-title">The Crucible of Practice: What Kind of Witch Are You?</h2>
+      <p class="featured-desc">
+        A 7-question diagnostic stripping away pop-culture labels to identify how you actually command energy, source materia, and relate to the unseen. Includes personalized tool pairings and hybrid archetype identification.
+      </p>
+      
+      <div class="featured-meta">
+        <span>⏱ 3 Minutes</span>
+        <span>✦ 7 Scored Inquiries</span>
+        <span>🔮 6 Authentic Archetypes</span>
+      </div>
+
+      <!-- Links to your standalone quiz file or modal -->
+      <a href="/quiz-crucible" class="primary-btn">Begin the Diagnostic &rarr;</a>
+    </section>
+
+    <!-- Filter Buttons -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterCards('all')">All Chambers</button>
+      <button class="filter-btn" onclick="filterCards('archetype')">Archetypes & Currents</button>
+      <button class="filter-btn" onclick="filterCards('tools')">Materia & Tools</button>
+      <button class="filter-btn" onclick="filterCards('astral')">Timing & Astral</button>
+    </div>
+
+    <!-- Quiz Grid -->
+    <div class="quiz-grid">
+
+      <!-- Card 1: Active Crucible -->
+      <div class="quiz-card" data-category="archetype">
+        <div class="card-top">
+          <span class="card-category">Archetype</span>
+          <h3 class="card-title">The Crucible of Practice</h3>
+          <p class="card-desc">Determine whether your current aligns with Chaos Magick, Folk Tradition, Green Hedge craft, or left-hand currents.</p>
+        </div>
+        <div class="card-footer">
+          <span class="card-meta">7 Questions</span>
+          <a href="/quiz-crucible" class="card-link">Enter &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Card 2: Future / Upcoming Idea -->
+      <div class="quiz-card" data-category="tools">
+        <div class="card-top">
+          <span class="card-category">Materia</span>
+          <h3 class="card-title">Botanical & Vessel Resonance</h3>
+          <p class="card-desc">Find which resin, roots, and binding seals have the highest natural vibration for your current spellcraft goals.</p>
+        </div>
+        <div class="card-footer">
+          <span class="status-badge">Curriculum Vault</span>
+          <a href="/spell-jars" class="card-link">Open Architect &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Card 3: Future / Upcoming Idea -->
+      <div class="quiz-card" data-category="astral">
+        <div class="card-top">
+          <span class="card-category">Timing & Astral</span>
+          <h3 class="card-title">Planetary Hour Alignment</h3>
+          <p class="card-desc">Calibrate which celestial sphere (Mars for defense, Venus for cohesion, Mercury for swiftness) rules your present work.</p>
+        </div>
+        <div class="card-footer">
+          <span class="status-badge">Live Tool</span>
+          <a href="/daily" class="card-link">View Sky &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Card 4: Future Assessment -->
+      <div class="quiz-card" data-category="archetype">
+        <div class="card-top">
+          <span class="card-category">Subconscious</span>
+          <h3 class="card-title">The Shadow & Cord Diagnostic</h3>
+          <p class="card-desc">Uncover stagnant energetic ties, psychic leeches, or unresolved vows ready for banishing and severing.</p>
+        </div>
+        <div class="card-footer">
+          <span class="status-badge">Coming Soon</span>
+          <span class="card-meta">In Development</span>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    function filterCards(category) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const cards = document.querySelectorAll('.quiz-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
