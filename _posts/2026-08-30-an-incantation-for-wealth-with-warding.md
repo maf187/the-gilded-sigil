@@ -50,8 +50,8 @@ featured_image: "/assets/images/posts/sovereign-hearth-cauldron.jpg"
 * **Cedar & Clove:** Burn or simmer over hot embers to seal the threshold against discordant energies while anchoring steady household prosperity.
 * **Bay Laurel & Cinnamon:** Inscribe intentions upon whole bay leaves or steep with cinnamon bark to draw dynamic commercial success and creative momentum.
 * **Altar Inscriptions:** Inscribe the core phrases upon parchment or a wooden altar tile, placing a clear vessel of spring water beside an unlit flame to invite clarity before the decree is read.
-* **Sigil Work:** Craft a custom geometric seal using the [Interactive Sigil Forge](https://thegildedsigil.com/) to anchor your specific wealth intention before reciting the verse.
+* **Sigil Work:** Craft a custom geometric seal using the [Interactive Sigil Forge](https://thegildedsigil.com/forge.html) to anchor your specific wealth intention before reciting the verse.
 
 ---
 
-*Explore handcrafted altar tiles, parchment seals, and custom sigils at [The Gilded Sigil Etsy Shop](https://thegildedsigil.etsy.com).*
+*Explore dark academia art and custom sigils at [The Gilded Sigil Etsy Shop](https://thegildedsigil.etsy.com).*
