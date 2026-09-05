@@ -1,0 +1,243 @@
+---
+layout: default
+title: "The Gilded Sigil | Sanctuary of Modern Occult Praxis"
+description: "Enter The Gilded Sigil: interactive magic tools, custom sigil crafting, spell jar architecture, celestial transits, and grimoire wisdom."
+permalink: /
+---
+
+<style>
+  .portal-wrapper {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* Ambient Media / Hero Section */
+  .portal-hero {
+    margin-bottom: 2.5rem;
+  }
+
+  .portal-eyebrow {
+    font-family: 'Cinzel Decorative', Georgia, serif;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    color: #d4af37;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .portal-headline {
+    font-family: 'Cinzel Decorative', Georgia, serif;
+    font-size: 2.2rem;
+    color: #f4ecd8;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+  }
+
+  .portal-lead {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.2rem;
+    color: #a8a396;
+    max-width: 640px;
+    margin: 0 auto 1.75rem;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* Embedded Ambient Video Showcase */
+  .ambient-frame-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #2d2b27;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    margin-bottom: 3rem;
+    background: #0d0d0d;
+  }
+
+  .ambient-frame-wrap iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* Directory Chambers Grid */
+  .chambers-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: left;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .chambers-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .chamber-card {
+    background: #141413;
+    border: 1px solid #2d2b27;
+    border-radius: 6px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .chamber-card:hover {
+    border-color: #d4af37;
+    background: #1a1916;
+    transform: translateY(-2px);
+    box-shadow: 0 0 16px rgba(212, 175, 55, 0.2);
+  }
+
+  .chamber-glyph {
+    font-size: 1.8rem;
+    color: #d4af37;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .chamber-title {
+    font-family: 'Cinzel Decorative', Georgia, serif;
+    color: #d4af37;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .chamber-desc {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: #c2beaf;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+  }
+
+  .chamber-action {
+    font-family: 'Cinzel Decorative', Georgia, serif;
+    font-size: 0.85rem;
+    color: #d4af37;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .chamber-card:hover .chamber-action {
+    color: #f4ecd8;
+  }
+</style>
+
+<div class="portal-wrapper">
+
+  <header class="portal-hero">
+    <span class="portal-eyebrow">The Threshold</span>
+    <h1 class="portal-headline">Enter the Sanctuary</h1>
+    <p class="portal-lead">
+      Where ancient current meets modern praxis. Select a chamber below to forge seals, brew materia, divine the celestial tides, or diagnose your craft.
+    </p>
+  </header>
+
+  <!-- Ambient Video / Soundscape Player -->
+  <div class="ambient-frame-wrap">
+    <!-- Replace VIDEO_ID with your channel's ambient video or trailer -->
+    <iframe 
+      src="https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0&modestbranding=1" 
+      title="The Gilded Sigil Ambient Soundscape" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- Interactive Directory Grid -->
+  <div class="chambers-grid">
+
+    <!-- The Sigil Forge -->
+    <a href="/forge.html" class="chamber-card">
+      <div>
+        <span class="chamber-glyph">⛤</span>
+        <h2 class="chamber-title">The Sigil Forge</h2>
+        <p class="chamber-desc">
+          Reduce intention statements and cast custom occult seals using an interactive witch's wheel and coordinate matrix.
+        </p>
+      </div>
+      <span class="chamber-action">Open Forge &rarr;</span>
+    </a>
+
+    <!-- The Spell Jar Alchemist -->
+    <a href="/spell-jar.html" class="chamber-card">
+      <div>
+        <span class="chamber-glyph">🜂</span>
+        <h2 class="chamber-title">The Jar Alchemist</h2>
+        <p class="chamber-desc">
+          Architect visual witchcraft bottles, balancing herbs, crystals, bases, and color-coded sealing wax for your working.
+        </p>
+      </div>
+      <span class="chamber-action">Enter Laboratory &rarr;</span>
+    </a>
+
+    <!-- The Scrying Glass -->
+    <a href="/quizzes.html" class="chamber-card">
+      <div>
+        <span class="chamber-glyph">🪞</span>
+        <h2 class="chamber-title">The Scrying Glass</h2>
+        <p class="chamber-desc">
+          Take *The Crucible of Practice* diagnostic to discover how you naturally command energy, source materia, and relate to spirit.
+        </p>
+      </div>
+      <span class="chamber-action">Begin Diagnostic &rarr;</span>
+    </a>
+
+    <!-- The Daily Altar -->
+    <a href="/daily.html" class="chamber-card">
+      <div>
+        <span class="chamber-glyph">☽</span>
+        <h2 class="chamber-title">The Daily Altar</h2>
+        <p class="chamber-desc">
+          Daily tarot reveals, real-time lunar sign transits, void-of-course warnings, and personal numerology vibrations.
+        </p>
+      </div>
+      <span class="chamber-action">Consult Altar &rarr;</span>
+    </a>
+
+    <!-- The Grimoire -->
+    <a href="/articles.html" class="chamber-card">
+      <div>
+        <span class="chamber-glyph">📜</span>
+        <h2 class="chamber-title">The Grimoire</h2>
+        <p class="chamber-desc">
+          Historical folklore, grimoire manuscripts, incantations, ritual blueprints, and seasonal harvest workings.
+        </p>
+      </div>
+      <span class="chamber-action">Read Records &rarr;</span>
+    </a>
+
+    <!-- The Atelier -->
+    <a href="/atelier.html" class="chamber-card">
+      <div>
+        <span class="chamber-glyph">🕯</span>
+        <h2 class="chamber-title">The Atelier</h2>
+        <p class="chamber-desc">
+          Handcrafted ritual goods, consecrated altar wares, bespoke talismans, and personalized intuitive readings.
+        </p>
+      </div>
+      <span class="chamber-action">Visit Workshop &rarr;</span>
+    </a>
+
+  </div>
+
+</div>
