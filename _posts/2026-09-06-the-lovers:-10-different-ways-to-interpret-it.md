@@ -2,7 +2,7 @@
 layout: post
 title: "The Lovers: 10 Different Ways to Interpret It"
 date: 2026-09-04
-summary: "An exploration of Card VI (The Lovers) through 10 distinct lenses—from the Marseille crossroads of choice and Waite's Edenic union to Crowley's chemical wedding, Gemini duality, and Campbell's Meeting with the Goddess."
+summary: "An exploration of Card VI (The Lovers) through 10 distinct lenses—from the Marseille crossroads of choice and Waite's Edenic union to Crowley's chemical wedding, Gemini duality, and Campbell's Woman as Temptress."
 category: tarot
 tags: [tarot, the lovers, major arcana, divination]
 ---
