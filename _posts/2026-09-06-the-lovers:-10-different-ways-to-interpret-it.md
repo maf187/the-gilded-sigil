@@ -7,7 +7,7 @@ category: tarot
 tags: [tarot, the lovers, major arcana, divination]
 ---
 
-Card VI gets treated as the "romance card" more than almost any other trump, which makes it a good one to slow down on — because in most of the historical systems, it isn't really about romance at all. It's about a specific, unavoidable choice, and what gets united (or divided) once that choice is made. Same ten lenses used across the series so far, applied to card VI.
+Coming right after [The Hierophant](https://thegildedsigil.com/2026/09/the-hierophant-10-different-ways-to-interpret-it/) and its structures of tradition and orthodoxy, Card VI gets treated as the "romance card" more than almost any other trump, which makes it a good one to slow down on — because in most of the historical systems, it isn't really about romance at all. It's about a specific, unavoidable choice, and what gets united (or divided) once that choice is made. Same ten lenses used across the series so far, applied to card VI.
 
 ## Historical & Esoteric Systems
 
