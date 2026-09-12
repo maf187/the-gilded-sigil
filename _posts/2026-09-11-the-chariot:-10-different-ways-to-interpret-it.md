@@ -31,7 +31,7 @@ Etteilla's version is the harshest reversal of tone in the whole series so far: 
 
 ### 5. Golden Dawn — Cheth, and a Third Path Through Binah
 
-The Golden Dawn assigns The Chariot the Hebrew letter Cheth, meaning "fence" or "enclosure" — a protected, walled-off space — on the 18th path, connecting Binah (Understanding, the Supernal Mother) to Geburah (Severity, the sephirah of disciplined, cutting force). That marks the third card in this series whose Golden Dawn path touches Binah (alongside The Empress and The Lovers) — Binah keeps turning up as a hub this deck routes major transitions of will and creative force through, whether the destination is beauty, harmony, or, here, severity.
+The Golden Dawn assigns The Chariot the Hebrew letter Cheth, meaning "fence" or "enclosure" — a protected, walled-off space — on the 18th path, connecting Binah (Understanding, the Supernal Mother) to Geburah (Severity, the sephirah of disciplined, cutting force). That marks the third card in this series whose Golden Dawn path touches Binah (alongside [The Empress](https://thegildedsigil.com/2026/08/the-empress-10-different-ways-to-interpret-it/) and [The Lovers](https://thegildedsigil.com/2026/09/the-lovers-10-different-ways-to-interpret-it/)) — Binah keeps turning up as a hub this deck routes major transitions of will and creative force through, whether the destination is beauty, harmony, or, here, severity.
 
 ## Psychological, Structural & Modern Lenses
 
