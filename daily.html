@@ -5,17 +5,18 @@ description: "Daily tarot card, moon phase, and numerology — check today's cos
 permalink: /daily.html
 ---
 
-<section class="sigil-container altar-container">
+<link rel="stylesheet" href="{{ "/daily.css" | relative_url }}">
+<section id="daily-altar" class="altar-container" aria-labelledby="altar-title">
 
   <div class="article-header">
-    <h2>The Daily Altar</h2>
+    <p class="eyebrow">A moment of everyday magic</p><h2 id="altar-title" class="altar-page-title">The Daily <span>Altar</span></h2><p class="intro">Explore the moon, reveal your daily card, and find your personal number.</p>
     <div class="altar-date-nav">
-      <button type="button" class="altar-date-btn" id="prev-day-btn">&larr; Yesterday</button>
+      <button type="button" class="altar-date-btn" id="prev-day-btn">&larr; Previous day</button>
       <span class="divider">•</span>
       <span id="active-date-display" class="altar-active-date"></span>
       <span class="divider">•</span>
-      <button type="button" class="altar-date-btn" id="next-day-btn">Tomorrow &rarr;</button>
-    </div>
+      <button type="button" class="altar-date-btn" id="next-day-btn">Next day &rarr;</button>
+    <button type="button" class="today-btn" id="today-btn">Today</button></div><p class="date-note" id="date-note"></p>
   </div>
 
   <div class="altar-stations">
@@ -39,10 +40,7 @@ permalink: /daily.html
         <p id="moon-transit-message" class="moon-transit-message"></p>
       </div>
 
-      <div class="altar-station-footer">
-        <span>Void-of-Course:</span>
-        <span id="voc-badge" class="voc-flowing">Flowing Ingress</span>
-      </div>
+      <div class="altar-station-footer">Lunar positions and illumination are approximate.<br>Astrological messages are offered for reflection.</div>
     </div>
 
     <!-- Arcana Station -->
@@ -52,7 +50,7 @@ permalink: /daily.html
         <span id="card-state-label" class="altar-station-meta">Tap to Reveal</span>
       </div>
 
-      <div class="card-perspective" id="tarot-card-trigger">
+      <div class="card-perspective" id="tarot-card-trigger" role="button" tabindex="0" aria-label="Reveal daily tarot card" aria-pressed="false" aria-describedby="tarot-message">
         <div class="altar-card-inner" id="tarot-card-inner">
 
           <div class="card-front">
@@ -61,7 +59,7 @@ permalink: /daily.html
             <span class="card-front-sublabel">Card of the Day</span>
           </div>
 
-          <div class="card-back">
+          <div class="card-back" aria-hidden="true">
             <span id="tarot-num" class="tarot-num"></span>
             <div>
               <div id="tarot-glyph" class="tarot-glyph"></div>
@@ -73,7 +71,7 @@ permalink: /daily.html
         </div>
       </div>
 
-      <p id="tarot-message" class="tarot-message">
+      <p id="tarot-message" class="tarot-message" aria-live="polite">
         Tap the sigil to reveal your archetypal guide for the day.
       </p>
     </div>
@@ -103,16 +101,16 @@ permalink: /daily.html
     <div class="personal-vibration-row">
       <div class="personal-vibration-label">
         <span class="tag">Personal Vibration:</span>
-        <span>Enter birthdate for personal alignment</span>
+        <span>Discover your personal day</span>
       </div>
 
       <div class="altar-input-group">
-        <input type="date" id="bday-input" />
+        <div><label for="birth-month">Birth month</label><select id="birth-month"><option value="">Month</option><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select></div><div><label for="birth-day">Birth day</label><input type="number" id="birth-day" min="1" max="31" step="1" inputmode="numeric" placeholder="Day"></div>
         <button type="button" id="calc-pday-btn">Calculate</button>
       </div>
     </div>
 
-    <div id="personal-day-result" class="personal-day-result">
+    <p class="privacy-note">No birth year needed. Calculated here in your browser, without saving your birthday.</p><p id="birth-error" class="error" role="status"></p><div id="personal-day-result" aria-live="polite" class="personal-day-result">
       <div>
         <span id="p-day-title" class="p-day-title"></span>
         <span id="p-day-summary" class="p-day-summary"></span>
@@ -127,232 +125,5 @@ permalink: /daily.html
 
 </section>
 
-<script>
-(function() {
-  let activeDate = new Date();
 
-  function getAstrologicalMoon(date) {
-    const jd = (date.getTime() / 86400000) + 2440587.5;
-    const T = (jd - 2451545.0) / 36525.0;
-
-    let L0 = 218.3164477 + 481267.88128 * T - 0.0015786 * T * T;
-    let M = 134.9633964 + 477198.8675055 * T + 0.0087414 * T * T;
-    let Mprime = 357.5291092 + 35999.0502909 * T - 0.0001536 * T * T;
-    let D = 297.8501921 + 445267.1114034 * T - 0.0018819 * T * T;
-
-    const toRad = Math.PI / 180;
-    let lambda = L0
-      + 6.288774 * Math.sin(M * toRad)
-      + 1.274027 * Math.sin((2 * D - M) * toRad)
-      + 0.658314 * Math.sin(2 * D * toRad)
-      + 0.213618 * Math.sin(2 * M * toRad)
-      - 0.185116 * Math.sin(Mprime * toRad)
-      - 0.114332 * Math.sin(2 * D * toRad);
-
-    lambda = ((lambda % 360) + 360) % 360;
-
-    let normD = ((D % 360) + 360) % 360;
-    let illumination = Math.round((1 - Math.cos(normD * toRad)) / 2 * 100);
-
-    let phaseName = "New Moon";
-    let glyph = "🌑";
-    if (normD >= 22.5 && normD < 67.5) { phaseName = "Waxing Crescent"; glyph = "🌒"; }
-    else if (normD >= 67.5 && normD < 112.5) { phaseName = "First Quarter"; glyph = "🌓"; }
-    else if (normD >= 112.5 && normD < 157.5) { phaseName = "Waxing Gibbous"; glyph = "🌔"; }
-    else if (normD >= 157.5 && normD < 202.5) { phaseName = "Full Moon"; glyph = "🌕"; }
-    else if (normD >= 202.5 && normD < 247.5) { phaseName = "Waning Gibbous"; glyph = "🌖"; }
-    else if (normD >= 247.5 && normD < 292.5) { phaseName = "Last Quarter"; glyph = "🌗"; }
-    else if (normD >= 292.5 && normD < 337.5) { phaseName = "Waning Crescent"; glyph = "🌘"; }
-
-    const signs = [
-      { name: "Aries", glyph: "♈", elem: "Fire", quality: "Cardinal", msg: "Pioneering impulse. Take initiative and embrace direct clarity." },
-      { name: "Taurus", glyph: "♉", elem: "Earth", quality: "Fixed", msg: "Grounding and steady. Focus on material stability and comfort." },
-      { name: "Gemini", glyph: "♊", elem: "Air", quality: "Mutable", msg: "Quick mental connections, curiosity, and rapid exchange of ideas." },
-      { name: "Cancer", glyph: "♋", elem: "Water", quality: "Cardinal", msg: "Emotional depth and sanctuary. Nurture what is close to home." },
-      { name: "Leo", glyph: "♌", elem: "Fire", quality: "Fixed", msg: "Creative warmth and heart-centered expression take center stage." },
-      { name: "Virgo", glyph: "♍", elem: "Earth", quality: "Mutable", msg: "Discerning craft, refined systems, and practical service." },
-      { name: "Libra", glyph: "♎", elem: "Air", quality: "Cardinal", msg: "Aesthetic harmony, partnership clarity, and peaceful balance." },
-      { name: "Scorpio", glyph: "♏", elem: "Water", quality: "Fixed", msg: "Subconscious instincts, deep truth-seeking, and transformation." },
-      { name: "Sagittarius", glyph: "♐", elem: "Fire", quality: "Mutable", msg: "Expansive horizons, optimism, and thirst for philosophical truth." },
-      { name: "Capricorn", glyph: "♑", elem: "Earth", quality: "Cardinal", msg: "Discipline, strategic longevity, and grounded ambition." },
-      { name: "Aquarius", glyph: "♒", elem: "Air", quality: "Fixed", msg: "Unconventional perspectives and collective progress." },
-      { name: "Pisces", glyph: "♓", elem: "Water", quality: "Mutable", msg: "Mystical flow, dreamlike intuition, and poetic release." }
-    ];
-
-    const signIndex = Math.floor(lambda / 30);
-    const sign = signs[signIndex];
-    const degreeInSign = lambda % 30;
-    const isVoC = degreeInSign >= 27.5;
-
-    return { phaseName, glyph, illumination, sign, isVoC };
-  }
-
-  const tarotCards = [
-    { num: "0", name: "The Fool", glyph: "🎒", keywords: "Beginnings & Trust", advice: "Step boldly into the new without overthinking." },
-    { num: "I", name: "The Magician", glyph: "🪄", keywords: "Manifestation & Focus", advice: "Direct your intentions; your tools are already at hand." },
-    { num: "II", name: "The High Priestess", glyph: "🌙", keywords: "Intuition & Mystery", advice: "Listen to the quiet murmur of your inner knowing." },
-    { num: "III", name: "The Empress", glyph: "🌾", keywords: "Abundance & Creation", advice: "Nurture what brings tangible beauty and growth." },
-    { num: "IV", name: "The Emperor", glyph: "👑", keywords: "Structure & Sovereignty", advice: "Bring order to chaos. Maintain clear, quiet boundaries." },
-    { num: "V", name: "The Hierophant", glyph: "📜", keywords: "Wisdom & Tradition", advice: "Honor time-tested methods and trusted guides." },
-    { num: "VI", name: "The Lovers", glyph: "❤️", keywords: "Alignment & Choice", advice: "Choose in direct harmony with your deepest personal values." },
-    { num: "VII", name: "The Chariot", glyph: "🛡️", keywords: "Momentum & Will", advice: "Focus conflicting drives into a singular path forward." },
-    { num: "VIII", name: "Strength", glyph: "🦁", keywords: "Courage & Patience", advice: "Quiet grace achieves far more than force today." },
-    { num: "IX", name: "The Hermit", glyph: "🏮", keywords: "Solitude & Inner Light", advice: "Step back from external noise to find your inner compass." },
-    { num: "X", name: "Wheel of Fortune", glyph: "☸️", keywords: "Cycles & Turning Points", advice: "Flow with the turning current; change brings renewal." },
-    { num: "XI", name: "Justice", glyph: "⚖️", keywords: "Truth & Cause/Effect", advice: "Weigh matters with honest, unbiased discernment." },
-    { num: "XII", name: "The Hanged Man", glyph: "🪞", keywords: "Surrender & New Angles", advice: "Pause and look at the situation upside down." },
-    { num: "XIII", name: "Death", glyph: "🥀", keywords: "Release & Renewal", advice: "Let what is done fall away with complete peace." },
-    { num: "XIV", name: "Temperance", glyph: "🏺", keywords: "Patience & Alchemy", advice: "Blend extremes into an elegant, tranquil middle way." },
-    { num: "XV", name: "The Devil", glyph: "⛓️", keywords: "Shadow & Release", advice: "Spot self-imposed chains and step free of them." },
-    { num: "XVI", name: "The Tower", glyph: "⚡", keywords: "Awakening & Truth", advice: "Welcome whatever clears obsolete illusions." },
-    { num: "XVII", name: "The Star", glyph: "⭐", keywords: "Hope & Serenity", advice: "Breathe in trust; your healing path is opening." },
-    { num: "XVIII", name: "The Moon", glyph: "🌘", keywords: "Dreams & Depth", advice: "Navigate by intuition rather than hasty assumptions." },
-    { num: "XIX", name: "The Sun", glyph: "☀️", keywords: "Vitality & Radiance", advice: "Express your joy and gifts without reservation." },
-    { num: "XX", name: "Judgement", glyph: "📯", keywords: "Calling & Rebirth", advice: "Answer your higher inner calling; forgive the past." },
-    { num: "XXI", name: "The World", glyph: "🌐", keywords: "Wholeness & Completion", advice: "A cycle reaches fruitful, beautiful fruition." }
-  ];
-
-  function getDailyCard(date) {
-    const seed = date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate();
-    return tarotCards[(seed * 9301 + 49297) % tarotCards.length];
-  }
-
-  const numDictionary = {
-    1: { title: "Initiation & Action", summary: "Plant new seeds and initiate fresh momentum with boldness." },
-    2: { title: "Receptivity & Harmony", summary: "Practice patience, sensitive partnership, and quiet listening." },
-    3: { title: "Creative Expression", summary: "Share your voice, indulge in artistic joy, and foster connection." },
-    4: { title: "Structure & Foundation", summary: "Ground down into methodical craft, discipline, and stable routine." },
-    5: { title: "Flow & Exploration", summary: "Embrace unexpected shifts and lean into adaptable curiosity." },
-    6: { title: "Nurturance & Sanctuary", summary: "Harmonize domestic spaces and tend carefully to close bonds." },
-    7: { title: "Introspection & Study", summary: "Turn inward for philosophical discernment, research, and stillness." },
-    8: { title: "Authority & Manifestation", summary: "Step into executive command and direct practical resources." },
-    9: { title: "Completion & Surrender", summary: "Tie up loose threads and gently release what has completed its cycle." },
-    11: { title: "Illuminated Epiphany", summary: "Stay attentive to sudden intuitive revelations and cosmic nudges." },
-    22: { title: "Master Architecture", summary: "Translate large visionary concepts into tangible physical reality." }
-  };
-
-  function reduceNum(n, allowMaster = true) {
-    if (allowMaster && (n === 11 || n === 22 || n === 33)) return n;
-    while (n > 9) {
-      if (allowMaster && (n === 11 || n === 22 || n === 33)) return n;
-      n = n.toString().split('').reduce((acc, digit) => acc + parseInt(digit, 10), 0);
-    }
-    return n;
-  }
-
-  function getUniversalNumerology(date) {
-    const y = date.getFullYear();
-    const m = date.getMonth() + 1;
-    const d = date.getDate();
-
-    const uYear = reduceNum(y.toString().split('').reduce((acc, digit) => acc + parseInt(digit, 10), 0), false);
-    const uMonth = reduceNum(m + uYear, false);
-    const uDay = reduceNum(d + uMonth, true);
-
-    return {
-      uDay,
-      uMonth,
-      uYear,
-      dayData: numDictionary[uDay] || numDictionary[reduceNum(uDay, false)]
-    };
-  }
-
-  function renderAltar() {
-    document.getElementById('active-date-display').textContent = activeDate.toLocaleDateString('en-US', {
-      weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'
-    });
-
-    const lunar = getAstrologicalMoon(activeDate);
-    const tarot = getDailyCard(activeDate);
-    const num = getUniversalNumerology(activeDate);
-
-    document.getElementById('moon-glyph').textContent = lunar.glyph;
-    document.getElementById('moon-sign').textContent = `Moon in ${lunar.sign.name} ${lunar.sign.glyph}`;
-    document.getElementById('moon-element-quality').textContent = `${lunar.sign.elem} • ${lunar.sign.quality} Modality`;
-    document.getElementById('lunar-illumination').textContent = `${lunar.illumination}% Lit (${lunar.phaseName})`;
-    document.getElementById('moon-transit-message').textContent = lunar.sign.msg;
-
-    const voc = document.getElementById('voc-badge');
-    if (lunar.isVoC) {
-      voc.textContent = "Void-of-Course (Rest)";
-      voc.className = "voc-void";
-    } else {
-      voc.textContent = "Flowing Ingress";
-      voc.className = "voc-flowing";
-    }
-
-    document.getElementById('u-day-badge').textContent = num.uDay;
-    document.getElementById('u-day-title').textContent = num.dayData.title;
-    document.getElementById('u-day-summary').textContent = num.dayData.summary;
-    document.getElementById('u-month-val').textContent = num.uMonth;
-    document.getElementById('u-year-val').textContent = num.uYear;
-
-    document.getElementById('tarot-num').textContent = `ARCANA ${tarot.num}`;
-    document.getElementById('tarot-glyph').textContent = tarot.glyph;
-    document.getElementById('tarot-title').textContent = tarot.name;
-    document.getElementById('tarot-essence').textContent = tarot.keywords;
-
-    const cardInner = document.getElementById('tarot-card-inner');
-    cardInner.classList.remove('flipped');
-    document.getElementById('card-state-label').textContent = "Tap to Reveal";
-    document.getElementById('tarot-message').textContent = "Tap the sigil to reveal your archetypal guide for the day.";
-
-    calculatePersonalNumerology();
-  }
-
-  const cardTrigger = document.getElementById('tarot-card-trigger');
-  const cardInner = document.getElementById('tarot-card-inner');
-  cardTrigger.addEventListener('click', () => {
-    cardInner.classList.toggle('flipped');
-    const isFlipped = cardInner.classList.contains('flipped');
-    const tarot = getDailyCard(activeDate);
-
-    if (isFlipped) {
-      document.getElementById('card-state-label').textContent = "Revealed";
-      document.getElementById('tarot-message').textContent = `${tarot.name}: ${tarot.advice}`;
-    } else {
-      document.getElementById('card-state-label').textContent = "Tap to Reveal";
-      document.getElementById('tarot-message').textContent = "Tap the sigil to reveal your archetypal guide for the day.";
-    }
-  });
-
-  function calculatePersonalNumerology() {
-    const bdayStr = document.getElementById('bday-input').value;
-    if (!bdayStr) return;
-
-    const parts = bdayStr.split('-');
-    const bMonth = parseInt(parts[1], 10);
-    const bDay = parseInt(parts[2], 10);
-
-    const curYear = activeDate.getFullYear();
-    const curYearReduced = reduceNum(curYear.toString().split('').reduce((acc, d) => acc + parseInt(d, 10), 0), false);
-
-    const pYear = reduceNum(bMonth + bDay + curYearReduced, false);
-    const curMonth = activeDate.getMonth() + 1;
-    const pMonth = reduceNum(pYear + curMonth, false);
-    const curDay = activeDate.getDate();
-    const pDay = reduceNum(pMonth + curDay, true);
-    const pDayData = numDictionary[pDay] || numDictionary[reduceNum(pDay, false)];
-
-    const resultBox = document.getElementById('personal-day-result');
-    resultBox.classList.add('show');
-    document.getElementById('p-day-title').textContent = `Personal Day ${pDay} (${pDayData.title}):`;
-    document.getElementById('p-day-summary').textContent = pDayData.summary;
-    document.getElementById('p-month-badge').textContent = `Personal Month ${pMonth}`;
-    document.getElementById('p-year-badge').textContent = `Personal Year ${pYear}`;
-  }
-
-  document.getElementById('calc-pday-btn').addEventListener('click', calculatePersonalNumerology);
-
-  document.getElementById('prev-day-btn').addEventListener('click', () => {
-    activeDate.setDate(activeDate.getDate() - 1);
-    renderAltar();
-  });
-  document.getElementById('next-day-btn').addEventListener('click', () => {
-    activeDate.setDate(activeDate.getDate() + 1);
-    renderAltar();
-  });
-
-  renderAltar();
-})();
-</script>
+<script src="{{ "/daily.js" | relative_url }}" defer></script>

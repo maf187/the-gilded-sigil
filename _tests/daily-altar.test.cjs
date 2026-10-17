@@ -1,0 +1,38 @@
+const fs=require('fs'), assert=require('node:assert/strict');
+const {JSDOM}=require('jsdom');const postcss=require('postcss');const crypto=require('node:crypto');
+const dir=require("node:path").join(__dirname,".."), html=fs.readFileSync(dir+'/daily.html','utf8').replace(/^---[\s\S]*?---/, '').replace(/<script src=[^>]+><\/script>/, '<script>'+fs.readFileSync(dir+'/daily.js','utf8')+'</script>'), js=fs.readFileSync(dir+'/daily.js','utf8');
+let checks=0;const ok=(v,m)=>{assert.ok(v,m);checks++};
+const dom=new JSDOM(html,{runScripts:'dangerously',url:'https://example.test/'}),d=dom.window.document,$=id=>d.getElementById(id),click=id=>$(id).click();
+ok($('active-date-display').textContent.length>10,'initial render');
+ok(new Set([...d.querySelectorAll('[id]')].map(e=>e.id)).size===d.querySelectorAll('[id]').length,'unique IDs');
+ok(!$('voc-badge'),'unsupported VOC removed');
+ok(!html.includes('bday-input'),'birth year removed');
+ok(d.querySelector('.card-back').getAttribute('aria-hidden')==='true','back concealed');
+click('tarot-card-trigger');ok($('tarot-card-trigger').getAttribute('aria-pressed')==='true','flip state');ok(d.querySelector('.card-front').getAttribute('aria-hidden')==='true','front concealed');
+$('tarot-card-trigger').dispatchEvent(new dom.window.KeyboardEvent('keydown',{key:' ',bubbles:true}));ok($('tarot-card-trigger').getAttribute('aria-pressed')==='false','space flip');
+$('tarot-card-trigger').dispatchEvent(new dom.window.KeyboardEvent('keydown',{key:'Enter',bubbles:true}));ok($('tarot-card-trigger').getAttribute('aria-pressed')==='true','enter flip');
+const date=$('active-date-display').textContent,card=$('tarot-title').textContent;click('next-day-btn');ok($('active-date-display').textContent!==date,'next day');ok($('tarot-card-trigger').getAttribute('aria-pressed')==='false','date resets flip');click('prev-day-btn');ok($('tarot-title').textContent===card,'deterministic return');click('prev-day-btn');click('today-btn');ok($('active-date-display').textContent===date,'today reset');
+function birth(m,day){$('birth-month').value=m;$('birth-day').value=day;click('calc-pday-btn')}
+birth('','');ok($('birth-error').textContent.length>0,'empty error');birth('4','31');ok(!$('personal-day-result').classList.contains('show'),'invalid April31');birth('2','29');ok($('personal-day-result').classList.contains('show'),'Feb29 valid');birth('1','1');ok($('personal-day-result').classList.contains('show'),'valid result');$('birth-day').value='';$('birth-day').dispatchEvent(new dom.window.Event('input'));ok(!$('personal-day-result').classList.contains('show'),'clear stale immediately');click('calc-pday-btn');ok(!$('personal-day-result').classList.contains('show'),'empty cannot restore stale');birth('1','1.5');ok(!$('personal-day-result').classList.contains('show'),'fraction rejected');
+ok(crypto.createHash('sha256').update(js.match(/  function getDailyCard\([^]*?\n  }/)[0]).digest('hex')==='8e5d2e32fb2cb1815a3edd8978c1e44e1fc46f5f596e383ad1e6a660e89ce7a7','getDailyCard unchanged');
+ok(crypto.createHash('sha256').update(js.match(/  function reduceNum\([^]*?\n  }/)[0]).digest('hex')==='ca0ae06b4d9edd55b247826b2f1bfa449d5720e76c17ef61ef79cfb6a1eb6d9d','reduceNum unchanged');
+ok(crypto.createHash('sha256').update(js.match(/  function getUniversalNumerology\([^]*?\n  }/)[0]).digest('hex')==='37c3e8ba4f89c00883f4ac4292ef028c5cd72723e2b047977cc85cb51d10247f','getUniversalNumerology unchanged');
+ok(crypto.createHash('sha256').update(js.match(/  const tarotCards = [^]*?\n  [\]}];/)[0]).digest('hex')==='680cd2239d03ca5ade8e5c4a5386276f54d8c0ad87a481b85f2e484ca3bfcb3c','tarotCards unchanged');
+ok(crypto.createHash('sha256').update(js.match(/  const numDictionary = [^]*?\n  [\]}];/)[0]).digest('hex')==='9335291c9629335bb9fe1710e0816749e4155c26c4856c21408b619416c3b55c','numDictionary unchanged');
+ok(!/localStorage|sessionStorage|fetch\(|XMLHttpRequest/.test(js),'no storage/network');
+// Controlled clock: cross year boundary using actual UI controls.
+const code=html.replace('let activeDate = new Date();','let activeDate = new Date(2026,11,31,12,0,0);');
+const boundary=new JSDOM(code,{runScripts:'dangerously'}).window.document;
+boundary.getElementById('next-day-btn').click();ok(boundary.getElementById('active-date-display').textContent.includes('January 1, 2027'),'year rollover');boundary.getElementById('prev-day-btn').click();ok(boundary.getElementById('active-date-display').textContent.includes('December 31, 2026'),'reverse rollover');
+const leap=new JSDOM(html.replace('let activeDate = new Date();','let activeDate = new Date(2024,1,28,12,0,0);'),{runScripts:'dangerously'}).window.document;leap.getElementById('next-day-btn').click();ok(leap.getElementById('active-date-display').textContent.includes('February 29'),'leap day');leap.getElementById('next-day-btn').click();ok(leap.getElementById('active-date-display').textContent.includes('March 1'),'month rollover');
+const css=fs.readFileSync(dir+'/daily.css','utf8');for(const val of ['72rem','#d4af37','#e8e2cf','Cinzel Decorative','Cormorant Garamond','prefers-reduced-motion'])ok(css.includes(val),'theme '+val);
+postcss.parse(css).walkRules(r=>r.selectors.forEach(selector=>ok(selector.startsWith('#daily-altar')||selector==='body:has(#daily-altar) > main','scoped CSS')));
+ok(!d.querySelector('main,header,footer,h1'),'shared layout only');
+ok(!html.includes('preview-note'),'no preview shell');
+ok(css.includes('.article-header {text-align:left'),'left header');
+ok(!js.includes('document.querySelector'),'scoped queries');
+ok(!html.includes('{%'),'no new Liquid tags');
+ok(html.includes('relative_url'),'baseurl-aware assets');
+console.log(checks+' checks passed');dom.window.close();
+const rootDeclarations={};postcss.parse(css).walkRules(r=>{if(r.selector.trim()==='#daily-altar'&&r.parent.type==='root')r.walkDecls(decl=>rootDeclarations[decl.prop]=decl.value)});
+assert.equal(rootDeclarations['font-size'],'1.15rem');assert.equal(rootDeclarations.color,'var(--cream)');assert.equal(rootDeclarations['letter-spacing'],undefined);assert.equal(rootDeclarations['text-align'],'left');assert.equal(rootDeclarations.margin,'0 auto');console.log('5 root-cascade regression assertions passed');
