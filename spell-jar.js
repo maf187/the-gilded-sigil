@@ -1,234 +1,48 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const intentInput = document.getElementById('intentInput');
-  const formulateBtn = document.getElementById('formulateBtn');
-  const reShuffleBtn = document.getElementById('reShuffleBtn');
-  const intentFeedback = document.getElementById('intentFeedback');
-  const recipeOutput = document.getElementById('recipeOutput');
-  const ingredientStack = document.getElementById('ingredientStack');
-  const sealingSection = document.getElementById('sealingSection');
-  const corkSeal = document.getElementById('corkSeal');
+'use strict';
+(() => {
+const root = document.getElementById('spell-jar-app');
+if (!root || typeof GRIMOIRE_DATA === 'undefined') return;
+const TYPES={protection:['Protection','A protected home and clear personal boundaries.','◇'],prosperity:['Prosperity','Welcome abundance and steady growth.','✦'],love:['Love & self-worth','Make room for love and self-worth.','♡'],purification:['Purification','A fresh start and a clear space.','✧'],healing:['Restoration','A gentle reminder of healing and self-care.','❋'],peace_sleep:['Peace & rest','Invite peace, calm, and restful sleep.','☾'],psychic_intuition:['Intuition','Trust my intuition and inner wisdom.','☽'],courage:['Courage','Find courage and confidence for the next step.','△'],banishing:['Release','Release negativity and strengthen my boundaries.','⟡']};
+const SYNONYMS={protection:['protect','protection','shield','ward','defense','defend','safe','boundary','boundaries','home','security','guard','barrier'],prosperity:['money','wealth','prosperity','abundance','business','career','success','riches','fortune','cash','growth','finance','financial','gain'],love:['love','romance','passion','relationship','attract','beauty','affection','self love','marriage','soulmate','heart','lust'],purification:['cleanse','cleansing','purify','purification','clear','fresh','stale','clean','reset','smudge','wash'],healing:['heal','healing','health','recovery','soothe','restoration','vitality','body','illness','wellness','cure','pain'],peace_sleep:['peace','calm','sleep','rest','insomnia','tranquility','anxiety','serenity','dreams','nightmare','relax','stress'],psychic_intuition:['psychic','intuition','divination','tarot','third eye','vision','astral','spirits','clarity','wisdom','dream','oracle'],courage:['courage','brave','strength','confidence','willpower','bold','fear','overcome','power','fortitude'],banishing:['banish','hex','curse','uncross','remove','negative','negativity','repel','evil','gossip','unbind','rid','enemy','release']};
+const COLORS={'Lavender':'#a48ec6','Rose Petals':'#c8798b','Hibiscus':'#9f3a64','Jasmine Flower':'#ddd3b2','Chamomile':'#d9b75f','Calendula':'#cc9a38','Cinnamon':'#aa6840','Clove':'#855837','Dill':'#9b9a56','Fennel Seed':'#b9a56e','Yarrow':'#d0b889','Lilac':'#a68fbd','Elder Flower':'#d1cf9f','Dandelion':'#bfa54e','Sea Salt':'#d8dacb','Himalayan Pink Salt':'#d1a198','Cascarilla (Eggshell Powder)':'#e7d7b3',"Black Witch's Salt":'#494c49','Natural Sand':'#bd9c61','Clear Quartz':'#d0dcd9','Rose Quartz':'#e3a8c4','Black Tourmaline':'#555c65','Citrine':'#dab557','Amethyst':'#a283cb',"Tiger's Eye":'#c39749','Hematite':'#81828d','Selenite':'#d7ddd3','Carnelian':'#c56745'};
+const ROLES=['Mineral foundation','First botanical','Second botanical','Focal crystal'];
+const $=id=>root.querySelector('#'+id), NS='http://www.w3.org/2000/svg';
+const color=item=>COLORS[item.name]||'#859967';
+function detect(input){const clean=input.toLowerCase().replace(/[^a-z\s]/g,' ').replace(/\s+/g,' ').trim();const words=clean.split(' ');let best=null,score=0;for(const [key,list] of Object.entries(SYNONYMS)){let n=0;for(const word of words)if(list.some(s=>!s.includes(' ')&&(word===s||word.startsWith(s))))n++;for(const phrase of list.filter(s=>s.includes(' ')))if((' '+clean+' ').includes(' '+phrase+' '))n++;if(n>score){best=key;score=n}}return {key:best||'protection',fallback:best===null};}
+function shuffled(a){a=[...a];for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a;}
+function formulate(key){const herbs=shuffled(GRIMOIRE_DATA.herbs.filter(h=>h.correspondences.includes(key)));const minerals=GRIMOIRE_DATA.minerals.filter(m=>m.correspondences.includes(key));const base=shuffled(minerals.filter(m=>m.form==='granular_base'))[0]||GRIMOIRE_DATA.minerals.find(m=>m.name==='Sea Salt');const crystal=shuffled(minerals.filter(m=>m.type==='crystal'))[0]||GRIMOIRE_DATA.minerals.find(m=>m.name==='Clear Quartz');return {items:[base,herbs[0]||GRIMOIRE_DATA.herbs[0],herbs[1]||GRIMOIRE_DATA.herbs.find(h=>h.name!==herbs[0]?.name),crystal],wax:GRIMOIRE_DATA.waxColors.find(w=>w.correspondences.includes(key))||GRIMOIRE_DATA.waxColors.find(w=>w.color==='White')};}
+function substitutes(item,slot,key,items){const pool=slot===1||slot===2?GRIMOIRE_DATA.herbs:GRIMOIRE_DATA.minerals;const eligible=x=>x.name!==item.name&&!items.some((y,i)=>i!==slot&&y.name===x.name)&&(slot===0?x.form==='granular_base':slot===3?x.type==='crystal':true);const matching=pool.filter(x=>eligible(x)&&x.correspondences.includes(key));if(matching.length)return matching;const fallbackNames=slot===0?['Sea Salt','Natural Sand']:slot===3?['Clear Quartz']:['Rosemary'];return pool.filter(x=>eligible(x)&&fallbackNames.includes(x.name));}
 
-  // Layer visual elements
-  const visualBase = document.getElementById('visualBase');
-  const visualHerb1 = document.getElementById('visualHerb1');
-  const visualHerb2 = document.getElementById('visualHerb2');
-  const visualCrystal = document.getElementById('visualCrystal');
-
-  // Synonym dictionary mapping freeform terms to grimoire correspondence tags
-  const INTENT_SYNONYMS = {
-    protection: ["protect", "protection", "shield", "ward", "defense", "defend", "safe", "boundary", "home", "security", "guard", "barrier"],
-    prosperity: ["money", "wealth", "prosperity", "abundance", "business", "career", "success", "riches", "fortune", "cash", "growth", "finance", "gain"],
-    love: ["love", "romance", "passion", "relationship", "attract", "beauty", "affection", "self-love", "marriage", "soulmate", "heart", "lust"],
-    purification: ["cleanse", "cleansing", "purify", "purification", "clear", "fresh", "stale", "clean", "reset", "smudge", "wash"],
-    healing: ["heal", "healing", "health", "recovery", "soothe", "restoration", "vitality", "body", "illness", "wellness", "cure", "pain"],
-    peace_sleep: ["peace", "calm", "sleep", "rest", "insomnia", "tranquility", "anxiety", "serenity", "dreams", "nightmare", "relax", "stress"],
-    psychic_intuition: ["psychic", "intuition", "divination", "tarot", "third eye", "vision", "astral", "spirits", "clarity", "wisdom", "dream", "oracle"],
-    courage: ["courage", "brave", "strength", "confidence", "willpower", "bold", "fear", "overcome", "power", "fortitude"],
-    banishing: ["banish", "hex", "curse", "uncross", "remove", "negative", "repel", "evil", "gossip", "unbind", "rid", "enemy"]
-  };
-
-  // Helper to grab random items without repetition
-  function getRandomItems(array, count) {
-    const shuffled = [...array].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count);
-  }
-
-  function parseFreeformIntent(inputText) {
-    const cleanText = inputText.toLowerCase().replace(/[^a-z\s]/g, '');
-    const words = cleanText.split(/\s+/);
-    
-    const scores = {};
-    Object.keys(INTENT_SYNONYMS).forEach(intent => scores[intent] = 0);
-
-    words.forEach(word => {
-      for (const [intent, synonyms] of Object.entries(INTENT_SYNONYMS)) {
-        if (synonyms.some(syn => syn === word || word.startsWith(syn))) {
-          scores[intent] += 1;
-        }
-      }
-    });
-
-    let dominantIntent = null;
-    let highestScore = 0;
-
-    for (const [intent, score] of Object.entries(scores)) {
-      if (score > highestScore) {
-        highestScore = score;
-        dominantIntent = intent;
-      }
-    }
-
-    return dominantIntent || "protection";
-  }
-
-  function findSubstitutes(targetItem, selectedIntent, isMineral = false) {
-    const pool = isMineral ? GRIMOIRE_DATA.minerals : GRIMOIRE_DATA.herbs;
-    
-    return pool.filter(item => {
-      // 1. Skip the exact same item
-      if (item.name === targetItem.name) return false;
-      
-      // 2. Must match the spell's intent
-      if (!item.correspondences.includes(selectedIntent)) return false;
-      
-      // 3. If replacing a foundation base, ONLY suggest other bases
-      if (targetItem.form === "granular_base") {
-        return item.form === "granular_base";
-      }
-      
-      // 4. If replacing a crystal, DO NOT suggest foundation bases
-      if (isMineral && targetItem.form !== "granular_base") {
-        return item.form !== "granular_base";
-      }
-      
-      return true; // Herbs pass through normally
-    });
-  }
-
-  function renderCard(item, layerNumber, layerRole, selectedIntent, isMineral = false) {
-    const card = document.createElement('div');
-    card.className = 'recipe-card';
-    card.id = `layer-card-${layerNumber}`;
-
-    // Clean up raw database tags into polished Title Case
-    const rawForm = item.form || item.type || 'botanical';
-    const cleanForm = rawForm
-      .split('_')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-
-    // Check for hardcoded overrides first (fixes the Sea Salt issue)
-    // Check for hardcoded overrides first (fixes the Sea Salt issue)
-    let subListHtml = '';
-    
-    if (item.substitutes && item.substitutes.length > 0) {
-      subListHtml = item.substitutes.map(sub => `<li><strong>${sub}</strong></li>`).join('');
-    } else {
-      const substitutes = findSubstitutes(item, selectedIntent, isMineral);
-      
-      if (substitutes.length > 0) {
-        // If it finds a match, list them!
-        subListHtml = substitutes.map(sub => `<li><strong>${sub.name}</strong> — ${sub.description}</li>`).join('');
-      } else {
-        // SMART FALLBACKS: If the database has no other matches for this intent
-        if (item.form === "granular_base") {
-           subListHtml = '<li><strong>Standard Sea Salt</strong> — The universal base. It can be programmed for any intention if your specific salt is unavailable.</li><li><strong>Natural Sand</strong> — A neutral, grounding alternative.</li>';
-        } else if (isMineral) {
-           subListHtml = '<li><strong>Clear Quartz</strong> — The universal amplifier. It can act as a substitute for any crystal when programmed with your specific intent.</li>';
-        } else {
-           subListHtml = '<li><strong>Rosemary</strong> — The universal botanical substitute in folk practice.</li><li><strong>Clear Quartz</strong> — Drop in a clear quartz chip to amplify the remaining herbs in the jar.</li>';
-        }
-      }
-    }
-
-    card.innerHTML = `
-      <div class="card-header">
-        <span class="layer-badge">Layer ${layerNumber}: ${layerRole}</span>
-        <h4 class="item-title">${item.name}</h4>
-      </div>
-      <p class="item-desc">${item.description}</p>
-      <div class="item-meta">
-        <span class="meta-tag">Form: ${cleanForm}</span>
-        ${item.safety_note ? `<p class="safety-warning"><strong>Safety / Usage:</strong> ${item.safety_note}</p>` : ''}
-      </div>
-      
-      <div class="substitute-toggle-wrapper">
-        <button type="button" class="sub-toggle-btn" data-target="sub-${layerNumber}">
-          Don't have ${item.name}? View Substitutions
-        </button>
-      </div>
-
-      <div class="substitutes-panel" id="sub-${layerNumber}" style="display: none;">
-        <h5>Recommended Grimoire Substitutes:</h5>
-        <ul>${subListHtml}</ul>
-      </div>
-    `;
-
-    return card;
-  }
-
-  function formulateRecipe() {
-    const rawInput = intentInput.value.trim();
-    if (!rawInput) return;
-
-    const detectedIntent = parseFreeformIntent(rawInput);
-    
-    // Provide clean feedback to the user
-    const formattedIntentName = detectedIntent.replace('_', ' ').toUpperCase();
-    intentFeedback.innerHTML = `Aligning correspondence matrix to: <span style="color: #d4af37; font-weight: 600;">${formattedIntentName}</span>`;
-
-    // Filter matching herbs and minerals
-    const matchingHerbs = GRIMOIRE_DATA.herbs.filter(h => h.correspondences.includes(detectedIntent));
-    const matchingMinerals = GRIMOIRE_DATA.minerals.filter(m => m.correspondences.includes(detectedIntent));
-    const matchingWax = GRIMOIRE_DATA.waxColors.find(w => w.correspondences.includes(detectedIntent)) 
-      || GRIMOIRE_DATA.waxColors.find(w => w.color === "White");
-
-    // Dynamic selection of bases (Updated to shuffle)
-    const matchingBases = matchingMinerals.filter(m => m.form === "granular_base");
-    const baseMineral = matchingBases.length > 0 
-      ? getRandomItems(matchingBases, 1)[0] 
-      : GRIMOIRE_DATA.minerals.find(m => m.name === "Sea Salt");
-    
-    // Randomize botanical selections from matches
-    const selectedHerbs = getRandomItems(matchingHerbs, 2);
-    const primaryHerb = selectedHerbs[0] || GRIMOIRE_DATA.herbs[0];
-    const secondaryHerb = selectedHerbs[1] || (matchingHerbs.find(h => h.name !== primaryHerb.name) || GRIMOIRE_DATA.herbs[1]);
-
-    // Randomize crystal selection from matches (excluding the base mineral)
-    const matchingCrystals = matchingMinerals.filter(m => m.type === "crystal" && m.name !== baseMineral.name);
-    const crystal = matchingCrystals.length > 0
-      ? getRandomItems(matchingCrystals, 1)[0]
-      : GRIMOIRE_DATA.minerals.find(m => m.name === "Clear Quartz");
-
-    // Clear previous output
-    ingredientStack.innerHTML = '';
-
-    // Render Recipe Cards
-    ingredientStack.appendChild(renderCard(baseMineral, 1, "Mineral Foundation", detectedIntent, true));
-    ingredientStack.appendChild(renderCard(primaryHerb, 2, "Primary Botanical Anchor", detectedIntent, false));
-    ingredientStack.appendChild(renderCard(secondaryHerb, 3, "Secondary Botanical Catalyst", detectedIntent, false));
-    ingredientStack.appendChild(renderCard(crystal, 4, "Top Focal Crystal", detectedIntent, true));
-
-    // Render Sealing Wax Section
-    sealingSection.innerHTML = `
-      <div class="wax-seal-card" style="border-left: 4px solid ${matchingWax.hex};">
-        <h4 style="color: #d4af37; margin-bottom: 0.3rem;">Vessel Seal: ${matchingWax.color} Wax</h4>
-        <p style="color: #c2beaf; font-size: 1.05rem;">${matchingWax.description}</p>
-      </div>
-    `;
-
-    // Update Visual Jar Layer Labels
-    visualBase.textContent = baseMineral.name;
-    visualHerb1.textContent = primaryHerb.name;
-    visualHerb2.textContent = secondaryHerb.name;
-    visualCrystal.textContent = crystal.name;
-    corkSeal.style.backgroundColor = matchingWax.hex;
-    corkSeal.style.boxShadow = `0 0 10px ${matchingWax.hex}88`;
-
-    // Reveal output
-    recipeOutput.style.display = 'block';
-
-    // Attach Toggle Listeners for Substitutes
-    document.querySelectorAll('.sub-toggle-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const targetId = e.target.getAttribute('data-target');
-        const panel = document.getElementById(targetId);
-        const isOpen = panel.style.display === 'block';
-        panel.style.display = isOpen ? 'none' : 'block';
-        e.target.textContent = isOpen 
-          ? e.target.textContent.replace('Hide', 'View')
-          : e.target.textContent.replace('View', 'Hide');
-      });
-    });
-  }
-
-  formulateBtn.addEventListener('click', formulateRecipe);
-  
-  if (reShuffleBtn) {
-    reShuffleBtn.addEventListener('click', formulateRecipe);
-  }
-
-  intentInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') formulateRecipe();
-  });
-});
+root.SJAEngine={detect,formulate,substitutes,TYPES};
+let state={key:null,text:'',recipe:null,count:0,sealed:false,busy:false};
+let selected=null, pendingTimer=null, epoch=0;
+function el(tag,cls,text){const node=document.createElement(tag);if(cls)node.className=cls;if(text!==undefined)node.textContent=text;return node;}
+function svg(tag,attrs,parent){const n=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,String(v));parent.append(n);return n;}
+function drawJar(){const root=$('contents');root.replaceChildren();(state.recipe ? state.recipe.items.slice(0,state.count) : []).forEach((item,index)=>{const group=svg('g',{class:'sja-layer added'+(index===state.animateIndex?' just-added':''),'data-layer':index},root);const c=color(item);if(index<3){const top=[330,290,250][index];svg('path',{d:`M95 ${top+10} Q150 ${top-7} 200 ${top+2} T305 ${top+4} L305 ${top+55} L95 ${top+55} Z`,fill:c,opacity:.58},group);for(let n=0;n<55;n++){const x=104+(n*37%190), y=top+8+(n*19%36);if(index===0)svg('polygon',{points:`${x},${y-3} ${x+5},${y} ${x+3},${y+5} ${x-3},${y+3}`,fill:n%3===0?'#eee5d2':c,opacity:.4+(n%4)/8},group);else svg('ellipse',{cx:x,cy:y,rx:item.form.includes('flower')?5:2,ry:item.form.includes('flower')?2.8:6,transform:`rotate(${n*43%180} ${x} ${y})`,fill:n%4===0?'#d6ce9f':c,opacity:.65+(n%3)/10},group);}}else{[[174,243,0],[206,235,12],[232,247,-14]].forEach(([x,y,r],n)=>{const g=svg('g',{transform:`rotate(${r} ${x} ${y})`},group);svg('polygon',{points:`${x-17},${y} ${x-17},${y-48} ${x},${y-68} ${x+17},${y-48} ${x+17},${y}`,fill:c,stroke:'#f4ecd8','stroke-opacity':.4},g);svg('path',{d:`M${x} ${y-68}V${y}L${x+17} ${y-9}V${y-48}Z`,fill:'#fff',opacity:.2},g);svg('path',{d:`M${x-17} ${y-48}L${x} ${y-39}L${x+17} ${y-48}`,fill:'none',stroke:'#fff','stroke-opacity':.3},g);});}});$('lid').classList.toggle('sealed',state.sealed);$('lid').style.opacity=state.sealed?'1':'.25';$('jarLabel').style.opacity=state.recipe?'1':'.35';$('waxMedallion').setAttribute('fill',state.recipe?state.recipe.wax.hex:'#665034');$('jarDescription').textContent=state.recipe?`${state.count} of 4 layers added: ${state.recipe.items.slice(0,state.count).map(i=>i.name).join(', ')||'none yet'}. ${state.sealed?'Sealed.':'Unsealed.'}`:'An empty glass vessel. Choose an intention to begin.';$('vesselName').textContent=state.recipe?'A vessel for '+TYPES[state.key][0].toLowerCase():'A little possibility, waiting';$('assemblyCount').textContent=state.sealed?'Your symbolic vessel is complete':state.recipe?`${state.count} of 4 layers added`:'Choose an intention to begin your jar.';}
+function announce(text){$('status').textContent=text;}
+function cancelPending(){epoch++;if(pendingTimer!==null)window.clearTimeout(pendingTimer);pendingTimer=null;state.busy=false;}
+function freshState(){return {key:null,text:'',recipe:null,count:0,sealed:false,busy:false};}
+function renderIngredientDetails(){const root=$('ingredientDetails');root.replaceChildren();if(!state.recipe)return;if(state.count===4){const d=el('details','ingredient-extras');d.append(el('summary',null,'Why this seal color?'),el('p','meaning-label','Traditional symbolism'),el('p','small',state.recipe.wax.description));root.append(d);return;}const item=state.recipe.items[state.count],slot=state.count;const details=el('details','ingredient-extras');details.append(el('summary',null,'Meaning & ingredient options'));details.append(el('p','meaning-label','Traditional symbolism'),el('p','small',item.description));if(!item.correspondences.includes(state.key))details.append(el('p','small','A universal fallback, rather than a direct match for this intention.'));const subs=substitutes(item,slot,state.key,state.recipe.items);if(subs.length){const lab=el('label','sub-label','Prefer a different ingredient?');lab.htmlFor='substituteIngredient';const select=el('select','sub-select');select.id='substituteIngredient';const keep=el('option',null,'Keep '+item.name);keep.value='';select.append(keep);subs.forEach(s=>{const o=el('option',null,s.name+(s.correspondences.includes(state.key)?'':' (universal fallback)'));o.value=s.name;select.append(o)});select.disabled=state.busy;select.addEventListener('change',()=>{if(state.busy)return;const replacement=subs.find(s=>s.name===select.value);if(!replacement)return;state.recipe.items[slot]=replacement;render();$('ingredientDetails').querySelector('details').open=true;$('substituteIngredient').focus();announce(replacement.name+' is ready to add. Your gathered layers are unchanged.');});details.append(lab,select);}const safety=el('details','source-note');safety.append(el('summary',null,'Original grimoire safety note'),el('p','small',item.safety_note),el('p','small','Historical reference only. Other uses described here are outside this dry decorative craft. Do not ingest, burn, or apply jar contents to skin.'));details.append(safety);root.append(details);}
+function render(){const begun=!!state.recipe, complete=state.sealed;
+$('chooseStage').hidden=begun;$('buildStage').hidden=!begun||complete;$('completeStage').hidden=!complete;$('jarOptions').hidden=!begun;$('downloadRecipe').disabled=!complete;$('beginJar').disabled=!selected;
+$('intentBadge').textContent=begun?TYPES[state.key][0]:'Your intention awaits';
+for(const id of ['journeyChoose','journeyBuild','journeySeal'])$(id).removeAttribute('aria-current');$(begun?(state.count===4?'journeySeal':'journeyBuild'):'journeyChoose').setAttribute('aria-current','step');
+$('journeyChoose').classList.toggle('done',begun);$('journeyBuild').classList.toggle('done',begun&&state.count===4);$('journeySeal').classList.toggle('done',complete);
+drawJar();state.animateIndex=null;
+if(begun&&!complete){const sealing=state.count===4,item=sealing?null:state.recipe.items[state.count];$('layerProgress').textContent=sealing?'ONE FINAL TOUCH':`LAYER ${state.count+1} OF 4`;$('activeHeading').textContent=sealing?'Seal your intention':state.count===0?'Begin with the earth':'Add your next layer';$('activeRole').textContent=sealing?'YOUR SEAL COLOR':ROLES[state.count];$('activeName').textContent=sealing?state.recipe.wax.color+' seal':item.name;$('activeSwatch').style.setProperty('--swatch',sealing?state.recipe.wax.hex:color(item));$('activeSwatch').textContent=sealing?'✧':state.count===0?'∴':state.count===3?'♢':item.form.includes('flower')?'✿':'❧';$('activeMeaning').textContent=sealing?'Four thoughtful layers, ready to become a keepsake.':`Chosen for your ${TYPES[state.key][0].toLowerCase()} intention.`;$('buildInstruction').textContent=sealing?'Close your digital vessel below. For a physical jar, use a lid, ribbon, or pre-made seal. No flame needed.':state.count===0?'Tap Add below. Your first ingredient will appear in the empty bottle.':'Tap Add below to place this ingredient on the layers you have gathered.';$('addLayer').textContent=state.busy?'Layer added…':sealing?'Seal my jar ✧':`Add ${item.name} to my jar`;$('addLayer').disabled=state.busy;renderIngredientDetails();}
+if(complete){$('completePhrase').textContent=state.text;$('ingredientDetails').replaceChildren();}
+$('undoLayer').disabled=state.count===0||state.busy;$('undoLayer').textContent=complete?'Reopen this jar':'Undo last layer';$('resetJar').disabled=state.count===0&&!complete;$('shuffle').disabled=state.busy;
+const gathered=$('gatheredLayers');gathered.replaceChildren();$('gatheredWrap').hidden=!begun||state.count===0;if(begun)state.recipe.items.slice(0,state.count).forEach((item,i)=>gathered.append(el('li',null,`${i+1}. ${item.name}`)));
+}
+for(const [key,[name,,glyph]] of Object.entries(TYPES)){const label=el('label','intent-choice');const radio=el('input');radio.type='radio';radio.name='jarIntention';radio.value=key;radio.id='intent-'+key;radio.addEventListener('change',()=>{selected=key;$('beginJar').disabled=false;$('chooseHint').textContent=name+' selected. Ready when you are.';});const face=el('span','choice-face');const icon=el('span','choice-glyph',glyph);icon.setAttribute('aria-hidden','true');face.append(icon,el('span',null,name));label.append(radio,face);$('intentChoices').append(label);}
+$('intentForm').addEventListener('submit',e=>{e.preventDefault();if(state.recipe)return;if(!selected){announce('Choose one intention to begin.');$('intent-protection').focus();return;}cancelPending();state={key:selected,text:$('intention').value.trim()||TYPES[selected][1],recipe:formulate(selected),count:0,sealed:false,busy:false};render();$('activeHeading').focus();announce('Your empty jar is ready. Add '+state.recipe.items[0].name+' to begin.');});
+$('addLayer').addEventListener('click',()=>{if(!state.recipe||state.sealed||state.busy)return;if(state.count===4){state.sealed=true;render();$('completeHeading').focus();announce('Your jar is sealed. Save your recipe or create another jar.');return;}const added=state.recipe.items[state.count].name;state.animateIndex=state.count;state.count++;state.busy=true;const current=++epoch;render();announce(added+' added. '+(state.count===4?'All four layers are gathered.':'Your next ingredient is ready.'));pendingTimer=window.setTimeout(()=>{if(current!==epoch)return;state.busy=false;pendingTimer=null;render();},450);});
+$('undoLayer').addEventListener('click',()=>{if(!state.recipe||state.busy||!state.count)return;cancelPending();if(state.sealed)state.sealed=false;else state.count--;render();$('activeHeading').focus();announce(state.count===4?'Your jar is open again.':'Last layer removed. You can add it again or choose a substitute.');});
+$('resetJar').addEventListener('click',()=>{if(!state.recipe)return;cancelPending();state.count=0;state.sealed=false;render();$('activeHeading').focus();announce('The jar is empty. Your recipe and intention are kept.');});
+$('shuffle').addEventListener('click',()=>{if(!state.recipe||state.busy)return;cancelPending();state.recipe=formulate(state.key);state.count=0;state.sealed=false;render();$('activeHeading').focus();announce('A different recipe is ready in an empty jar. Some ingredients may repeat.');});
+function startAgain(){cancelPending();state=freshState();selected=null;$('intention').value='';root.querySelectorAll('[name="jarIntention"]').forEach(r=>r.checked=false);$('chooseHint').textContent='Choose an intention above to begin.';$('jarOptions').open=false;root.querySelector('.personal-words').open=false;$('ingredientDetails').replaceChildren();render();$('intent-protection').focus();announce('Ready for a new intention.');}
+$('newJar').addEventListener('click',startAgain);$('changeIntention').addEventListener('click',startAgain);
+function recipeText(){return ['THE GILDED SIGIL · SPELL JAR ALCHEMIST','',state.text,'Intention: '+TYPES[state.key][0],'',...state.recipe.items.flatMap((item,i)=>[`${i+1}. ${ROLES[i]}: ${item.name}`,'Traditional symbolism: '+item.description,'Original grimoire note: '+item.safety_note,'']),`Seal color: ${state.recipe.wax.color}`,`Traditional symbolism: ${state.recipe.wax.description}`,'Use a ribbon or pre-made seal. No flame needed.','','This is a symbolic, dry decorative craft, not a promise of outcomes or medical, financial, or safety advice. Do not ingest, burn, or apply ingredients to skin. Keep away from children and pets. Original grimoire notes are preserved for reference, not instructions for using a jar as food or medicine.','https://thegildedsigil.com/spell-jar.html'].join('\n');}
+$('downloadRecipe').addEventListener('click',()=>{if(!state.recipe||!state.sealed)return;try{const blob=new Blob([recipeText()],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=el('a');a.href=url;a.download='gilded-sigil-spell-jar-recipe.txt';root.append(a);a.click();a.remove();window.setTimeout(()=>URL.revokeObjectURL(url),1500);announce('Recipe download requested. Check your browser downloads.');}catch{announce('This browser could not download the recipe. You can copy the gathered ingredient names instead.');}});
+render();
+})();
