@@ -1,0 +1,9 @@
+{%- case include.category -%}
+  {%- when 'tarot' -%}Tarot &amp; Divination
+  {%- when 'sigils' -%}Sigils &amp; Glyphs
+  {%- when 'incantations' -%}Incantations
+  {%- when 'seasonal-crafts' -%}Seasonal Crafts
+  {%- when 'hearth-craft' -%}Hearth Craft
+  {%- when nil -%}Uncategorized
+  {%- else -%}{{ include.category | replace: '-', ' ' | replace: '_', ' ' | capitalize | escape }}
+{%- endcase -%}
