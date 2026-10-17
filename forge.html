@@ -5,30 +5,113 @@ description: "Free sigil generator using an interactive witch's wheel — design
 permalink: /forge.html
 ---
 
-<section class="sigil-container">
-  <div class="article-header">
-    <h2>Interactive Sigil Forge</h2>
-    <p class="tagline">Enter your statement of intent to reduce letters and forge your personal mark.</p>
-  </div>
-  
-  <div class="input-group">
-    <input type="text" id="intentInput" placeholder="ENTER YOUR INTENTION (E.G. PROTECTION AND CLARITY)" autocomplete="off">
-    <button id="generateBtn" type="button">Forge Sigil</button>
-  </div>
-
-  <div class="reduced-display">
-    <span class="label">Reduced Consonants:</span>
-    <span id="consonantsDisplay">—</span>
-  </div>
-
-  <div class="canvas-wrapper">
-    <canvas id="sigilCanvas" width="500" height="500"></canvas>
-  </div>
-
-  <div class="action-buttons">
-    <button id="downloadBtn" type="button">Download Sigil (PNG)</button>
-  </div>
-  <p class="teaser-badge">Custom printed ritual mugs & candles coming soon.</p>
+<link rel="stylesheet" href="{{ '/forge.css' | relative_url }}">
+<div id="forge-app">
+<noscript><p>Please enable JavaScript to create and download your sigil.</p></noscript>
+<section class="intro">
+<div>
+<p class="eyebrow">THE ART OF INTENTION</p>
+<h2 class="forge-title">The Sigil Forge<span>.</span>
+</h2>
+<p class="lede">A thought, distilled. A mark, made yours.</p>
+</div>
+<p class="intro-note">Turn your words into a personal symbol.<br>Follow the thread from intention to inscription.</p>
 </section>
-
-<script src="{{ '/app.js' | relative_url }}"></script>
+<div class="workbench">
+<section class="controls" aria-label="Create your sigil">
+<div class="step-heading"><span class="step-number">01</span>
+<div>
+<p class="eyebrow">BEGIN WITH WORDS</p>
+<h2>Set your intention</h2>
+</div>
+</div>
+<form id="forgeForm" novalidate>
+<label for="intention">What would you like to carry with you?</label>
+<textarea id="intention" rows="3" maxlength="180" placeholder="I move forward with clarity" aria-describedby="inputHint error"></textarea>
+<div class="input-meta"><span id="inputHint">A short, affirmative statement.</span><span id="count">0 / 180</span>
+</div>
+<p id="error" role="alert"></p>
+<div class="prompt-label">A PLACE TO START</div>
+<div class="prompts">
+<button type="button" data-prompt="I am protected and grounded">Protection</button>
+<button type="button" data-prompt="I move forward with clarity">Clarity</button>
+<button type="button" data-prompt="My creativity flows freely">Creativity</button>
+</div>
+<button class="primary" id="forgeBtn" type="submit"><span>Forge my sigil</span><span aria-hidden="true">↗</span>
+</button>
+</form>
+<div class="distillation">
+<div class="step-heading"><span class="step-number">02</span>
+<div>
+<p class="eyebrow">LESS, BUT MORE MEANINGFUL</p>
+<h2>Distill the letters</h2>
+</div>
+</div>
+<div id="letterTray" class="letter-tray" aria-label="Reduced consonants"><span class="tray-placeholder">Your essential letters appear here.</span>
+</div>
+<p class="helper">Vowels and repeated letters fall away. The remaining consonants trace your mark.</p>
+</div>
+<details>
+<summary>How your mark is made <span aria-hidden="true">+</span>
+</summary>
+<p>Your words are reduced to unique English consonants, in their original order. Each letter has a fixed position around the wheel. A line connects them, then a circle encloses the mark.</p>
+<p>The same letters in the same order always make the same sigil. Numbers, punctuation, vowels and non-English letters are ignored.</p>
+</details>
+</section>
+<section class="studio" aria-label="Engraving table">
+<div class="studio-top"><span class="eyebrow">03 / THE ENGRAVING TABLE</span><span class="status"><i id="statusDot"></i><span id="statusLabel">Awaiting intention</span></span>
+</div>
+<div class="stage" id="stage">
+<div class="orbit orbit-outer">
+</div>
+<div class="orbit orbit-inner">
+</div><span class="stage-star star-top" aria-hidden="true">✦</span><span class="stage-star star-bottom" aria-hidden="true">✦</span>
+<svg id="sigil" viewBox="0 0 500 500" role="img" aria-labelledby="sigilTitle sigilDescription">
+<title id="sigilTitle">Your sigil engraving wheel</title>
+<desc id="sigilDescription">Enter an intention, then choose Forge my sigil.</desc>
+<g id="guide">
+</g>
+<g id="drawing">
+</g>
+</svg>
+<div id="emptyMessage" class="empty-message"><span>✧</span>
+<p>Every mark begins<br>with an intention.</p>
+</div>
+</div>
+<div class="stage-caption"><span class="fine-rule"></span>
+<p id="stageCaption">A quiet space for something meaningful.</p><span class="fine-rule"></span>
+</div>
+<div class="finish-bar">
+<div>
+<p class="eyebrow">CHOOSE YOUR FINISH</p>
+<div class="finishes" role="group" aria-label="Sigil finish">
+<button type="button" data-finish="gold" aria-pressed="true"><i class="swatch gold"></i>Gilded</button>
+<button type="button" data-finish="ink" aria-pressed="false"><i class="swatch ink"></i>Ink & parchment</button>
+</div>
+</div>
+<div class="studio-actions">
+<button class="quiet" id="replayBtn" type="button" disabled>↻ Replay</button>
+<button class="quiet" id="clearBtn" type="button">Clear</button>
+</div>
+</div>
+</section>
+</div>
+<section class="result" id="result" hidden>
+<div>
+<p class="eyebrow">YOUR INTENTION, INSCRIBED</p>
+<h2 id="resultIntention">
+</h2>
+<p class="helper">Keep your mark as a reminder of the intention you chose.</p>
+</div>
+<div class="result-actions">
+<button class="primary" id="downloadBtn" disabled>Download PNG <span aria-hidden="true">↓</span>
+</button>
+<button class="quiet" id="resetBtn">Begin again</button>
+</div>
+</section>
+<div class="forge-note"><span>Made with intention. Kept by you.</span><span>Your words stay in this browser tab. Your intention is not uploaded or stored.</span>
+</div>
+<div class="sr-only" id="announcement" role="status" aria-live="polite" aria-atomic="true">
+</div>
+</div>
+<script src="{{ '/forge.js' | relative_url }}" defer></script>
