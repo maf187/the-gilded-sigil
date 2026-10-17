@@ -1,21 +1,28 @@
 ---
 layout: default
 ---
-
-<article class="sigil-container article-container">
-  <header class="article-header">
-    <h2 class="article-title">{{ page.title }}</h2>
-    <p class="article-date">{{ page.date | date: "%B %d, %Y" }}</p>
+<link rel="stylesheet" href="{{ '/grimoire.css' | relative_url }}">
+<script src="{{ '/grimoire.js' | relative_url }}" defer></script>
+{% assign words = content | strip_html | number_of_words %}
+{% assign minutes = words | plus: 199 | divided_by: 200 | at_least: 1 %}
+<div class="grimoire-page grimoire-post">
+  <div class="reader-top"><a href="{{ '/articles.html' | relative_url }}" class="text-link">← Back to the Grimoire</a></div>
+  <header class="reading-header">
+    <p class="eyebrow">{% if page.categories == empty %}THE GRIMOIRE{% else %}{% for category in page.categories %}{% include grimoire-category.html category=category %}{% unless forloop.last %} · {% endunless %}{% endfor %}{% endif %}</p>
+    <h1>{{ page.title | escape }}</h1>
+    <div class="reading-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %d, %Y' }}</time><span aria-hidden="true">✧</span><span>About {{ minutes }} min read</span></div>
+    {% if page.categories contains 'tarot' and page.title contains '10 Different Ways to Interpret It' %}<p class="reading-context">From the “10 Different Ways to Interpret It” series</p>{% endif %}
   </header>
-
-  <div class="article-body">
-    {{ content }}
+  <div class="reader-grid">
+    <aside class="contents" hidden>
+      <details open><summary>Within this article</summary><nav aria-label="Article contents"><ul></ul></nav></details>
+      <p>Reading time estimated at 200 words per minute.</p>
+    </aside>
+    <div class="reading-column">
+      <article class="article-body">
+        {{ content }}
+      </article>
+      {% include grimoire-related.html %}
+    </div>
   </div>
-
-  <script>
-    document.querySelectorAll('.article-body input[type="checkbox"]').forEach(box => {
-      box.removeAttribute('disabled');
-      box.style.cursor = 'pointer';
-    });
-  </script>
-</article>
+</div>
