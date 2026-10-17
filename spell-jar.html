@@ -5,66 +5,24 @@ description: "Build a custom spell jar for free with an interactive jar builder 
 permalink: /spell-jar.html
 ---
 
-<section class="sigil-container architect-container">
-  <div class="article-header">
-    <h2>Spell Jar Alchemist</h2>
-    <p class="tagline">Formulate sacred botanical layers, crystal matrixes, and seal correspondences.</p>
-  </div>
+<link rel="stylesheet" href="{{ '/spell-jar.css' | relative_url }}">
+<div id="spell-jar-app">
+<a class="skip" href="#workbench">Skip to the workbench</a>
+<section class="intro"><div><p class="eyebrow">THE APOTHECARY · A LITTLE MAGIC, LAYER BY LAYER</p><h2 class="jar-title">Spell Jar <span>Alchemist</span></h2><p class="lede">Gather the earth. Give your intention a vessel.</p></div><p class="intro-aside">Botanical wisdom. Mineral beauty.<br>A small ritual, entirely your own.</p></section>
+<ol class="journey" aria-label="Your jar journey"><li id="journeyChoose" aria-current="step"><span>01</span> Choose an intention</li><li id="journeyBuild"><span>02</span> Add your layers</li><li id="journeySeal"><span>03</span> Seal &amp; keep</li></ol><section id="workbench" class="workbench" aria-label="Spell jar workbench">
+<aside class="intent-panel">
+<div id="chooseStage"><div class="section-heading"><span class="number">01</span><div><p class="eyebrow">BEGIN WITH WHAT MATTERS</p><h2>Choose your intention</h2></div></div><p class="choose-help">What would you like your jar to represent?</p><form id="intentForm"><fieldset class="intention-fieldset"><legend class="sr-only">Choose one intention</legend><div id="intentChoices" class="intent-choices"></div></fieldset><details class="personal-words"><summary>Add your own words <span>(optional)</span></summary><label for="intention">A personal phrase for your chosen intention</label><textarea id="intention" maxlength="300" rows="2" placeholder="My home is a place where I feel safe."></textarea><p class="small">These words personalize your recipe. Your selected intention chooses the ingredients.</p></details><button id="beginJar" class="primary full" type="submit" disabled>Begin my jar →</button><p id="chooseHint" class="small">Choose an intention above to begin.</p></form></div>
+<div id="buildStage" hidden><div class="section-heading"><span class="number">02</span><div><p id="layerProgress" class="eyebrow">LAYER 1 OF 4</p><h2 id="activeHeading" tabindex="-1">Your first ingredient</h2></div></div><div class="active-ingredient"><span id="activeSwatch" class="swatch" aria-hidden="true">∴</span><div><p id="activeRole" class="eyebrow">MINERAL FOUNDATION</p><p id="activeName" class="active-name"></p></div></div><p id="activeMeaning" class="active-meaning"></p><p id="buildInstruction" class="build-instruction">Add this ingredient and watch the first layer appear in your bottle.</p><button id="addLayer" type="button" class="primary full">Add to my jar</button><div id="ingredientDetails"></div></div>
+<div id="completeStage" hidden><div class="section-heading"><span class="number">✧</span><div><p class="eyebrow">SEALED WITH INTENTION</p><h2 id="completeHeading" tabindex="-1">Your jar is complete</h2></div></div><p id="completePhrase" class="completion-phrase"></p><p class="small">Take its meaning into your day with one small, real-world action.</p><button id="downloadRecipe" class="primary full">↓ Save my recipe</button><button id="newJar" class="secondary full">Create another jar</button><p class="privacy-note">A text recipe to keep. Your words stay on this page.</p></div>
+<details id="jarOptions" class="jar-options" hidden><summary>More options</summary><p class="small">Adjust this jar, or start over.</p><div class="option-buttons"><button id="undoLayer" class="secondary">Undo last layer</button><button id="resetJar" class="secondary">Empty this jar</button><button id="shuffle" class="secondary">Try a different recipe</button><button id="changeIntention" class="secondary">Start a new jar</button></div><p class="small">Empty keeps your recipe. A different recipe clears all layers. Starting a new jar also clears your intention.</p></details>
+<p id="status" class="status" role="status" aria-live="polite"></p>
+<details class="about"><summary>Craft gently &amp; safely</summary><p>These ingredients represent symbolic folk correspondences, not guaranteed outcomes or medical, financial, or safety advice.</p><p>Keep your jar dry and decorative. Do not eat, drink, burn, or apply its contents. Keep away from children and pets. Use a lid, ribbon, or pre-made seal; no flame is needed.</p></details>
+</aside>
+<section class="vessel-panel" aria-label="Your vessel"><div class="vessel-top"><span class="eyebrow">YOUR ALCHEMICAL VESSEL</span><span id="intentBadge" class="pill">Your intention awaits</span></div><div class="vessel-scene"><div class="halo" aria-hidden="true"></div><span class="orbit-mark mark-one" aria-hidden="true">✧</span><span class="orbit-mark mark-two" aria-hidden="true">✦</span><span class="orbit-mark mark-three" aria-hidden="true">☾</span><svg id="jarArt" viewBox="0 0 400 440" role="img" aria-labelledby="jarTitle jarDescription"><title id="jarTitle">Your spell jar</title><desc id="jarDescription">An empty decorative glass vessel. Choose an intention to begin.</desc><defs><linearGradient id="glass" x1="0" x2="1"><stop stop-color="#b9d4c5" stop-opacity=".17"/><stop offset=".25" stop-color="#c4decc" stop-opacity=".04"/><stop offset=".8" stop-color="#dbeee1" stop-opacity=".10"/><stop offset="1" stop-color="#bad8c5" stop-opacity=".24"/></linearGradient><linearGradient id="cork" x2="0" y2="1"><stop stop-color="#c09a64"/><stop offset="1" stop-color="#665034"/></linearGradient><radialGradient id="shine"><stop stop-color="#e7d497" stop-opacity=".3"/><stop offset="1" stop-color="#d4af37" stop-opacity="0"/></radialGradient><clipPath id="jarClip"><path d="M143 115 L143 147 Q143 161 118 179 Q101 191 101 218 L101 352 Q101 380 130 383 L270 383 Q299 380 299 352 L299 218 Q299 191 282 179 Q257 161 257 147 L257 115 Z"/></clipPath></defs><ellipse cx="200" cy="389" rx="146" ry="23" fill="#000" opacity=".55"/><ellipse cx="200" cy="384" rx="133" ry="20" fill="none" stroke="#d4af37" opacity=".35"/><ellipse cx="200" cy="384" rx="115" ry="15" fill="none" stroke="#d4af37" opacity=".2"/><circle cx="200" cy="247" r="165" fill="url(#shine)"/><g id="contents" clip-path="url(#jarClip)"></g><path d="M143 115 L143 147 Q143 161 118 179 Q101 191 101 218 L101 352 Q101 380 130 383 L270 383 Q299 380 299 352 L299 218 Q299 191 282 179 Q257 161 257 147 L257 115 Z" fill="url(#glass)" stroke="#c9d9bb" stroke-opacity=".55" stroke-width="2"/><path d="M124 213 L124 337 Q124 355 136 357" fill="none" stroke="#e3efe0" stroke-width="7" opacity=".18" stroke-linecap="round"/><path d="M283 223 L283 339" fill="none" stroke="#e3efe0" stroke-width="3" opacity=".24" stroke-linecap="round"/><ellipse cx="200" cy="116" rx="59" ry="10" fill="#a8b7a1" fill-opacity=".12" stroke="#e8e2cf" stroke-opacity=".4"/><g id="lid"><path d="M147 86 Q200 77 253 86 L250 117 Q200 126 150 117 Z" fill="url(#cork)" stroke="#d8b77a" stroke-opacity=".45"/><ellipse cx="200" cy="86" rx="53" ry="8" fill="#b79866"/><path d="M158 93L158 113 M174 95L174 119 M214 94L214 119 M240 91L240 115" stroke="#4f3e28" opacity=".35"/><path d="M144 123 Q200 131 256 123 M144 129 Q200 137 256 129" fill="none" stroke="#b59a67" stroke-width="3"/><path d="M246 130 Q274 159 256 201" fill="none" stroke="#b59a67" stroke-width="2"/><circle id="waxMedallion" cx="254" cy="206" r="21" fill="#604475" stroke="#d4af37" stroke-opacity=".6"/><path d="M254 192 L265 206 L254 220 L243 206 Z M245 206H263" fill="none" stroke="#e8e2cf" stroke-opacity=".7"/></g><g id="jarLabel"><path d="M154 246 Q200 254 246 246 L246 291 Q200 299 154 291 Z" fill="#eee1bb" opacity=".92"/><path d="M160 253 Q200 260 240 253 L240 284 Q200 291 160 284 Z" fill="none" stroke="#7c6949" opacity=".6"/><text x="200" y="277" text-anchor="middle" fill="#453b2a" font-size="22">✧</text></g></svg><div class="scene-caption"><p id="vesselName">A little possibility, waiting</p><span id="assemblyCount">Choose an intention to begin your jar.</span></div></div>
+<div id="gatheredWrap" class="gathered-wrap" hidden><p class="eyebrow">GATHERED IN YOUR VESSEL</p><ol id="gatheredLayers" class="gathered-layers"></ol></div><p class="vessel-footnote">A small ritual, one thoughtful layer at a time.</p></section></section>
+<section class="ritual-footer"><div><span>✧</span><h3>Intention, not perfection</h3><p>Use what is meaningful and available to you. Substitutions are part of the craft.</p></div><div><span>❋</span><h3>A dry, decorative ritual</h3><p>Keep ingredients dry and contained. No flame, ingestion, or skin application.</p></div><div><span>☾</span><h3>Carry the meaning with you</h3><p>Let your vessel remind you of a small, real-world step toward your intention.</p></div></section>
 
-  <div class="architect-controls">
-    <label for="intentInput" class="control-label">State Your Intention:</label>
-    <div class="input-group">
-      <input 
-        type="text" 
-        id="intentInput" 
-        placeholder="e.g., Attract wealth and financial clarity, or Shield home from negativity..."
-        autocomplete="off"
-      >
-      <button id="formulateBtn" type="button">Formulate Jar</button>
-    </div>
-    <p class="architect-hint" style="color: #8c887b; font-size: 0.88rem; font-style: italic; margin-top: 0.4rem;">
-      *Tip: You can re-run the same intention to draw different botanical combinations from the archives.
-    </p>
-    <p id="intentFeedback" style="color: #a8a396; font-size: 0.95rem; font-style: italic; margin-top: 0.5rem;"></p>
-  </div>
-
-  <div id="recipeOutput" class="recipe-output" style="display: none;">
-    
-    <!-- Visual Vessel Representation -->
-    <div class="jar-visual-wrapper">
-      <div class="jar-graphic" id="jarGraphic">
-        <div class="jar-cork" id="corkSeal"></div>
-        <div class="jar-glass">
-          <div class="jar-layer layer-crystal" id="visualCrystal" title="Crystal Point"></div>
-          <div class="jar-layer layer-herb-2" id="visualHerb2" title="Secondary Botanical"></div>
-          <div class="jar-layer layer-herb-1" id="visualHerb1" title="Primary Botanical"></div>
-          <div class="jar-layer layer-base" id="visualBase" title="Mineral Base"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Structured Recipe Formula -->
-    <div class="recipe-blueprint">
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
-        <h3 class="blueprint-title" style="margin: 0;">Ritual Recipe Blueprint</h3>
-        <button id="reShuffleBtn" type="button" class="sub-toggle-btn" style="border-color: #d4af37; color: #d4af37;">
-          ↻ Reformulate Variant
-        </button>
-      </div>
-      <p class="blueprint-desc">Layer ingredients from the foundation upward to anchor intention into physical form.</p>
-
-      <div class="ingredient-stack" id="ingredientStack">
-        <!-- Dynamically generated ingredient cards populate here -->
-      </div>
-
-      <div class="sealing-section" id="sealingSection">
-        <!-- Sealing wax details populate here -->
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- Include Grimoire Data and the Architect Engine -->
+<noscript><p class="noscript">Please enable JavaScript to assemble your spell jar. Your intention is not uploaded or stored.</p></noscript>
+</div>
 <script src="{{ '/grimoire-data.js' | relative_url }}"></script>
 <script src="{{ '/spell-jar.js' | relative_url }}"></script>
