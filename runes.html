@@ -1,0 +1,475 @@
+---
+layout: default
+title: "Elder Futhark Rune Casting"
+description: "Cast one, three, or five Elder Futhark runes, explore the 24-rune codex, and keep a private browser journal."
+permalink: /runes.html
+---
+
+<link rel="stylesheet" href="{{ '/runes.css' | relative_url }}">
+<div id="rune-app" class="dark selection:bg-gilded/30 selection:text-gilded-light">
+<!-- Top Navigation & Brand Header -->
+  <div class="rune-toolbar sticky top-0 z-30 border-b border-gilded/20 bg-obsidian/90 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <!-- Brand Identity -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full wood-tile flex items-center justify-center text-gilded font-display text-xl shadow-md">
+          ᛟ
+        </div>
+        <div>
+          <h2 class="rune-app-title font-display text-base sm:text-lg font-bold tracking-wider text-parchment">Elder Futhark Rune Casting</h2>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs & Audio Toggle -->
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <nav class="flex items-center bg-walnut/90 p-1 rounded-lg border border-gilded/20" aria-label="Rune app views">
+          <button id="tabBtnAltar" type="button" class="px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all bg-gilded text-obsidian font-semibold shadow-sm">
+            Sacred Altar
+          </button>
+          <button id="tabBtnCodex" type="button" class="px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all text-parchment/80 hover:text-gilded-light">
+            24 Runes Codex
+          </button>
+          <button id="tabBtnJournal" type="button" class="px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all text-parchment/80 hover:text-gilded-light flex items-center gap-1.5">
+            <span>Journal</span>
+            <span id="journalCountBadge" class="px-1.5 py-0.2 text-[10px] rounded-full bg-gilded/20 text-gilded-light border border-gilded/30">0</span>
+          </button>
+        </nav>
+
+        <button id="soundToggleBtn" type="button" title="Toggle Sacred Sound Effects" class="p-2 rounded-lg bg-walnut border border-gilded/25 text-gilded-light hover:border-gilded transition-colors flex items-center gap-1.5 text-xs">
+          <span id="soundIcon">🔊</span>
+          <span id="soundLabel" class="hidden md:inline">Chimes On</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+
+    <!-- ==================== VIEW 1: SACRED ALTAR (CASTING) ==================== -->
+    <section id="viewAltar" class="space-y-6">
+
+      <!-- Top Configuration Bar: Spread Selection & Casting Options -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+
+        <!-- Spread Selector (1, 3, or 5 Runes) -->
+        <div class="lg:col-span-7 bg-walnut/80 border border-gilded/25 rounded-xl p-4 sm:p-5 flex flex-col justify-between">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="font-display text-sm uppercase tracking-widest text-gilded flex items-center gap-2">
+              <span>✦</span> 1. Choose Your Rune Spread
+            </h2>
+            <span id="spreadSubtitle" class="text-xs text-parchment/70 italic font-serif">Single-stone clarity &amp; daily focus</span>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2.5 sm:gap-3">
+            <!-- 1 Rune Option -->
+            <button type="button" data-spread="1" class="spread-option-btn group relative rounded-xl p-3 text-left transition-all border-2 border-gilded bg-mahogany/90 shadow-md">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-display text-base sm:text-lg font-bold text-gilded-light">1 Rune</span>
+                <span class="text-xs text-gilded">●</span>
+              </div>
+              <p class="font-display text-[11px] uppercase tracking-wider text-gilded/90">Odin's Token</p>
+              <p class="text-[11px] text-parchment/70 mt-1 hidden sm:block">Immediate guidance or daily meditation</p>
+            </button>
+
+            <!-- 3 Rune Option -->
+            <button type="button" data-spread="3" class="spread-option-btn group relative rounded-xl p-3 text-left transition-all border border-gilded/25 bg-obsidian/60 hover:border-gilded/60">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-display text-base sm:text-lg font-bold text-parchment">3 Runes</span>
+                <span class="text-xs text-gilded tracking-tighter">●●●</span>
+              </div>
+              <p class="font-display text-[11px] uppercase tracking-wider text-gilded/90">The Norns' Thread</p>
+              <p class="text-[11px] text-parchment/70 mt-1 hidden sm:block">Past · Present · Future progression</p>
+            </button>
+
+            <!-- 5 Rune Option -->
+            <button type="button" data-spread="5" class="spread-option-btn group relative rounded-xl p-3 text-left transition-all border border-gilded/25 bg-obsidian/60 hover:border-gilded/60">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-display text-base sm:text-lg font-bold text-parchment">5 Runes</span>
+                <span class="text-xs text-gilded">✥</span>
+              </div>
+              <p class="font-display text-[11px] uppercase tracking-wider text-gilded/90">Cross of Elements</p>
+              <p class="text-[11px] text-parchment/70 mt-1 hidden sm:block">Past, Heart, Hidden, Challenge &amp; Destiny</p>
+            </button>
+          </div>
+
+          <!-- Sub-options for 3-Rune theme & Merkstave toggle -->
+          <div class="mt-3 pt-3 border-t border-gilded/15 flex flex-wrap items-center justify-between gap-3 text-xs">
+            <label class="inline-flex items-center gap-2 cursor-pointer select-none text-parchment/85 hover:text-gilded-light">
+              <input id="allowReversedToggle" type="checkbox" checked class="accent-[#d4af37] w-4 h-4 rounded cursor-pointer" />
+              <span>Include <strong>Merkstave</strong> (Reversed) orientations</span>
+            </label>
+
+            <label class="inline-flex items-center gap-2 cursor-pointer select-none text-parchment/85 hover:text-gilded-light">
+              <input id="manualFlipToggle" type="checkbox" class="accent-[#d4af37] w-4 h-4 rounded cursor-pointer" />
+              <span>Cast Face-Down (Tap stones to reveal)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Intention / Question Input -->
+        <div class="lg:col-span-5 bg-walnut/80 border border-gilded/25 rounded-xl p-4 sm:p-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label for="intentionInput" class="font-display text-sm uppercase tracking-widest text-gilded flex items-center gap-2">
+                <span>✦</span> 2. Set Your Intention
+              </label>
+              <span class="text-[11px] text-parchment/60">Optional</span>
+            </div>
+            <input
+              id="intentionInput"
+              type="text"
+              maxlength="120"
+              placeholder="Whisper a question or focus before shaking the bag..."
+              class="w-full px-3.5 py-2 rounded-lg bg-obsidian/90 border border-gilded/30 text-sm text-parchment placeholder-parchment/40 focus:outline-none focus:border-gilded transition-colors"
+            />
+          </div>
+
+          <!-- Quick Intention Prompts -->
+          <div class="mt-3">
+            <span class="text-[11px] text-parchment/60 block mb-1.5">Or invoke a guiding theme:</span>
+            <div class="flex flex-wrap gap-1.5">
+              <button type="button" data-prompt="What energy should I embrace today?" class="intention-pill text-[11px] px-2.5 py-1 rounded-full bg-obsidian/70 border border-gilded/25 text-parchment/80 hover:border-gilded hover:text-gilded-light transition-all">
+                Daily Energy
+              </button>
+              <button type="button" data-prompt="Guidance on my creative & craft path" class="intention-pill text-[11px] px-2.5 py-1 rounded-full bg-obsidian/70 border border-gilded/25 text-parchment/80 hover:border-gilded hover:text-gilded-light transition-all">
+                Creative &amp; Craft Path
+              </button>
+              <button type="button" data-prompt="Clarity at a personal crossroads" class="intention-pill text-[11px] px-2.5 py-1 rounded-full bg-obsidian/70 border border-gilded/25 text-parchment/80 hover:border-gilded hover:text-gilded-light transition-all">
+                Crossroads Clarity
+              </button>
+              <button type="button" data-prompt="What hidden obstacle requires my attention?" class="intention-pill text-[11px] px-2.5 py-1 rounded-full bg-obsidian/70 border border-gilded/25 text-parchment/80 hover:border-gilded hover:text-gilded-light transition-all">
+                Hidden Shadow
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== THE SACRED ALTAR CLOTH (BAG & FALLING RUNES) ==================== -->
+      <div class="altar-surface relative rounded-2xl p-4 sm:p-8 min-h-[430px] flex flex-col items-center justify-center overflow-hidden">
+
+        <!-- Ambient Particle Canvas -->
+        <canvas id="altarCanvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+        <!-- Sacred Geometry Background Ring SVG -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-15 z-0" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <radialGradient id="goldGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#d4af37" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="400" cy="250" r="210" fill="url(#goldGlow)" />
+          <circle cx="400" cy="250" r="195" fill="none" stroke="#d4af37" stroke-width="1" stroke-dasharray="4 6" />
+          <circle cx="400" cy="250" r="165" fill="none" stroke="#d4af37" stroke-width="0.75" />
+          <polygon points="400,55 568,347 232,347" fill="none" stroke="#d4af37" stroke-width="0.6" opacity="0.6" />
+          <polygon points="400,445 568,153 232,153" fill="none" stroke="#d4af37" stroke-width="0.6" opacity="0.6" />
+        </svg>
+
+        <!-- Corner Runic Inscriptions -->
+        <div class="absolute top-3 left-4 text-gilded/30 font-display text-xs tracking-widest select-none pointer-events-none">ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ</div>
+        <div class="absolute top-3 right-4 text-gilded/30 font-display text-xs tracking-widest select-none pointer-events-none">ᚷ ᚹ ᚺ ᚾ ᛁ ᛃ</div>
+        <div class="absolute bottom-3 left-4 text-gilded/30 font-display text-xs tracking-widest select-none pointer-events-none">ᛇ ᛈ ᛉ ᛊ ᛏ ᛒ</div>
+        <div class="absolute bottom-3 right-4 text-gilded/30 font-display text-xs tracking-widest select-none pointer-events-none">ᛖ ᛗ ᛚ ᛜ ᛞ ᛟ</div>
+
+        <!-- STAGE A: RUNE BAG INTERACTION (Before or During Shaking) -->
+        <div id="bagStage" class="relative z-10 flex flex-col items-center text-center max-w-md mx-auto my-2">
+          <div class="text-xs uppercase tracking-[0.2em] text-gilded-light/80 font-display mb-2" id="bagStatusPrompt">
+            3. Shake the Velvet Pouch to Awaken the Stones
+          </div>
+
+          <!-- Interactive Velvet & Gold Rune Bag SVG Button -->
+          <div
+            id="runeBagInteractive"
+            role="button"
+            tabindex="0"
+            aria-label="Shake the Rune Bag"
+            class="bag-idle relative cursor-pointer select-none group p-3 rounded-full transition-transform"
+          >
+            <!-- Halo Glow behind bag -->
+            <div id="bagAura" class="absolute inset-2 rounded-full bg-gilded/15 blur-2xl group-hover:bg-gilded/30 transition-all duration-500"></div>
+
+            <!-- Custom Handcrafted SVG Gilded Leather/Velvet Rune Bag -->
+            <svg class="w-44 h-44 sm:w-52 sm:h-52 relative z-10 drop-shadow-[0_18px_28px_rgba(0,0,0,0.85)]" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="velvetBody" cx="38%" cy="35%" r="65%">
+                  <stop offset="0%" stop-color="#38352f" />
+                  <stop offset="45%" stop-color="#242424" />
+                  <stop offset="85%" stop-color="#141413" />
+                  <stop offset="100%" stop-color="#0a0a09" />
+                </radialGradient>
+                <linearGradient id="goldCord" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#f4ecd8" />
+                  <stop offset="50%" stop-color="#d4af37" />
+                  <stop offset="100%" stop-color="#b89628" />
+                </linearGradient>
+                <linearGradient id="innerRim" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#2d2b27" />
+                  <stop offset="100%" stop-color="#0d0d0d" />
+                </linearGradient>
+              </defs>
+
+              <!-- Pouch Top Ruffled Crown -->
+              <path d="M74 58 C65 40, 82 32, 92 43 C98 31, 118 31, 125 43 C136 32, 154 40, 145 58 Z" fill="url(#innerRim)" stroke="url(#goldCord)" stroke-width="1.8"/>
+
+              <!-- Left & Right Drawstring Loops & Tassels -->
+              <path d="M72 64 C46 72, 42 105, 56 122" stroke="url(#goldCord)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <circle cx="56" cy="124" r="4.5" fill="url(#goldCord)" />
+              <path d="M56 128 L52 140 M56 128 L56 141 M56 128 L60 140" stroke="url(#goldCord)" stroke-width="1.4" stroke-linecap="round"/>
+
+              <path d="M148 64 C174 72, 178 105, 164 122" stroke="url(#goldCord)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <circle cx="164" cy="124" r="4.5" fill="url(#goldCord)" />
+              <path d="M164 128 L160 140 M164 128 L164 141 M164 128 L168 140" stroke="url(#goldCord)" stroke-width="1.4" stroke-linecap="round"/>
+
+              <!-- Main Pouch Body -->
+              <path d="M75 60 C50 85, 38 128, 48 162 C56 188, 82 198, 110 198 C138 198, 164 188, 172 162 C182 128, 170 85, 145 60 Z" fill="url(#velvetBody)" stroke="url(#goldCord)" stroke-width="2.2"/>
+
+              <!-- Subtle Leather Pleats / Folds -->
+              <path d="M88 66 C76 100, 72 140, 80 182" stroke="#0a0a09" stroke-width="2.2" stroke-linecap="round" opacity="0.65"/>
+              <path d="M132 66 C144 100, 148 140, 140 182" stroke="#0a0a09" stroke-width="2.2" stroke-linecap="round" opacity="0.65"/>
+              <path d="M110 68 C110 95, 108 135, 110 188" stroke="#0a0a09" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+
+              <!-- Gilded Drawstring Cinch Collar -->
+              <rect x="70" y="56" width="80" height="10" rx="5" fill="url(#goldCord)" />
+              <line x1="78" y1="56" x2="82" y2="66" stroke="#242424" stroke-width="1.5"/>
+              <line x1="94" y1="56" x2="98" y2="66" stroke="#242424" stroke-width="1.5"/>
+              <line x1="110" y1="56" x2="114" y2="66" stroke="#242424" stroke-width="1.5"/>
+              <line x1="126" y1="56" x2="130" y2="66" stroke="#242424" stroke-width="1.5"/>
+              <line x1="142" y1="56" x2="146" y2="66" stroke="#242424" stroke-width="1.5"/>
+
+              <!-- Embroidered Gilded Sigil Emblem on Bag Center -->
+              <g transform="translate(110, 134)">
+                <circle cx="0" cy="0" r="34" stroke="url(#goldCord)" stroke-width="1.5" stroke-dasharray="3 3" fill="rgba(10,10,9,0.35)"/>
+                <circle cx="0" cy="0" r="27" stroke="url(#goldCord)" stroke-width="1.2" fill="none"/>
+                <!-- Octagram / Runic Star -->
+                <polygon points="0,-24 6,-6 24,0 6,6 0,24 -6,6 -24,0 -6,-6" stroke="url(#goldCord)" stroke-width="1.2" fill="rgba(212,175,55,0.12)"/>
+                <!-- Center Othala / Bindrune Symbol -->
+                <text x="0" y="8" text-anchor="middle" fill="#f4ecd8" font-family="Cinzel Decorative, Georgia, serif" font-size="24" font-weight="bold">ᛟ</text>
+              </g>
+
+              <!-- Decorative Bottom Border Stitch -->
+              <path d="M58 174 Q110 194 162 174" stroke="url(#goldCord)" stroke-width="1.2" stroke-dasharray="4 4" fill="none" opacity="0.8"/>
+            </svg>
+          </div>
+
+          <!-- Shaking Charge Meter -->
+          <div class="w-64 sm:w-72 mt-2">
+            <div class="flex justify-between text-[11px] text-parchment/75 mb-1">
+              <span id="shakeStatusText">Shake the bag 1 time to attune your 1-rune spread</span>
+              <span id="shakeCountText" class="text-gilded font-mono">0 / 1 shake</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-obsidian border border-gilded/30 overflow-hidden">
+              <div id="shakeProgressBar" class="h-full bg-gradient-to-r from-gilded-dark via-gilded to-gilded-light transition-all duration-200" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <!-- Action Buttons: Shake & Cast -->
+          <div class="flex flex-wrap items-center justify-center gap-3 mt-5">
+            <button
+              id="shakeBagBtn"
+              type="button"
+              class="px-5 py-2.5 rounded-xl bg-mahogany border border-gilded/60 text-gilded-light font-display text-xs sm:text-sm uppercase tracking-wider hover:bg-gilded/20 hover:border-gilded active:scale-95 transition-all flex items-center gap-2 shadow-lg"
+            >
+              <span>🏺</span>
+              <span>Shake Rune Bag</span>
+            </button>
+
+            <button
+              id="releaseRunesBtn"
+              type="button"
+              class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-gilded-dark via-gilded to-gilded-warm text-obsidian font-display font-bold text-xs sm:text-sm uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all flex items-center gap-2 shadow-[0_0_25px_rgba(212,175,55,0.35)]"
+            >
+              <span>✨</span>
+              <span id="releaseBtnLabel">Cast 1 Rune</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STAGE B: CAST RUNE SPREAD DISPLAY ON ALTAR CLOTH -->
+        <div id="spreadStage" class="hidden relative z-10 w-full flex-col items-center justify-between py-1">
+
+          <!-- Top Spread Status Bar -->
+          <div class="w-full flex flex-wrap items-center justify-between gap-2 mb-4 px-2 border-b border-gilded/15 pb-3">
+            <div>
+              <span id="activeSpreadTitle" class="font-display text-sm sm:text-base text-gilded-light font-bold tracking-wide">Odin's Token — 1-Rune Cast</span>
+              <p id="activeIntentionDisplay" class="text-xs text-parchment/75 italic font-serif"></p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button id="revealAllBtn" type="button" class="hidden px-3.5 py-1.5 rounded-lg bg-gilded/20 border border-gilded text-gilded-light text-xs font-display uppercase tracking-wider hover:bg-gilded hover:text-obsidian transition-all">
+                Reveal All Stones
+              </button>
+              <button id="reshakeBtn" type="button" class="px-3.5 py-1.5 rounded-lg bg-walnut border border-gilded/40 text-parchment hover:border-gilded hover:text-gilded-light text-xs font-display uppercase tracking-wider transition-all flex items-center gap-1.5">
+                <span>↻</span>
+                <span>Return Stones to Bag</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Spread Grid Container -->
+          <div id="castStonesContainer" class="w-full my-2 flex items-center justify-center"></div>
+
+          <p class="text-[11px] text-parchment/60 mt-3 text-center">
+            Click any carved wooden rune stone above to inspect its deep esoteric lore or flip face-down stones.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- ==================== PERSONAL ORACLE MESSAGE & INTERPRETATION ==================== -->
+      <div id="readingResultPanel" class="hidden space-y-6">
+
+        <!-- Personal Oracle Synthesis Banner -->
+        <div class="bg-gradient-to-br from-walnut via-mahogany/90 to-obsidian border border-gilded/40 rounded-2xl p-5 sm:p-7 shadow-2xl relative overflow-hidden">
+          <div class="flex flex-wrap items-start justify-between gap-4 border-b border-gilded/20 pb-4 mb-4">
+            <div>
+              <h3 class="font-display text-lg sm:text-xl font-bold text-gilded-light">Your Personal Runic Message</h3>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <button id="saveReadingBtn" type="button" class="px-3.5 py-1.5 rounded-lg bg-gilded/15 border border-gilded/50 text-gilded-light hover:bg-gilded hover:text-obsidian text-xs font-medium transition-all flex items-center gap-1.5">
+                <span>📜</span>
+                <span>Save to Journal</span>
+              </button>
+              <button id="copyReadingBtn" type="button" class="px-3.5 py-1.5 rounded-lg bg-obsidian/80 border border-gilded/30 text-parchment/90 hover:border-gilded text-xs font-medium transition-all flex items-center gap-1.5">
+                <span>📋</span>
+                <span>Copy Reading</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Synthesized Narrative -->
+          <div id="personalSynthesisText" class="font-serif text-base sm:text-lg leading-relaxed text-parchment space-y-3"></div>
+
+          <!-- Elemental & Aett Balance Pills -->
+          <div id="readingMetaTags" class="mt-5 pt-4 border-t border-gilded/15 flex flex-wrap items-center gap-2"></div>
+        </div>
+
+        <!-- Detailed Position-by-Position Breakdown Cards -->
+        <div>
+          <h3 class="font-display text-sm uppercase tracking-widest text-gilded mb-3 flex items-center gap-2">
+            <span>✦</span> Stone-by-Stone Spread Breakdown
+          </h3>
+          <div id="stoneBreakdownGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW 2: ELDER FUTHARK CODEX (24 RUNES) ==================== -->
+    <section id="viewCodex" class="hidden space-y-6">
+      <div class="bg-walnut/80 border border-gilded/25 rounded-xl p-4 sm:p-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <span class="text-xs font-display uppercase tracking-widest text-gilded">Sacred Alphabet of the North</span>
+            <h2 class="font-display text-xl font-bold text-parchment mt-0.5">The 24 Runes of the Elder Futhark</h2>
+            <p class="text-xs sm:text-sm text-parchment/75 mt-1">
+              Divided into three <em class="font-serif text-gilded-light">Aettir</em> (families of eight). Click any wooden tile to inspect its upright &amp; merkstave meanings.
+            </p>
+          </div>
+
+          <!-- Search & Aett Filter Controls -->
+          <div class="flex flex-wrap items-center gap-2">
+            <input
+              id="codexSearchInput"
+              type="text"
+              placeholder="Search name, meaning, element..."
+              class="px-3 py-1.5 rounded-lg bg-obsidian border border-gilded/30 text-xs sm:text-sm text-parchment placeholder-parchment/40 focus:outline-none focus:border-gilded"
+            />
+            <select
+              id="codexAettFilter"
+              aria-label="Filter by Aett"
+              class="px-3 py-1.5 rounded-lg bg-obsidian border border-gilded/30 text-xs sm:text-sm text-gilded-light focus:outline-none focus:border-gilded"
+            >
+              <option value="all">All Three Aettir (24)</option>
+              <option value="Freyja's Aett">Freyja's Aett (1–8)</option>
+              <option value="Heimdall's Aett">Heimdall's Aett (9–16)</option>
+              <option value="Tyr's Aett">Tyr's Aett (17–24)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Codex Grid -->
+      <div id="codexGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5"></div>
+    </section>
+
+    <!-- ==================== VIEW 3: CASTING JOURNAL (SAVED READINGS) ==================== -->
+    <section id="viewJournal" class="hidden space-y-6">
+      <div class="bg-walnut/80 border border-gilded/25 rounded-xl p-4 sm:p-6 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-display uppercase tracking-widest text-gilded">Personal Chronicle</span>
+          <h2 class="font-display text-xl font-bold text-parchment mt-0.5">Saved Rune Castings</h2>
+          <p class="text-xs sm:text-sm text-parchment/75 mt-1">
+            Record and revisit your personal Elder Futhark spreads and reflections.
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="NewCastFromJournalBtn" type="button" class="px-3.5 py-2 rounded-lg bg-gilded text-obsidian font-display font-semibold text-xs uppercase tracking-wider hover:brightness-110 transition-all">
+            + Cast New Spread
+          </button>
+          <button id="clearJournalBtn" type="button" class="px-3.5 py-2 rounded-lg bg-obsidian border border-red-400/30 text-red-300/80 hover:border-red-400 text-xs transition-all">
+            Clear Journal
+          </button>
+        </div>
+      </div>
+
+      <div id="journalListContainer" class="space-y-4"></div>
+    </section>
+
+  </div>
+
+  <!-- ==================== RUNE DETAIL MODAL ==================== -->
+  <div id="runeModalOverlay" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+    <div class="bg-walnut border border-gilded/50 rounded-2xl max-w-lg w-full p-5 sm:p-6 shadow-2xl relative animate-fadeIn">
+      <button id="closeModalBtn" type="button" aria-label="Close modal" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-obsidian/80 border border-gilded/30 text-parchment hover:text-gilded-light flex items-center justify-center">
+        ✕
+      </button>
+
+      <div class="flex items-center gap-4 border-b border-gilded/20 pb-4">
+        <div id="modalRuneTile" class="w-16 h-20 rounded-xl wood-tile flex items-center justify-center text-4xl rune-carving shrink-0">
+          ᚠ
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span id="modalRuneAett" class="text-[11px] font-display uppercase tracking-widest text-gilded">Freyja's Aett</span>
+            <span id="modalRuneNumber" class="text-[11px] px-2 py-0.5 rounded-full bg-obsidian border border-gilded/25 text-parchment/70">Rune #1</span>
+          </div>
+          <h3 id="modalRuneName" class="font-display text-2xl font-bold text-gilded-light mt-0.5">Fehu</h3>
+          <p id="modalRuneTranslation" class="text-xs text-parchment/80 italic font-serif">Literal: "Cattle / Mobile Wealth" · Phonetic: F</p>
+        </div>
+      </div>
+
+      <div class="mt-4 space-y-3 text-sm">
+        <div class="flex flex-wrap gap-2 text-xs">
+          <span id="modalRuneElement" class="px-2.5 py-1 rounded-md bg-obsidian border border-gilded/25 text-gilded-light">Element: Fire &amp; Earth</span>
+          <span id="modalRuneDeity" class="px-2.5 py-1 rounded-md bg-obsidian border border-gilded/25 text-parchment/85">Deity: Freyr &amp; Freyja</span>
+          <span id="modalRuneReversible" class="px-2.5 py-1 rounded-md bg-obsidian border border-gilded/25 text-parchment/75">Reversible</span>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-obsidian/75 border border-gilded/25">
+          <h4 class="font-display text-xs uppercase tracking-wider text-gilded mb-1">✦ Upright Meaning (Light &amp; Flow)</h4>
+          <p id="modalRuneUpright" class="text-parchment/90 leading-relaxed text-xs sm:text-sm"></p>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-obsidian/75 border border-amber-500/25">
+          <h4 id="modalRuneMerkstaveTitle" class="font-display text-xs uppercase tracking-wider text-amber-300/90 mb-1">✦ Merkstave / Shadow Aspect</h4>
+          <p id="modalRuneReversed" class="text-parchment/85 leading-relaxed text-xs sm:text-sm"></p>
+        </div>
+
+        <div class="p-3 rounded-xl bg-mahogany/50 border border-gilded/20">
+          <h4 class="font-display text-[11px] uppercase tracking-wider text-gilded-light mb-1">Oracle Whisper</h4>
+          <p id="modalRuneWhisper" class="font-serif italic text-sm text-gilded-light/95"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastBanner" class="fixed bottom-5 right-5 z-50 hidden px-4 py-2.5 rounded-xl bg-mahogany border border-gilded text-gilded-light text-xs sm:text-sm shadow-2xl items-center gap-2">
+    <span>✨</span>
+    <span id="toastText">Saved!</span>
+  </div>
+
+  <!-- ==================== APPLICATION LOGIC ==================== -->
+</div>
+<script src="{{ '/runes.js' | relative_url }}" defer></script>
