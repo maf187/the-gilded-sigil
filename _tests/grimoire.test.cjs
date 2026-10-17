@@ -30,6 +30,17 @@ const enhance=d=>{d.window.eval(read('grimoire.js'));};
 const interactive=html=>new JSDOM(html,{url:'https://thegildedsigil.com/',runScripts:'outside-only'});
 let count=0;const results=[];async function test(name,fn){await fn();count++;results.push(name);console.log('PASS '+name);}
 (async()=>{
+
+ await test('Jekyll 3.10 include argument grammar rejects indexed expressions and accepts every production include',()=>{
+  // Mirrors FULL_VALID_SYNTAX / VALID_SYNTAX from Jekyll v3.10.0:
+  // https://github.com/jekyll/jekyll/blob/v3.10.0/lib/jekyll/tags/include.rb
+  // LiquidJS's jekyllInclude option does not enforce this Ruby parser restriction.
+  const valid=/^\s*(?:([\w-]+)\s*=\s*(?:"([^"\\]*(?:\\.[^"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)'|([\w.-]+))(?=\s|$)\s*)*$/;
+  assert.equal(valid.test('category=category[0]'),false);
+  assert.equal(valid.test('category=category_name'),true);
+  const files=['articles.html',...fs.readdirSync(path.join(root,'_layouts')).filter(f=>f.endsWith('.html')).map(f=>'_layouts/'+f),...fs.readdirSync(path.join(root,'_includes')).filter(f=>f.endsWith('.html')).map(f=>'_includes/'+f)];
+  for(const file of files)for(const match of read(file).matchAll(/{%[-]?\s*include\s+\S+(?:\s+([\s\S]*?))?\s*[-]?%}/g))assert.ok(valid.test((match[1]||'').trim()),`${file}: ${match[1]}`);
+ });
  const archive=await renderArchive();const a=interactive(archive);const d=a.window.document;
  await test('Real Liquid archive renders every source post, escaped titles, summaries and existing permalinks',()=>{
   const entries=[...d.querySelectorAll('.entry')];assert.equal(entries.length,posts.length);
