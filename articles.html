@@ -67,7 +67,8 @@ permalink: /articles.html
       <button type="button" data-grimoire-filter="all" aria-pressed="true" aria-controls="grimoire-entries">All writings <span>{{ writing_count }}</span></button>
       {% assign sorted_categories = site.categories | sort %}
       {% for category in sorted_categories %}
-      <button type="button" data-grimoire-filter="category" data-category="{{ category[0] | escape }}" aria-pressed="false" aria-controls="grimoire-entries">{% include grimoire-category.html category=category[0] %} <span>{{ category[1] | size }}</span></button>
+      {% assign category_name = category[0] %}
+      <button type="button" data-grimoire-filter="category" data-category="{{ category[0] | escape }}" aria-pressed="false" aria-controls="grimoire-entries">{% include grimoire-category.html category=category_name %} <span>{{ category[1] | size }}</span></button>
       {% endfor %}
       {% if uncategorized_count > 0 %}<button type="button" data-grimoire-filter="uncategorized" aria-pressed="false" aria-controls="grimoire-entries">Uncategorized <span>{{ uncategorized_count }}</span></button>{% endif %}
     </div>

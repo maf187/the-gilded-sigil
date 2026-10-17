@@ -66,3 +66,12 @@ The wealth incantation's existing malformed but working permalink is retained.
 Changing that URL needs a separate migration/redirect decision; this layout PR
 does not silently change it. No workflow, Pages settings, shared navigation,
 Forge, Runes or Spell Jar files are changed.
+
+## Jekyll 3.10 include compatibility regression
+
+The GitHub Pages build rejected indexed include arguments such as
+`category=category[0]`, although LiquidJS accepted them. The archive now assigns
+the indexed value to `category_name` before passing that plain variable to the
+include. The regression mirrors Jekyll 3.10’s include-parameter grammar and scans
+all production HTML layouts/includes plus the archive, explicitly rejecting the
+old form. It supplements fixture rendering; it is not a full Ruby/Jekyll build.
