@@ -12,8 +12,8 @@
 @media(max-width:380px){#spell-jar-app .intent-panel{padding:20px 16px}#spell-jar-app .journey{gap:6px;font-size:11px}#spell-jar-app .journey li{gap:4px}#spell-jar-app .journey li>span{display:none}#spell-jar-app .choice-face{font-size:14px;height:75px}#spell-jar-app .vessel-panel .halo{width:235px;height:235px}#spell-jar-app .vessel-panel #jarArt{height:370px}#spell-jar-app .vessel-scene{min-height:390px}#spell-jar-app .active-name{font-size:26px}}
 @media(prefers-reduced-motion:reduce){#spell-jar-app .sja-layer{animation:none}}
 
-/* Widen only this page, as with the Forge and rune tools. */
-body:has(#spell-jar-app) > main { width: 100%; max-width: 84rem; }
+/* Match the Forge and rune workspaces; shared body padding keeps mobile gutters. */
+body:has(#spell-jar-app) > main { width: 100%; max-width: 72rem; }
 #spell-jar-app { width: 100%; max-width: none; margin: 0 auto; padding: 0; background: transparent; text-align: left; line-height: 1.5; }
 #spell-jar-app .intro { padding-top: 12px; }
 #spell-jar-app .jar-title { color: #e8e2cf; text-transform: none; text-shadow: none; }
