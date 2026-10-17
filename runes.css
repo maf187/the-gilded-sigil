@@ -1,0 +1,1850 @@
+/* Compiled Tailwind 3.4.17 + original app styles. All reset/utility selectors are scoped to #rune-app. */
+#rune-app *, #rune-app ::before, #rune-app ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+#rune-app ::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}/*
+! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com
+*//*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+#rune-app *,
+#rune-app ::before,
+#rune-app ::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */
+}
+
+#rune-app ::before,
+#rune-app ::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+#rune-app,
+#rune-app {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  tab-size: 4; /* 3 */
+  font-family: Cormorant Garamond, Georgia, serif; /* 4 */
+  font-feature-settings: normal; /* 5 */
+  font-variation-settings: normal; /* 6 */
+  -webkit-tap-highlight-color: transparent; /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+#rune-app {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+#rune-app hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+#rune-app abbr:where([title]) {
+  text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+#rune-app h1,
+#rune-app h2,
+#rune-app h3,
+#rune-app h4,
+#rune-app h5,
+#rune-app h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+#rune-app a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+#rune-app b,
+#rune-app strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+#rune-app code,
+#rune-app kbd,
+#rune-app samp,
+#rune-app pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* 1 */
+  font-feature-settings: normal; /* 2 */
+  font-variation-settings: normal; /* 3 */
+  font-size: 1em; /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+#rune-app small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+#rune-app sub,
+#rune-app sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+#rune-app sub {
+  bottom: -0.25em;
+}
+
+#rune-app sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+#rune-app table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+#rune-app button,
+#rune-app input,
+#rune-app optgroup,
+#rune-app select,
+#rune-app textarea {
+  font-family: inherit; /* 1 */
+  font-feature-settings: inherit; /* 1 */
+  font-variation-settings: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  letter-spacing: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+#rune-app button,
+#rune-app select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+#rune-app button,
+#rune-app input:where([type='button']),
+#rune-app input:where([type='reset']),
+#rune-app input:where([type='submit']) {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+#rune-app :-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+#rune-app :-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+#rune-app progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+#rune-app ::-webkit-inner-spin-button,
+#rune-app ::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+#rune-app [type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+#rune-app ::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+#rune-app ::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+#rune-app summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+#rune-app blockquote,
+#rune-app dl,
+#rune-app dd,
+#rune-app h1,
+#rune-app h2,
+#rune-app h3,
+#rune-app h4,
+#rune-app h5,
+#rune-app h6,
+#rune-app hr,
+#rune-app figure,
+#rune-app p,
+#rune-app pre {
+  margin: 0;
+}
+
+#rune-app fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+#rune-app legend {
+  padding: 0;
+}
+
+#rune-app ol,
+#rune-app ul,
+#rune-app menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+#rune-app dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+#rune-app textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+#rune-app input::placeholder,
+#rune-app textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+#rune-app button,
+#rune-app [role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+#rune-app :disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+#rune-app img,
+#rune-app svg,
+#rune-app video,
+#rune-app canvas,
+#rune-app audio,
+#rune-app iframe,
+#rune-app embed,
+#rune-app object {
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+#rune-app img,
+#rune-app video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+#rune-app [hidden]:where(:not([hidden="until-found"])) {
+  display: none;
+}
+#rune-app .\!container {
+  width: 100% !important;
+}
+#rune-app .container {
+  width: 100%;
+}
+@media (min-width: 640px) {
+
+  #rune-app .\!container {
+    max-width: 640px !important;
+  }
+
+  #rune-app .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+
+  #rune-app .\!container {
+    max-width: 768px !important;
+  }
+
+  #rune-app .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+
+  #rune-app .\!container {
+    max-width: 1024px !important;
+  }
+
+  #rune-app .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+
+  #rune-app .\!container {
+    max-width: 1280px !important;
+  }
+
+  #rune-app .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+
+  #rune-app .\!container {
+    max-width: 1536px !important;
+  }
+
+  #rune-app .container {
+    max-width: 1536px;
+  }
+}
+
+#rune-app button,#rune-app input,#rune-app select,#rune-app textarea {letter-spacing:normal;border-radius:0;font-weight:inherit;}  #rune-app :where(input[type="text"]) {flex:initial;padding:0;font-size:inherit;} #rune-app canvas {background:transparent;border:0;border-radius:0;max-width:100%;}
+#rune-app .pointer-events-none {
+  pointer-events: none;
+}
+#rune-app .fixed {
+  position: fixed;
+}
+#rune-app .absolute {
+  position: absolute;
+}
+#rune-app .relative {
+  position: relative;
+}
+#rune-app .sticky {
+  position: sticky;
+}
+#rune-app .inset-0 {
+  inset: 0px;
+}
+#rune-app .inset-2 {
+  inset: 0.5rem;
+}
+#rune-app .bottom-3 {
+  bottom: 0.75rem;
+}
+#rune-app .bottom-5 {
+  bottom: 1.25rem;
+}
+#rune-app .left-4 {
+  left: 1rem;
+}
+#rune-app .right-4 {
+  right: 1rem;
+}
+#rune-app .right-5 {
+  right: 1.25rem;
+}
+#rune-app .top-0 {
+  top: 0px;
+}
+#rune-app .top-3 {
+  top: 0.75rem;
+}
+#rune-app .top-4 {
+  top: 1rem;
+}
+#rune-app .z-0 {
+  z-index: 0;
+}
+#rune-app .z-10 {
+  z-index: 10;
+}
+#rune-app .z-30 {
+  z-index: 30;
+}
+#rune-app .z-50 {
+  z-index: 50;
+}
+#rune-app .col-span-full {
+  grid-column: 1 / -1;
+}
+#rune-app .mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+#rune-app .my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+#rune-app .my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+#rune-app .mb-1 {
+  margin-bottom: 0.25rem;
+}
+#rune-app .mb-1\.5 {
+  margin-bottom: 0.375rem;
+}
+#rune-app .mb-2 {
+  margin-bottom: 0.5rem;
+}
+#rune-app .mb-3 {
+  margin-bottom: 0.75rem;
+}
+#rune-app .mb-4 {
+  margin-bottom: 1rem;
+}
+#rune-app .ml-2 {
+  margin-left: 0.5rem;
+}
+#rune-app .mr-1 {
+  margin-right: 0.25rem;
+}
+#rune-app .mt-0\.5 {
+  margin-top: 0.125rem;
+}
+#rune-app .mt-1 {
+  margin-top: 0.25rem;
+}
+#rune-app .mt-2 {
+  margin-top: 0.5rem;
+}
+#rune-app .mt-3 {
+  margin-top: 0.75rem;
+}
+#rune-app .mt-4 {
+  margin-top: 1rem;
+}
+#rune-app .mt-5 {
+  margin-top: 1.25rem;
+}
+#rune-app .block {
+  display: block;
+}
+#rune-app .flex {
+  display: flex;
+}
+#rune-app .inline-flex {
+  display: inline-flex;
+}
+#rune-app .\!grid {
+  display: grid !important;
+}
+#rune-app .grid {
+  display: grid;
+}
+#rune-app .hidden {
+  display: none;
+}
+#rune-app .h-10 {
+  height: 2.5rem;
+}
+#rune-app .h-11 {
+  height: 2.75rem;
+}
+#rune-app .h-14 {
+  height: 3.5rem;
+}
+#rune-app .h-16 {
+  height: 4rem;
+}
+#rune-app .h-2 {
+  height: 0.5rem;
+}
+#rune-app .h-20 {
+  height: 5rem;
+}
+#rune-app .h-36 {
+  height: 9rem;
+}
+#rune-app .h-4 {
+  height: 1rem;
+}
+#rune-app .h-44 {
+  height: 11rem;
+}
+#rune-app .h-8 {
+  height: 2rem;
+}
+#rune-app .h-full {
+  height: 100%;
+}
+#rune-app .min-h-\[40px\] {
+  min-height: 40px;
+}
+#rune-app .min-h-\[430px\] {
+  min-height: 430px;
+}
+#rune-app .w-10 {
+  width: 2.5rem;
+}
+#rune-app .w-12 {
+  width: 3rem;
+}
+#rune-app .w-16 {
+  width: 4rem;
+}
+#rune-app .w-28 {
+  width: 7rem;
+}
+#rune-app .w-4 {
+  width: 1rem;
+}
+#rune-app .w-44 {
+  width: 11rem;
+}
+#rune-app .w-64 {
+  width: 16rem;
+}
+#rune-app .w-8 {
+  width: 2rem;
+}
+#rune-app .w-9 {
+  width: 2.25rem;
+}
+#rune-app .w-full {
+  width: 100%;
+}
+#rune-app .min-w-0 {
+  min-width: 0px;
+}
+#rune-app .max-w-2xl {
+  max-width: 42rem;
+}
+#rune-app .max-w-3xl {
+  max-width: 48rem;
+}
+#rune-app .max-w-4xl {
+  max-width: 56rem;
+}
+#rune-app .max-w-6xl {
+  max-width: 72rem;
+}
+#rune-app .max-w-lg {
+  max-width: 32rem;
+}
+#rune-app .max-w-md {
+  max-width: 28rem;
+}
+#rune-app .shrink-0 {
+  flex-shrink: 0;
+}
+#rune-app .grow {
+  flex-grow: 1;
+}
+#rune-app .rotate-180 {
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+#rune-app .scale-125 {
+  --tw-scale-x: 1.25;
+  --tw-scale-y: 1.25;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+#rune-app .transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+#rune-app .cursor-not-allowed {
+  cursor: not-allowed;
+}
+#rune-app .cursor-pointer {
+  cursor: pointer;
+}
+#rune-app .select-none {
+  user-select: none;
+}
+#rune-app .resize {
+  resize: both;
+}
+#rune-app .grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+#rune-app .grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+#rune-app .grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+#rune-app .flex-col {
+  flex-direction: column;
+}
+#rune-app .flex-wrap {
+  flex-wrap: wrap;
+}
+#rune-app .place-items-center {
+  place-items: center;
+}
+#rune-app .items-start {
+  align-items: flex-start;
+}
+#rune-app .items-center {
+  align-items: center;
+}
+#rune-app .items-stretch {
+  align-items: stretch;
+}
+#rune-app .justify-center {
+  justify-content: center;
+}
+#rune-app .justify-between {
+  justify-content: space-between;
+}
+#rune-app .gap-1\.5 {
+  gap: 0.375rem;
+}
+#rune-app .gap-2 {
+  gap: 0.5rem;
+}
+#rune-app .gap-2\.5 {
+  gap: 0.625rem;
+}
+#rune-app .gap-3 {
+  gap: 0.75rem;
+}
+#rune-app .gap-3\.5 {
+  gap: 0.875rem;
+}
+#rune-app .gap-4 {
+  gap: 1rem;
+}
+#rune-app .gap-5 {
+  gap: 1.25rem;
+}
+#rune-app .space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
+#rune-app .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+#rune-app .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+#rune-app .overflow-hidden {
+  overflow: hidden;
+}
+#rune-app .truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#rune-app .rounded {
+  border-radius: 0.25rem;
+}
+#rune-app .rounded-2xl {
+  border-radius: 1rem;
+}
+#rune-app .rounded-full {
+  border-radius: 9999px;
+}
+#rune-app .rounded-lg {
+  border-radius: 0.5rem;
+}
+#rune-app .rounded-md {
+  border-radius: 0.375rem;
+}
+#rune-app .rounded-xl {
+  border-radius: 0.75rem;
+}
+#rune-app .border {
+  border-width: 1px;
+}
+#rune-app .border-2 {
+  border-width: 2px;
+}
+#rune-app .border-b {
+  border-bottom-width: 1px;
+}
+#rune-app .border-l-2 {
+  border-left-width: 2px;
+}
+#rune-app .border-t {
+  border-top-width: 1px;
+}
+#rune-app .border-dashed {
+  border-style: dashed;
+}
+#rune-app .border-amber-400\/30 {
+  border-color: rgb(251 191 36 / 0.3);
+}
+#rune-app .border-amber-400\/40 {
+  border-color: rgb(251 191 36 / 0.4);
+}
+#rune-app .border-amber-500\/25 {
+  border-color: rgb(245 158 11 / 0.25);
+}
+#rune-app .border-gilded {
+  --tw-border-opacity: 1;
+  border-color: rgb(212 175 55 / var(--tw-border-opacity, 1));
+}
+#rune-app .border-gilded\/15 {
+  border-color: rgb(212 175 55 / 0.15);
+}
+#rune-app .border-gilded\/20 {
+  border-color: rgb(212 175 55 / 0.2);
+}
+#rune-app .border-gilded\/25 {
+  border-color: rgb(212 175 55 / 0.25);
+}
+#rune-app .border-gilded\/30 {
+  border-color: rgb(212 175 55 / 0.3);
+}
+#rune-app .border-gilded\/40 {
+  border-color: rgb(212 175 55 / 0.4);
+}
+#rune-app .border-gilded\/50 {
+  border-color: rgb(212 175 55 / 0.5);
+}
+#rune-app .border-gilded\/60 {
+  border-color: rgb(212 175 55 / 0.6);
+}
+#rune-app .border-red-400\/30 {
+  border-color: rgb(248 113 113 / 0.3);
+}
+#rune-app .bg-amber-900\/50 {
+  background-color: rgb(120 53 15 / 0.5);
+}
+#rune-app .bg-amber-900\/60 {
+  background-color: rgb(120 53 15 / 0.6);
+}
+#rune-app .bg-black\/80 {
+  background-color: rgb(0 0 0 / 0.8);
+}
+#rune-app .bg-gilded {
+  --tw-bg-opacity: 1;
+  background-color: rgb(212 175 55 / var(--tw-bg-opacity, 1));
+}
+#rune-app .bg-gilded\/15 {
+  background-color: rgb(212 175 55 / 0.15);
+}
+#rune-app .bg-gilded\/20 {
+  background-color: rgb(212 175 55 / 0.2);
+}
+#rune-app .bg-gilded\/40 {
+  background-color: rgb(212 175 55 / 0.4);
+}
+#rune-app .bg-mahogany {
+  --tw-bg-opacity: 1;
+  background-color: rgb(36 36 36 / var(--tw-bg-opacity, 1));
+}
+#rune-app .bg-mahogany\/50 {
+  background-color: rgb(36 36 36 / 0.5);
+}
+#rune-app .bg-mahogany\/80 {
+  background-color: rgb(36 36 36 / 0.8);
+}
+#rune-app .bg-mahogany\/90 {
+  background-color: rgb(36 36 36 / 0.9);
+}
+#rune-app .bg-obsidian {
+  --tw-bg-opacity: 1;
+  background-color: rgb(10 10 9 / var(--tw-bg-opacity, 1));
+}
+#rune-app .bg-obsidian\/60 {
+  background-color: rgb(10 10 9 / 0.6);
+}
+#rune-app .bg-obsidian\/70 {
+  background-color: rgb(10 10 9 / 0.7);
+}
+#rune-app .bg-obsidian\/75 {
+  background-color: rgb(10 10 9 / 0.75);
+}
+#rune-app .bg-obsidian\/80 {
+  background-color: rgb(10 10 9 / 0.8);
+}
+#rune-app .bg-obsidian\/90 {
+  background-color: rgb(10 10 9 / 0.9);
+}
+#rune-app .bg-walnut {
+  --tw-bg-opacity: 1;
+  background-color: rgb(26 26 26 / var(--tw-bg-opacity, 1));
+}
+#rune-app .bg-walnut\/50 {
+  background-color: rgb(26 26 26 / 0.5);
+}
+#rune-app .bg-walnut\/80 {
+  background-color: rgb(26 26 26 / 0.8);
+}
+#rune-app .bg-walnut\/85 {
+  background-color: rgb(26 26 26 / 0.85);
+}
+#rune-app .bg-walnut\/90 {
+  background-color: rgb(26 26 26 / 0.9);
+}
+#rune-app .bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+#rune-app .bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+#rune-app .from-gilded-dark {
+  --tw-gradient-from: #b89628 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(184 150 40 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+#rune-app .from-walnut {
+  --tw-gradient-from: #1a1a1a var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(26 26 26 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+#rune-app .via-gilded {
+  --tw-gradient-to: rgb(212 175 55 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #d4af37 var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+#rune-app .via-mahogany\/90 {
+  --tw-gradient-to: rgb(36 36 36 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), rgb(36 36 36 / 0.9) var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+#rune-app .to-gilded-light {
+  --tw-gradient-to: #f4ecd8 var(--tw-gradient-to-position);
+}
+#rune-app .to-gilded-warm {
+  --tw-gradient-to: #b89628 var(--tw-gradient-to-position);
+}
+#rune-app .to-obsidian {
+  --tw-gradient-to: #0a0a09 var(--tw-gradient-to-position);
+}
+#rune-app .p-1 {
+  padding: 0.25rem;
+}
+#rune-app .p-2 {
+  padding: 0.5rem;
+}
+#rune-app .p-2\.5 {
+  padding: 0.625rem;
+}
+#rune-app .p-3 {
+  padding: 0.75rem;
+}
+#rune-app .p-3\.5 {
+  padding: 0.875rem;
+}
+#rune-app .p-4 {
+  padding: 1rem;
+}
+#rune-app .p-5 {
+  padding: 1.25rem;
+}
+#rune-app .p-8 {
+  padding: 2rem;
+}
+#rune-app .px-1\.5 {
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
+}
+#rune-app .px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+#rune-app .px-2\.5 {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+}
+#rune-app .px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+#rune-app .px-3\.5 {
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
+}
+#rune-app .px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+#rune-app .px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+#rune-app .px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+#rune-app .py-0\.5 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+#rune-app .py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+#rune-app .py-1\.5 {
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+}
+#rune-app .py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+#rune-app .py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+#rune-app .py-2\.5 {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+#rune-app .py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+#rune-app .py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+#rune-app .py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+#rune-app .pb-3 {
+  padding-bottom: 0.75rem;
+}
+#rune-app .pb-4 {
+  padding-bottom: 1rem;
+}
+#rune-app .pl-3 {
+  padding-left: 0.75rem;
+}
+#rune-app .pt-3 {
+  padding-top: 0.75rem;
+}
+#rune-app .pt-4 {
+  padding-top: 1rem;
+}
+#rune-app .text-left {
+  text-align: left;
+}
+#rune-app .text-center {
+  text-align: center;
+}
+#rune-app .font-display {
+  font-family: Cinzel Decorative, Georgia, serif;
+}
+#rune-app .font-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+#rune-app .font-serif {
+  font-family: Cormorant Garamond, Georgia, serif;
+}
+#rune-app .text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+#rune-app .text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+#rune-app .text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+#rune-app .text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+#rune-app .text-\[10px\] {
+  font-size: 10px;
+}
+#rune-app .text-\[11px\] {
+  font-size: 11px;
+}
+#rune-app .text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+#rune-app .text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+#rune-app .text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+#rune-app .text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+#rune-app .text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+#rune-app .font-bold {
+  font-weight: 700;
+}
+#rune-app .font-medium {
+  font-weight: 500;
+}
+#rune-app .font-normal {
+  font-weight: 400;
+}
+#rune-app .font-semibold {
+  font-weight: 600;
+}
+#rune-app .uppercase {
+  text-transform: uppercase;
+}
+#rune-app .italic {
+  font-style: italic;
+}
+#rune-app .leading-relaxed {
+  line-height: 1.625;
+}
+#rune-app .tracking-\[0\.2em\] {
+  letter-spacing: 0.2em;
+}
+#rune-app .tracking-tighter {
+  letter-spacing: -0.05em;
+}
+#rune-app .tracking-wide {
+  letter-spacing: 0.025em;
+}
+#rune-app .tracking-wider {
+  letter-spacing: 0.05em;
+}
+#rune-app .tracking-widest {
+  letter-spacing: 0.1em;
+}
+#rune-app .text-amber-200 {
+  --tw-text-opacity: 1;
+  color: rgb(253 230 138 / var(--tw-text-opacity, 1));
+}
+#rune-app .text-amber-300\/90 {
+  color: rgb(252 211 77 / 0.9);
+}
+#rune-app .text-gilded {
+  --tw-text-opacity: 1;
+  color: rgb(212 175 55 / var(--tw-text-opacity, 1));
+}
+#rune-app .text-gilded-light {
+  --tw-text-opacity: 1;
+  color: rgb(244 236 216 / var(--tw-text-opacity, 1));
+}
+#rune-app .text-gilded-light\/80 {
+  color: rgb(244 236 216 / 0.8);
+}
+#rune-app .text-gilded-light\/90 {
+  color: rgb(244 236 216 / 0.9);
+}
+#rune-app .text-gilded-light\/95 {
+  color: rgb(244 236 216 / 0.95);
+}
+#rune-app .text-gilded\/30 {
+  color: rgb(212 175 55 / 0.3);
+}
+#rune-app .text-gilded\/70 {
+  color: rgb(212 175 55 / 0.7);
+}
+#rune-app .text-gilded\/75 {
+  color: rgb(212 175 55 / 0.75);
+}
+#rune-app .text-gilded\/80 {
+  color: rgb(212 175 55 / 0.8);
+}
+#rune-app .text-gilded\/90 {
+  color: rgb(212 175 55 / 0.9);
+}
+#rune-app .text-obsidian {
+  --tw-text-opacity: 1;
+  color: rgb(10 10 9 / var(--tw-text-opacity, 1));
+}
+#rune-app .text-parchment {
+  --tw-text-opacity: 1;
+  color: rgb(232 226 207 / var(--tw-text-opacity, 1));
+}
+#rune-app .text-parchment\/50 {
+  color: rgb(232 226 207 / 0.5);
+}
+#rune-app .text-parchment\/60 {
+  color: rgb(232 226 207 / 0.6);
+}
+#rune-app .text-parchment\/65 {
+  color: rgb(232 226 207 / 0.65);
+}
+#rune-app .text-parchment\/70 {
+  color: rgb(232 226 207 / 0.7);
+}
+#rune-app .text-parchment\/75 {
+  color: rgb(232 226 207 / 0.75);
+}
+#rune-app .text-parchment\/80 {
+  color: rgb(232 226 207 / 0.8);
+}
+#rune-app .text-parchment\/85 {
+  color: rgb(232 226 207 / 0.85);
+}
+#rune-app .text-parchment\/90 {
+  color: rgb(232 226 207 / 0.9);
+}
+#rune-app .text-red-300\/80 {
+  color: rgb(252 165 165 / 0.8);
+}
+#rune-app .placeholder-parchment\/40::placeholder {
+  color: rgb(232 226 207 / 0.4);
+}
+#rune-app .accent-\[\#d4af37\] {
+  accent-color: #d4af37;
+}
+#rune-app .opacity-15 {
+  opacity: 0.15;
+}
+#rune-app .opacity-50 {
+  opacity: 0.5;
+}
+#rune-app .shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+#rune-app .shadow-2xl {
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+#rune-app .shadow-\[0_0_25px_rgba\(212\2c 175\2c 55\2c 0\.35\)\] {
+  --tw-shadow: 0 0 25px rgba(212,175,55,0.35);
+  --tw-shadow-colored: 0 0 25px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+#rune-app .shadow-lg {
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+#rune-app .shadow-md {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+#rune-app .shadow-sm {
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+#rune-app .blur-2xl {
+  --tw-blur: blur(40px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+#rune-app .drop-shadow-\[0_18px_28px_rgba\(0\2c 0\2c 0\2c 0\.85\)\] {
+  --tw-drop-shadow: drop-shadow(0 18px 28px rgba(0,0,0,0.85));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+#rune-app .filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+#rune-app .backdrop-blur-md {
+  --tw-backdrop-blur: blur(12px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+#rune-app .backdrop-blur-sm {
+  --tw-backdrop-blur: blur(4px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+#rune-app .transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+#rune-app .transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+#rune-app .transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+#rune-app .transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+#rune-app .duration-200 {
+  transition-duration: 200ms;
+}
+#rune-app .duration-500 {
+  transition-duration: 500ms;
+}
+#rune-app .selection\:bg-gilded\/30 *::selection {
+  background-color: rgb(212 175 55 / 0.3);
+}
+#rune-app .selection\:text-gilded-light *::selection {
+  --tw-text-opacity: 1;
+  color: rgb(244 236 216 / var(--tw-text-opacity, 1));
+}
+#rune-app .selection\:bg-gilded\/30::selection {
+  background-color: rgb(212 175 55 / 0.3);
+}
+#rune-app .selection\:text-gilded-light::selection {
+  --tw-text-opacity: 1;
+  color: rgb(244 236 216 / var(--tw-text-opacity, 1));
+}
+#rune-app .hover\:-translate-y-1:hover {
+  --tw-translate-y: -0.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+#rune-app .hover\:border-gilded:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(212 175 55 / var(--tw-border-opacity, 1));
+}
+#rune-app .hover\:border-gilded\/50:hover {
+  border-color: rgb(212 175 55 / 0.5);
+}
+#rune-app .hover\:border-gilded\/60:hover {
+  border-color: rgb(212 175 55 / 0.6);
+}
+#rune-app .hover\:border-red-400:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(248 113 113 / var(--tw-border-opacity, 1));
+}
+#rune-app .hover\:bg-gilded:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(212 175 55 / var(--tw-bg-opacity, 1));
+}
+#rune-app .hover\:bg-gilded\/20:hover {
+  background-color: rgb(212 175 55 / 0.2);
+}
+#rune-app .hover\:text-gilded-light:hover {
+  --tw-text-opacity: 1;
+  color: rgb(244 236 216 / var(--tw-text-opacity, 1));
+}
+#rune-app .hover\:text-obsidian:hover {
+  --tw-text-opacity: 1;
+  color: rgb(10 10 9 / var(--tw-text-opacity, 1));
+}
+#rune-app .hover\:text-red-300:hover {
+  --tw-text-opacity: 1;
+  color: rgb(252 165 165 / var(--tw-text-opacity, 1));
+}
+#rune-app .hover\:underline:hover {
+  text-decoration-line: underline;
+}
+#rune-app .hover\:brightness-110:hover {
+  --tw-brightness: brightness(1.1);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+#rune-app .focus\:border-gilded:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(212 175 55 / var(--tw-border-opacity, 1));
+}
+#rune-app .focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+#rune-app .focus\:ring-2:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+#rune-app .focus\:ring-gilded:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(212 175 55 / var(--tw-ring-opacity, 1));
+}
+#rune-app .active\:scale-95:active {
+  --tw-scale-x: .95;
+  --tw-scale-y: .95;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+#rune-app .group:hover .group-hover\:-translate-y-1 {
+  --tw-translate-y: -0.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+#rune-app .group:hover .group-hover\:bg-gilded\/30 {
+  background-color: rgb(212 175 55 / 0.3);
+}
+@media (min-width: 640px) {
+
+  #rune-app .sm\:block {
+    display: block;
+  }
+
+  #rune-app .sm\:h-40 {
+    height: 10rem;
+  }
+
+  #rune-app .sm\:h-52 {
+    height: 13rem;
+  }
+
+  #rune-app .sm\:w-32 {
+    width: 8rem;
+  }
+
+  #rune-app .sm\:w-48 {
+    width: 12rem;
+  }
+
+  #rune-app .sm\:w-52 {
+    width: 13rem;
+  }
+
+  #rune-app .sm\:w-72 {
+    width: 18rem;
+  }
+
+  #rune-app .sm\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #rune-app .sm\:gap-2 {
+    gap: 0.5rem;
+  }
+
+  #rune-app .sm\:gap-3 {
+    gap: 0.75rem;
+  }
+
+  #rune-app .sm\:gap-5 {
+    gap: 1.25rem;
+  }
+
+  #rune-app .sm\:gap-8 {
+    gap: 2rem;
+  }
+
+  #rune-app .sm\:p-5 {
+    padding: 1.25rem;
+  }
+
+  #rune-app .sm\:p-6 {
+    padding: 1.5rem;
+  }
+
+  #rune-app .sm\:p-7 {
+    padding: 1.75rem;
+  }
+
+  #rune-app .sm\:p-8 {
+    padding: 2rem;
+  }
+
+  #rune-app .sm\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  #rune-app .sm\:py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  #rune-app .sm\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  #rune-app .sm\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  #rune-app .sm\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  #rune-app .sm\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  #rune-app .sm\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+@media (min-width: 768px) {
+
+  #rune-app .md\:inline {
+    display: inline;
+  }
+
+  #rune-app .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #rune-app .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #rune-app .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  #rune-app .md\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  #rune-app .md\:flex-row {
+    flex-direction: row;
+  }
+
+  #rune-app .md\:items-center {
+    align-items: center;
+  }
+}
+@media (min-width: 1024px) {
+
+  #rune-app .lg\:col-span-5 {
+    grid-column: span 5 / span 5;
+  }
+
+  #rune-app .lg\:col-span-7 {
+    grid-column: span 7 / span 7;
+  }
+
+  #rune-app .lg\:grid-cols-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  #rune-app .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #rune-app .lg\:grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+    #rune-app * {
+      box-sizing: border-box;
+    }
+    #rune-app {
+      background-color: #0a0a09;
+      background-image:
+        radial-gradient(circle at 50% 15%, rgba(212, 175, 55, 0.10) 0%, transparent 55%),
+        radial-gradient(circle at 85% 85%, rgba(184, 150, 40, 0.08) 0%, transparent 45%),
+        linear-gradient(180deg, #0a0a09 0%, #1b1a18 50%, #0a0a09 100%);
+      color: #e8e2cf;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Wood-carved rune tile texture */
+    #rune-app .wood-tile {
+      background:
+        radial-gradient(ellipse at 35% 25%, rgba(212, 175, 55, 0.14) 0%, transparent 60%),
+        repeating-linear-gradient(
+          98deg,
+          rgba(255, 255, 255, 0.015) 0px,
+          rgba(255, 255, 255, 0.015) 2px,
+          rgba(0, 0, 0, 0.08) 2px,
+          rgba(0, 0, 0, 0.08) 5px
+        ),
+        linear-gradient(145deg, #242424 0%, #1a1a1a 55%, #141413 100%);
+      border: 1.5px solid rgba(212, 175, 55, 0.48);
+      box-shadow:
+        0 10px 25px -5px rgba(0, 0, 0, 0.8),
+        inset 0 1px 2px rgba(244, 236, 216, 0.25),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.7);
+    }
+
+    #rune-app .wood-tile:hover {
+      border-color: rgba(244, 236, 216, 0.85);
+      box-shadow:
+        0 14px 30px -5px rgba(212, 175, 55, 0.22),
+        inset 0 1px 3px rgba(244, 236, 216, 0.35),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.7);
+    }
+
+    #rune-app .rune-carving {
+      color: #f4ecd8;
+      text-shadow:
+        0 0 12px rgba(212, 175, 55, 0.55),
+        0 2px 3px rgba(0, 0, 0, 0.95);
+    }
+
+    #rune-app .altar-surface {
+      background:
+        radial-gradient(circle at 50% 50%, rgba(26, 26, 26, 0.92) 0%, rgba(13, 13, 13, 0.98) 75%),
+        linear-gradient(135deg, #1b1a18 0%, #0d0d0d 100%);
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      box-shadow:
+        inset 0 0 60px rgba(0, 0, 0, 0.85),
+        0 20px 50px rgba(0, 0, 0, 0.75);
+    }
+
+    /* Bag shake keyframes */
+    @keyframes runes-shakeVigorous {
+      0% { transform: translate(0, 0) rotate(0deg) scale(1.03); }
+      15% { transform: translate(-9px, -6px) rotate(-7deg) scale(1.05); }
+      30% { transform: translate(9px, 4px) rotate(7deg) scale(1.04); }
+      45% { transform: translate(-8px, 6px) rotate(-5deg) scale(1.06); }
+      60% { transform: translate(7px, -5px) rotate(6deg) scale(1.04); }
+      75% { transform: translate(-6px, 3px) rotate(-4deg) scale(1.05); }
+      90% { transform: translate(5px, -3px) rotate(3deg) scale(1.03); }
+      100% { transform: translate(0, 0) rotate(0deg) scale(1.03); }
+    }
+
+    #rune-app .bag-shaking {
+      animation: runes-shakeVigorous 0.32s infinite ease-in-out;
+    }
+
+    /* Rune drop / fall animation */
+    @keyframes runes-runeFallIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-95px) scale(0.45) rotate(-28deg);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(8px) scale(1.06) rotate(4deg);
+      }
+      80% {
+        transform: translateY(-4px) scale(0.98) rotate(-2deg);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+      }
+    }
+
+    #rune-app .rune-drop-anim {
+      animation: runes-runeFallIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Subtle floating idle animation for bag */
+    @keyframes runes-bagBreath {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    #rune-app .bag-idle {
+      animation: runes-bagBreath 3.6s ease-in-out infinite;
+    }
+
+    /* 3D card flip support */
+    #rune-app .perspective-1000 {
+      perspective: 1000px;
+    }
+    #rune-app .transform-style-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+    }
+    #rune-app .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    #rune-app .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+
+    /* Custom Scrollbar */
+    #rune-app ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    #rune-app ::-webkit-scrollbar-track {
+      background: #0d0d0d;
+    }
+    #rune-app ::-webkit-scrollbar-thumb {
+      background: #333333;
+      border-radius: 4px;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+    #rune-app ::-webkit-scrollbar-thumb:hover {
+      background: #4a4a4a;
+    }
+
+    /* The Gilded Sigil theme, sourced from main/style.css and
+       main/_layouts/default.html (2026-10-17). Layout and app logic preserved. */
+    #rune-app {
+      color-scheme: dark;
+      --sigil-gold: #d4af37;
+      --sigil-gold-hover: #b89628;
+      --sigil-text: #e8e2cf;
+      --sigil-light: #f4ecd8;
+      --sigil-muted: #a8a396;
+      --sigil-secondary: #c2beaf;
+      --sigil-panel: #1a1a1a;
+      --sigil-card: #141413;
+      --sigil-border: #2d2b27;
+    }
+    #rune-app {
+      background: radial-gradient(circle at center, #1b1a18 0%, #0a0a09 100%);
+      color: var(--sigil-text);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.15rem;
+    }
+    #rune-app .font-display { font-family: 'Cinzel Decorative', Georgia, serif; font-weight: 700; }
+    #rune-app .font-serif, #rune-app .font-sans, #rune-app .font-mono { font-family: 'Cormorant Garamond', Georgia, serif; }
+    #rune-app .rune-app-title { color: var(--sigil-gold) !important; text-transform: uppercase; text-shadow: 0 0 12px rgba(212, 175, 55, .25); }
+    #rune-app button, #rune-app input, #rune-app select, #rune-app textarea { font-family: 'Cormorant Garamond', Georgia, serif; }
+    #rune-app button.font-display { font-family: 'Cinzel Decorative', Georgia, serif; }
+    #rune-app .text-xs:not(.font-display) { font-size: .9rem; line-height: 1.4; }
+    #rune-app .text-sm:not(.font-display) { font-size: 1rem; line-height: 1.5; }
+    #rune-app [class~="text-[11px]"]:not(.font-display) { font-size: .85rem; line-height: 1.4; }
+    #rune-app [class~="text-[10px]"]:not(.font-display) { font-size: .8rem; line-height: 1.3; }
+    #rune-app [class~="text-parchment/70"], #rune-app [class~="text-parchment/75"], #rune-app [class~="text-parchment/80"], #rune-app [class~="text-parchment/85"] { color: var(--sigil-secondary); }
+    #rune-app [class~="text-parchment/50"], #rune-app [class~="text-parchment/60"] { color: var(--sigil-muted); }
+    #rune-app [class~="bg-walnut/80"], #rune-app [class~="bg-walnut/90"], #rune-app .bg-walnut { background-color: var(--sigil-panel); }
+    #rune-app .altar-surface { background: radial-gradient(circle at center, #1b1a18 0%, #0d0d0d 100%); border-color: var(--sigil-border); }
+    #rune-app .spread-option-btn { background-color: var(--sigil-card); }
+    #rune-app .spread-option-btn:hover { background-color: #1c1b18; }
+    #rune-app .spread-option-btn.border-gilded { background-color: #242424; }
+    #rune-app input[type="text"], #rune-app select, #rune-app textarea { background-color: #242424 !important; border-color: #4a4a4a !important; color: var(--sigil-light); }
+    #rune-app input[type="text"]:focus, #rune-app select:focus, #rune-app textarea:focus { border-color: var(--sigil-gold) !important; }
+    #rune-app input::placeholder { color: var(--sigil-muted) !important; opacity: 1; }
+    #rune-app #releaseRunesBtn { background: var(--sigil-gold); color: #121212; }
+    #rune-app #releaseRunesBtn:hover, #rune-app #NewCastFromJournalBtn:hover { background: var(--sigil-gold-hover); filter: none; }
+    #rune-app button:focus-visible, #rune-app [role="button"]:focus-visible { outline: 2px solid var(--sigil-gold); outline-offset: 3px; }
+    @media (max-width: 639px) {
+      #rune-app .rune-toolbar .rune-app-title { font-size: .9rem; letter-spacing: .04em; }
+      #rune-app #spreadSubtitle { max-width: 8.5rem; text-align: right; }
+    }
+  
+#rune-app { width:100%; line-height:1.5; text-align:left; -webkit-text-size-adjust:100%; }
+#rune-app .rune-toolbar { text-align:left; margin:0; }
+body:has(#rune-app) > main { width:100%; max-width:72rem; }
