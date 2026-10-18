@@ -20,3 +20,6 @@
 .grimoire-page .empty-archive{padding:30px 0}
 @media(max-width:900px){.grimoire-page .reader-grid.has-contents{grid-template-columns:minmax(0,700px)}}
 @media(max-width:620px){.grimoire-page{padding:0 .25rem}.grimoire-page .reading-header h1{font-size:30px}.grimoire-page .entries{column-gap:0}}
+
+/* Archive title accent only; article headings retain their existing colors. */
+.grimoire-page #grimoire-title > span { color: var(--gold); }

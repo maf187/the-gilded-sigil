@@ -54,4 +54,4 @@ featured_image: "/assets/images/posts/sovereign-hearth-cauldron.jpg"
 
 ---
 
-*Explore dark academia art and custom sigils at [The Gilded Sigil Etsy Shop](https://thegildedsigil.etsy.com).*
+*The Atelier is coming soon. [Visit the future shop]({{ '/atelier/' | relative_url }}).*
