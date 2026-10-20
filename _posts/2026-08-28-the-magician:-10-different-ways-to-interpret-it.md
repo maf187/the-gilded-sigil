@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "The Magician: 10 Different Ways to Interpret It"
+title: "The Magician Tarot Meaning: 10 Interpretations"
+series: tarot-interpretations
+description: "Explore The Magician tarot meaning through 10 perspectives on will, skill, and action, from Rider-Waite-Smith to Marseille and Thoth."
 date: 2026-08-28
 summary: "From historical systems like Marseille and Golden Dawn to Jungian archetypes and the Hero's Journey."
 category: tarot

@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "Strength: 10 Different Ways to Interpret It"
+title: "Strength Tarot Meaning: 10 Interpretations"
+series: tarot-interpretations
+description: "Explore Strength tarot meaning through 10 perspectives on courage, compassion, and inner power, from Rider-Waite-Smith to Marseille and Thoth."
 date: 2026-09-06
 summary: "An exploration of Card VIII (Strength) through 10 distinct lenses—from Fortitude's cardinal virtue and the Leo-Teth link to the RWS/Marseille position shift, Jungian taming of the shadow, and Campbell's Road of Trials."
 category: tarot

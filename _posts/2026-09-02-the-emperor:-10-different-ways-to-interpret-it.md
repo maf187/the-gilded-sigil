@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "The Emperor: 10 Different Ways to Interpret It"
+title: "The Emperor Tarot Meaning: 10 Interpretations"
+series: tarot-interpretations
+description: "Explore The Emperor tarot meaning through 10 perspectives on authority, structure, and stability, from Rider-Waite-Smith to Marseille and Thoth."
 date: 2026-09-02
 summary: "An exploration of Card IV (The Emperor) through 10 distinct lenses—from Rider-Waite-Smith and Crowley's controversial Thoth swap to Etteilla's support, archetypal psychology, and Campbell's Atonement with the Father."
 category: tarot

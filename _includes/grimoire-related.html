@@ -1,11 +1,11 @@
 {% assign in_tarot_series = false %}
-{% if page.categories contains 'tarot' and page.title contains '10 Different Ways to Interpret It' %}{% assign in_tarot_series = true %}{% endif %}
+{% if page.series == 'tarot-interpretations' or page.categories contains 'tarot' and page.title contains '10 Different Ways to Interpret It' %}{% assign in_tarot_series = true %}{% endif %}
 <section class="continue-reading" aria-labelledby="grimoire-continue-title">
   <p class="eyebrow">CONTINUE YOUR STUDY</p><h2 id="grimoire-continue-title">Keep a place in the archive</h2>
   {% if in_tarot_series %}
     {% assign previous_essay = nil %}{% assign next_essay = nil %}{% assign found_current = false %}
     {% for candidate in site.posts reversed %}
-      {% if candidate.categories contains 'tarot' and candidate.title contains '10 Different Ways to Interpret It' %}
+      {% if candidate.series == 'tarot-interpretations' or candidate.categories contains 'tarot' and candidate.title contains '10 Different Ways to Interpret It' %}
         {% if candidate.url == page.url %}{% assign found_current = true %}
         {% elsif found_current %}{% assign next_essay = candidate %}{% break %}
         {% else %}{% assign previous_essay = candidate %}{% endif %}

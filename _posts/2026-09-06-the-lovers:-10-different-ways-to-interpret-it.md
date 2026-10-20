@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "The Lovers: 10 Different Ways to Interpret It"
+title: "The Lovers Tarot Meaning: 10 Interpretations"
+series: tarot-interpretations
+description: "Explore The Lovers tarot meaning through 10 perspectives on choice, union, and relationships, from Rider-Waite-Smith to Marseille and Thoth."
 date: 2026-09-04
 summary: "An exploration of Card VI (The Lovers) through 10 distinct lenses—from the Marseille crossroads of choice and Waite's Edenic union to Crowley's chemical wedding, Gemini duality, and Campbell's Woman as Temptress."
 category: tarot

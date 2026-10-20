@@ -2,10 +2,11 @@
 layout: post
 title: "An Incantation for Wealth with Warding"
 summary: "Step into a candlelit hearth sanctuary with this ancient Latin and English incantation for sovereign wealth, household protection, and abundance."
+description: "Read a Latin and English wealth incantation with household warding, a hearthside soundscape, and ritual correspondences for cedar, clove, bay, and cinnamon."
 date: 2026-08-30 12:00:00 -0500
 category: [incantations]
 tags: [wealth spell, warding, hearth magic, latin incantation, protection, witch cottage asmr, dark academia]
-permalink: https://thegildedsigil.com/
+permalink: /2026/08/an-incantation-for-wealth-with-warding/
 featured_image: "/assets/images/posts/sovereign-hearth-cauldron.jpg"
 ---
 
