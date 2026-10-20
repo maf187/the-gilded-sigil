@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "The Hierophant: 10 Different Ways to Interpret It"
+title: "The Hierophant Tarot Meaning: 10 Interpretations"
+series: tarot-interpretations
+description: "Explore The Hierophant tarot meaning through 10 perspectives on tradition, teaching, and belief, from Rider-Waite-Smith to Marseille and Thoth."
 date: 2026-09-03
 summary: "An exploration of Card V (The Hierophant) through 10 distinct lenses—from RWS institutional wisdom and Marseille's Le Pape to Crowley's New Aeon priest, Jung's Wise Old Man, and Campbell's Apotheosis."
 category: tarot

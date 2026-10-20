@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "The Art of the Sigil: How a Seal Becomes a Spell"
+description: "Explore the history of sigils, from ancient seals and planetary magic squares to Austin Osman Spare\u2019s letter-reduction method and modern sigil craft."
 date: 2026-08-19
 summary: "A comprehensive exploration of sigil craft—from ancient Mesopotamian seals and Renaissance planetary magic squares to Austin Osman Spare's modern chaos methods."
 category: sigils

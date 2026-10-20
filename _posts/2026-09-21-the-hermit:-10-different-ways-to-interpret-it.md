@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "The Hermit: 10 Different Ways to Interpret It"
+title: "The Hermit Tarot Meaning: 10 Interpretations"
+series: tarot-interpretations
+description: "Explore The Hermit tarot meaning through 10 perspectives on solitude, wisdom, and inner guidance, from Rider-Waite-Smith to Marseille and Thoth."
 date: 2026-09-07
 summary: "An exploration of Card IX (The Hermit) through 10 distinct lenses—tracing its transformation from Renaissance Father Time to Waite's beacon of attainment, Crowley's internalized Mercury, Jung's retreat at Bollingen, and Campbell's belly of the whale."
 category: tarot

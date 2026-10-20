@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "The Chariot: 10 Different Ways to Interpret It"
+title: "The Chariot Tarot Meaning: 10 Interpretations"
+series: tarot-interpretations
+description: "Explore The Chariot tarot meaning through 10 perspectives on resolve, control, and victory, from Rider-Waite-Smith to Marseille and Thoth."
 date: 2026-09-05
 summary: "An exploration of Card VII (The Chariot) through 10 distinct lenses—from armored triumph and sphinx-driven resolve to Cancerian containment, ego mastery, and Campbell's preliminary Ultimate Boon."
 category: tarot

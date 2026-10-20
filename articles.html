@@ -1,7 +1,7 @@
 ---
 layout: default
-title: The Grimoire
-description: "Articles on tarot card meanings, sigils, seasonal rituals, and spellcraft — a growing archive of witchcraft guides and folklore."
+title: "Tarot Meanings, Sigil Guides & Rituals"
+description: "Explore the Grimoire: tarot card meanings across ten perspectives, sigil craft guides, seasonal rituals, and hearth magic from The Gilded Sigil."
 permalink: /articles.html
 ---
 <link rel="stylesheet" href="{{ '/grimoire.css' | relative_url }}">
@@ -12,7 +12,7 @@ permalink: /articles.html
 {% assign uncategorized_count = 0 %}
 {% for post in site.posts %}
   {% if post.slug == 'intro-to-sigil-craft' %}{% assign starter = post %}{% endif %}
-  {% if post.categories contains 'tarot' and post.title contains '10 Different Ways to Interpret It' %}
+  {% if post.series == 'tarot-interpretations' or post.categories contains 'tarot' and post.title contains '10 Different Ways to Interpret It' %}
     {% assign tarot_count = tarot_count | plus: 1 %}
   {% endif %}
   {% if post.categories == empty %}{% assign uncategorized_count = uncategorized_count | plus: 1 %}{% endif %}
@@ -54,8 +54,8 @@ permalink: /articles.html
     <div><p class="eyebrow">A CONNECTED STUDY</p><h2 id="grimoire-series-title">Through the Major Arcana</h2><p>{{ tarot_count }} published {% if tarot_count == 1 %}essay{% else %}essays{% endif %} in the “10 Different Ways to Interpret It” series. Follow the writings in publication order.</p></div>
     <details><summary>Browse the tarot series <span>{{ tarot_count }} {% if tarot_count == 1 %}writing{% else %}writings{% endif %}</span></summary>
       <nav class="series-links" aria-label="Published tarot series">
-      {% for post in site.posts reversed %}{% if post.categories contains 'tarot' and post.title contains '10 Different Ways to Interpret It' %}
-        <a href="{{ post.url | relative_url }}">{{ post.title | remove: ': 10 Different Ways to Interpret It' | escape }} →</a>
+      {% for post in site.posts reversed %}{% if post.series == 'tarot-interpretations' or post.categories contains 'tarot' and post.title contains '10 Different Ways to Interpret It' %}
+        <a href="{{ post.url | relative_url }}">{{ post.title | remove: ': 10 Different Ways to Interpret It' | remove: ' Tarot Meaning: 10 Interpretations' | escape }} →</a>
       {% endif %}{% endfor %}
       </nav>
     </details>

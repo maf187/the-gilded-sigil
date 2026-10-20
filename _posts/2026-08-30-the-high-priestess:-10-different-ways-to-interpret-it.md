@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "The High Priestess: 10 Different Ways to Interpret It"
+title: "The High Priestess Tarot Meaning: 10 Interpretations"
+series: tarot-interpretations
+description: "Explore The High Priestess tarot meaning through 10 perspectives on intuition and hidden knowledge, from Rider-Waite-Smith to Marseille and Thoth."
 date: 2026-08-30
 summary: "Exploring Card II (The High Priestess) from historical systems like Marseille and Golden Dawn to Jungian archetypes and the Hero's Journey."
 category: tarot

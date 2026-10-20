@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "The Empress: 10 Different Ways to Interpret It"
+title: "The Empress Tarot Meaning: 10 Interpretations"
+series: tarot-interpretations
+description: "Explore The Empress tarot meaning through 10 perspectives on abundance, creativity, and nurturing, from Rider-Waite-Smith to Marseille and Thoth."
 date: 2026-08-31
 summary: "Exploring Card III (The Empress) from historical systems like Marseille and Golden Dawn to Jungian archetypes and the Hero's Journey."
 category: tarot

@@ -11,7 +11,7 @@ layout: default
     <p class="eyebrow">{% if page.categories == empty %}THE GRIMOIRE{% else %}{% for category in page.categories %}{% include grimoire-category.html category=category %}{% unless forloop.last %} · {% endunless %}{% endfor %}{% endif %}</p>
     <h1>{{ page.title | escape }}</h1>
     <div class="reading-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %d, %Y' }}</time><span aria-hidden="true">✧</span><span>About {{ minutes }} min read</span></div>
-    {% if page.categories contains 'tarot' and page.title contains '10 Different Ways to Interpret It' %}<p class="reading-context">From the “10 Different Ways to Interpret It” series</p>{% endif %}
+    {% if page.series == 'tarot-interpretations' or page.categories contains 'tarot' and page.title contains '10 Different Ways to Interpret It' %}<p class="reading-context">From the “10 Different Ways to Interpret It” series</p>{% endif %}
   </header>
   <div class="reader-grid">
     <aside class="contents" hidden>

@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "An Introduction to Sigil Craft"
+title: "How to Make a Sigil: A Beginner’s Guide"
+description: "Learn how to turn an intention into a sigil with letter reduction and our free Sigil Forge, then download a PNG and explore ways to use your design."
 date: 2026-08-19
 summary: "How to use The Gilded Sigil forge to turn your intent into a magical coordinate matrix."
 category: sigils
@@ -17,12 +18,12 @@ Sigil craft is the discipline of distilling conscious thought down to subconscio
 
 ## The Forging Process
 
-When you type your intention into the Forge on our homepage, the algorithm maps each remaining consonant to a point on a radial matrix. 
+When you type your intention into [The Sigil Forge]({{ '/forge.html' | relative_url }}), the algorithm maps each remaining consonant to a point on a radial matrix.
 
 1. **Linguistic Reduction:** The system takes your raw statement, converts it to uppercase, removes whitespace and punctuation, drops repeated characters, and filters out vowels.
 2. **Radial Coordinate Mapping:** Each remaining consonant is assigned a fixed coordinate around a 360-degree geometric wheel.
 3. **Vector Rendering:** A single, unbroken vector path is drawn between the points in the exact sequence of your phrase.
-4. **Hermetic Sealing:** An open circle automatically anchors the starting coordinate (the entrance node), while a perpendicular terminal crossbar seals the final point.
+4. **Finishing the Design:** Filled dots mark the start and end of the path, and a surrounding circle completes the design. Choose a gold or ink finish before downloading.
 
 The result is a clean, mathematically precise seal containing the exact energetic structure of your intention without any remaining visual trace of the English sentence.
 
@@ -46,4 +47,4 @@ Once your glyph is forged, decide whether your working requires immediate releas
 
 ## Ready to Forge?
 
-Head over to **[The Sigil Forge](/forge.html)** to construct your first radial seal, download the vector glyph, or transfer your finished coordinates directly into your physical craft.
+Head over to **[The Sigil Forge]({{ '/forge.html' | relative_url }})** to construct your first radial seal, download a 2000-pixel PNG, or transfer your finished coordinates directly into your physical craft.

@@ -60,7 +60,7 @@ let count=0;const results=[];async function test(name,fn){await fn();count++;res
   const tarot=doc.querySelector('[data-category="tarot"]');assert.equal(Number(tarot.querySelector('span').textContent),categories(posts).tarot.length+1);
   doc.querySelector('[data-grimoire-filter="uncategorized"]').click();assert.equal(doc.querySelectorAll('.entry:not([hidden])').length,1);
   assert.equal(doc.querySelector('.feature-sample h2').textContent,additions[0].title);
-  assert.equal(doc.querySelectorAll('.series-links a').length,posts.filter(p=>p.categories.includes('tarot')&&p.title.includes('10 Different Ways to Interpret It')).length);
+  assert.equal(doc.querySelectorAll('.series-links a').length,posts.filter(p=>(p.series==='tarot-interpretations'||(p.categories.includes('tarot')&&p.title.includes('10 Different Ways to Interpret It')))).length);
  });
  await test('Empty archive and single-post counts render correctly',async()=>{const empty=dom(await renderArchive([])).window.document;assert.equal(empty.querySelectorAll('.entry').length,0);assert.ok(empty.querySelector('.empty-archive'));assert.equal(empty.querySelector('.entrances'),null);const single=dom(await renderArchive([posts[0]])).window.document;assert.equal(single.querySelector('.results').textContent,'Showing 1 writing');});
  await test('All shared-layout articles preserve rendered prose, links, headings, embeds and checklists before enhancement',async()=>{
@@ -73,7 +73,7 @@ let count=0;const results=[];async function test(name,fn){await fn();count++;res
   const p={...posts[0],content:'<div id="grimoire-section-3"></div><h2 id="same">One</h2><h3 id="same">Two</h3><h2>Three</h2><p><a href="#same">Legacy link</a></p>'};const page=interactive(await renderPost(p));enhance(page);const doc=page.window.document;const hs=[...doc.querySelectorAll('.article-body h2,.article-body h3')];assert.equal(hs[0].id,'same');assert.notEqual(hs[1].id,'same');assert.notEqual(hs[2].id,'grimoire-section-3');const ids=[...doc.querySelectorAll('[id]')].map(e=>e.id);assert.equal(ids.length,new Set(ids).size);assert.equal(doc.getElementById('same'),hs[0]);
  });
  await test('Series navigation is chronological within the actual series; endpoints omit nonexistent essays',async()=>{
-  const series=posts.filter(p=>p.categories.includes('tarot')&&p.title.includes('10 Different Ways to Interpret It')).reverse();
+  const series=posts.filter(p=>(p.series==='tarot-interpretations'||(p.categories.includes('tarot')&&p.title.includes('10 Different Ways to Interpret It')))).reverse();
   for(let i=0;i<series.length;i++){const doc=dom(await renderPost(series[i])).window.document;assert.equal(doc.querySelector('[rel="prev"]')?.getAttribute('href')||null,series[i-1]?.url||null);assert.equal(doc.querySelector('[rel="next"]')?.getAttribute('href')||null,series[i+1]?.url||null);}
  });
  await test('Related links share a real category and exclude the current post; all local destinations resolve',async()=>{
